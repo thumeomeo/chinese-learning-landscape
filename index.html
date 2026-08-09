@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese Language Learning - Market, Creators &amp; Affiliate Landscape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Noto+Serif+SC:wght@500;700;900&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f5eedd;
+    --paper-2:#eee4cf;
+    --paper-3:#e7dcc2;
+    --card:rgba(255,253,246,.78);
+    --card-2:rgba(252,248,236,.92);
+
+    --ink:#17150f;          /* near-black, primary text */
+    --ink-2:#302b20;        /* secondary text, still strong */
+    --ink-3:#544c3a;        /* muted but readable */
+    --ink-line:rgba(23,21,15,.30);
+    --ink-line-2:rgba(23,21,15,.14);
+
+    --seal:#a3301c;
+    --seal-dark:#7d2313;
+    --seal-ink:#5e1a0e;
+    --jade:#3f6152;
+    --jade-dark:#2c4739;
+    --gold:#8a6a2c;
+    --gold-soft:rgba(138,106,44,.4);
+
+    --serif:'Cormorant Garamond','Noto Serif SC',Georgia,serif;
+    --body:'Spectral','Noto Serif SC',Georgia,serif;
+    --han:'Noto Serif SC',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.72;
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 620px at 88% -8%, rgba(255,255,255,.6), transparent 62%),
+      radial-gradient(900px 520px at -8% 26%, rgba(255,255,255,.4), transparent 58%),
+      linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 52%,var(--paper-3) 100%);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(163,48,28,.22)}
+  /* paper grain */
+  #grain{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    opacity:.30;mix-blend-mode:multiply;
+  }
+
+  /* ================= NAV ================= */
+  #nav{
+    position:fixed;top:18px;left:50%;transform:translateX(-50%);
+    z-index:200;display:flex;align-items:center;gap:3px;
+    padding:8px 12px;border-radius:999px;
+    background:rgba(246,239,222,.72);
+    backdrop-filter:blur(18px) saturate(1.35);
+    -webkit-backdrop-filter:blur(18px) saturate(1.35);
+    border:1px solid rgba(23,21,15,.20);
+    box-shadow:0 12px 34px rgba(23,21,15,.16), inset 0 1px 0 rgba(255,255,255,.6);
+    transition:transform .5s cubic-bezier(.22,.9,.3,1),opacity .5s;
+    max-width:94vw;overflow-x:auto;scrollbar-width:none;
+  }
+  #nav::-webkit-scrollbar{display:none}
+  #nav.hidden{transform:translate(-50%,-150%);opacity:0}
+  #nav .brand{
+    font-family:var(--serif);font-weight:700;font-size:16px;letter-spacing:.3px;
+    padding:2px 14px 2px 4px;display:flex;align-items:center;gap:9px;white-space:nowrap;
+    color:var(--ink);border-right:1px solid var(--ink-line-2);margin-right:5px;
+  }
+  #nav .brand .dot{
+    width:29px;height:29px;border-radius:7px;background:var(--seal);color:#f8f2e2;
+    font-family:var(--han);font-weight:700;font-size:15px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:inset 0 0 0 1.5px rgba(248,242,226,.4), 0 2px 6px rgba(125,35,19,.4);
+  }
+  #nav a{
+    font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;
+    color:var(--ink-2);text-decoration:none;padding:7px 12px;border-radius:999px;
+    transition:all .25s;white-space:nowrap;
+  }
+  #nav a:hover{color:var(--seal);background:rgba(163,48,28,.10)}
+  #nav a.active{color:#f8f2e2;background:var(--ink);box-shadow:0 2px 8px rgba(23,21,15,.3)}
+
+  /* ================= HERO ================= */
+  header{
+    position:relative;min-height:100vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    padding:130px 24px 0;overflow:hidden;z-index:2;
+  }
+  .hero-inner{position:relative;z-index:6;max-width:960px}
+  .hero-scene{
+    position:absolute;left:0;bottom:0;width:100%;height:min(72vh,620px);
+    z-index:2;pointer-events:none;
+  }
+  .vhan{
+    position:absolute;writing-mode:vertical-rl;font-family:var(--han);font-weight:500;
+    user-select:none;pointer-events:none;z-index:3;
+  }
+  .vhan.right{top:104px;right:5.5vw;font-size:clamp(32px,4.6vw,56px);letter-spacing:20px;color:rgba(23,21,15,.13)}
+  .vhan.left{top:190px;left:5vw;font-size:clamp(19px,2.4vw,28px);letter-spacing:14px;color:rgba(163,48,28,.20)}
+
+  .kicker{
+    font-size:13px;font-weight:600;letter-spacing:4.5px;text-transform:uppercase;color:var(--seal);
+    margin-bottom:24px;display:flex;align-items:center;gap:16px;justify-content:center;
+  }
+  .kicker::before,.kicker::after{content:"";width:52px;height:1.5px;background:var(--seal);opacity:.65}
+  h1{
+    font-family:var(--serif);font-weight:600;color:var(--ink);
+    font-size:clamp(44px,6.6vw,82px);line-height:1.08;letter-spacing:-.5px;
+  }
+  h1 em{font-style:italic;color:var(--seal)}
+  .hero-sub{
+    margin:28px auto 0;max-width:60ch;color:var(--ink-2);
+    font-size:clamp(16.5px,1.5vw,19.5px);font-weight:400;line-height:1.66;
+  }
+  .hero-meta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center}
+  .seal-stamp{
+    width:64px;height:64px;background:var(--seal);border-radius:9px;color:#f8f2e2;
+    font-family:var(--han);font-weight:700;font-size:21px;line-height:1.1;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    box-shadow:0 6px 18px rgba(125,35,19,.42), inset 0 0 0 2.5px rgba(248,242,226,.34);
+    transform:rotate(-3.5deg);
+  }
+  .meta-pill{
+    border:1.5px solid var(--ink-line);border-radius:999px;padding:9px 20px;
+    font-size:14px;font-weight:500;letter-spacing:.8px;color:var(--ink);
+    background:rgba(255,253,246,.6);backdrop-filter:blur(8px);
+  }
+  .scroll-hint{
+    position:absolute;bottom:34px;left:50%;z-index:6;
+    font-size:11.5px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--ink-3);
+    animation:bob 2.9s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,9px)}}
+
+  /* ===== petals carried on the wind ===== */
+  .petal-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:5}
+  .petal-layer.global{position:fixed;inset:0;z-index:2}
+  .gustwrap{position:absolute;inset:0;animation:gust 14s ease-in-out infinite}
+  .gustwrap.slow{animation-duration:21s;animation-direction:reverse}
+  @keyframes gust{
+    0%,100%{transform:translateX(0)}
+    30%{transform:translateX(34px)}
+    58%{transform:translateX(-22px)}
+    80%{transform:translateX(16px)}
+  }
+  .petal{
+    position:absolute;top:0;will-change:transform;
+    animation-name:windfall;animation-timing-function:linear;animation-iteration-count:infinite;
+  }
+  .petal i{
+    display:block;width:100%;height:100%;transform-style:preserve-3d;
+    animation-name:flutter;animation-timing-function:ease-in-out;animation-iteration-count:infinite;
+  }
+  .petal svg{display:block;width:100%;height:100%}
+  @keyframes windfall{
+    0%  {transform:translate3d(0,-14vh,0)}
+    18% {transform:translate3d(calc(var(--dx) *  .55),14vh,0)}
+    38% {transform:translate3d(calc(var(--dx) * -.32),36vh,0)}
+    58% {transform:translate3d(calc(var(--dx) *  .95),58vh,0)}
+    78% {transform:translate3d(calc(var(--dx) *  .12),84vh,0)}
+    100%{transform:translate3d(calc(var(--dx) *  .70),118vh,0)}
+  }
+  @keyframes flutter{
+    0%  {transform:rotate3d(.55,1,.32,0deg)}
+    100%{transform:rotate3d(.55,1,.32,1080deg)}
+  }
+  .crane-flock{animation:glide 30s ease-in-out infinite}
+  @keyframes glide{0%,100%{transform:translate(0,0)}50%{transform:translate(46px,-16px)}}
+  .boat-g{animation:rock 7s ease-in-out infinite;transform-origin:center bottom}
+  @keyframes rock{0%,100%{transform:rotate(-1.1deg) translateY(0)}50%{transform:rotate(1.1deg) translateY(-2.5px)}}
+  .mist-band{animation:mistdrift 32s ease-in-out infinite}
+  .mist-band.b{animation-duration:44s;animation-direction:reverse}
+  @keyframes mistdrift{0%,100%{transform:translateX(-24px)}50%{transform:translateX(30px)}}
+
+  /* ================= LAYOUT ================= */
+  main{position:relative;z-index:3;max-width:1180px;margin:0 auto;padding:0 26px 40px}
+  section{padding:88px 0 24px;scroll-margin-top:112px;position:relative}
+  .sec-head{display:flex;align-items:flex-start;gap:22px;margin-bottom:8px;position:relative}
+  .sec-seal{
+    flex:none;width:54px;height:54px;background:var(--seal);border-radius:8px;
+    color:#f8f2e2;font-family:var(--han);font-weight:700;font-size:25px;
+    display:flex;align-items:center;justify-content:center;transform:rotate(-2.5deg);
+    box-shadow:0 5px 15px rgba(125,35,19,.35), inset 0 0 0 2.5px rgba(248,242,226,.3);
+  }
+  h2{
+    font-family:var(--serif);font-weight:700;color:var(--ink);
+    font-size:clamp(32px,3.9vw,47px);line-height:1.1;letter-spacing:-.3px;
+  }
+  .sec-motif{position:absolute;right:0;top:-14px;width:112px;height:112px;opacity:.34;pointer-events:none}
+  .brush-rule{display:block;margin:10px 0 28px;width:270px;max-width:60%}
+  .sec-intro{
+    max-width:74ch;color:var(--ink-2);font-size:18px;font-weight:400;
+    margin-bottom:34px;line-height:1.7;
+  }
+  .sec-intro strong{color:var(--ink);font-weight:700}
+  h3.sub{
+    font-family:var(--serif);font-size:26px;font-weight:700;color:var(--ink);
+    margin:38px 0 16px;display:flex;align-items:center;gap:14px;
+  }
+  h3.sub::before{content:"";width:7px;height:24px;background:var(--seal);border-radius:2px;flex:none}
+
+  /* cards */
+  .grid{display:grid;gap:20px}
+  .grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+  .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}
+  .card{
+    position:relative;background:var(--card);border:1.5px solid var(--ink-line-2);
+    border-radius:16px;padding:28px 28px 24px;backdrop-filter:blur(10px);
+    box-shadow:0 8px 26px rgba(23,21,15,.08), inset 0 1px 0 rgba(255,255,255,.7);
+    transition:transform .38s cubic-bezier(.2,.8,.3,1),box-shadow .38s;
+    overflow:hidden;
+  }
+  .card::after{
+    content:"";position:absolute;right:-10px;bottom:-16px;width:88px;height:88px;
+    background:var(--seal);opacity:.05;border-radius:50% 50% 50% 4px;pointer-events:none;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(23,21,15,.14)}
+  .card h3{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.2}
+  .card p{font-size:16.5px;color:var(--ink-2);font-weight:400;line-height:1.66}
+  .card a{color:var(--seal-dark);font-weight:600;text-decoration:none;border-bottom:1.5px solid rgba(163,48,28,.35)}
+  .card a:hover{border-bottom-color:var(--seal)}
+  .card .han-bg{
+    position:absolute;right:14px;top:2px;font-family:var(--han);font-weight:900;
+    font-size:78px;color:rgba(23,21,15,.055);pointer-events:none;line-height:1;
+  }
+  .stat{font-family:var(--serif);font-size:clamp(42px,4.4vw,56px);font-weight:700;color:var(--seal);line-height:1;letter-spacing:-1px}
+  .stat-label{font-size:13.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--ink-3);margin-top:10px}
+  .stat-note{font-size:16px;color:var(--ink-2);margin-top:12px;font-weight:400;line-height:1.62}
+  .stat-rule{width:52px;height:2.5px;background:var(--gold);margin-top:14px;opacity:.7;border-radius:2px}
+
+  /* chips */
+  .chip{
+    display:inline-block;font-family:var(--body);font-size:11.5px;font-weight:700;
+    letter-spacing:1.1px;text-transform:uppercase;padding:4px 11px;border-radius:999px;
+    vertical-align:middle;white-space:nowrap;line-height:1.5;
+  }
+  .chip.verified{background:rgba(63,97,82,.20);color:var(--jade-dark);border:1.5px solid rgba(63,97,82,.55)}
+  .chip.blog{background:rgba(138,106,44,.18);color:#65491b;border:1.5px solid rgba(138,106,44,.55)}
+  .chip.contact{background:rgba(23,21,15,.06);color:var(--ink-2);border:1.5px solid var(--ink-line)}
+  .chip.none{background:rgba(23,21,15,.09);color:var(--ink-3);border:1.5px solid rgba(23,21,15,.18)}
+  .chip.pending{background:rgba(163,48,28,.10);color:var(--seal-dark);border:1.5px dashed rgba(163,48,28,.6)}
+  .chip.hot{background:var(--seal);color:#f8f2e2;border:1.5px solid var(--seal-dark);box-shadow:0 2px 6px rgba(125,35,19,.3)}
+
+  /* ================= TABLES ================= */
+  .table-block{
+    border:1.5px solid var(--ink-line);border-radius:18px;overflow:hidden;
+    box-shadow:0 16px 40px rgba(23,21,15,.13);margin-bottom:26px;background:var(--card-2);
+  }
+  .table-cap{
+    display:flex;align-items:center;gap:14px;padding:16px 24px;
+    background:linear-gradient(100deg,#1a1811 0%,#2c2618 60%,#3a3020 100%);
+    color:#f6efdc;
+  }
+  .table-cap .n{
+    flex:none;width:32px;height:32px;border-radius:6px;background:var(--seal);
+    font-family:var(--han);font-weight:700;font-size:16px;color:#f8f2e2;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .table-cap h4{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.3px}
+  .table-cap .hint{
+    margin-left:auto;font-size:12px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;
+    color:rgba(246,239,220,.72);white-space:nowrap;
+  }
+  .table-scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:900px}
+  thead th{
+    font-family:var(--serif);font-size:16px;font-weight:700;letter-spacing:.4px;
+    text-align:left;padding:15px 18px;color:var(--ink);
+    background:rgba(214,199,166,.62);
+    border-bottom:2.5px solid rgba(23,21,15,.42);white-space:nowrap;
+  }
+  tbody td{
+    padding:16px 18px;font-size:16px;font-weight:400;color:var(--ink);
+    vertical-align:top;line-height:1.58;
+    border-bottom:1px solid rgba(23,21,15,.13);
+  }
+  tbody tr:nth-child(odd){background:rgba(255,253,246,.62)}
+  tbody tr:nth-child(even){background:rgba(226,214,186,.36)}
+  tbody tr{transition:background .22s}
+  tbody tr:hover{background:rgba(163,48,28,.09)}
+  tbody tr:last-child td{border-bottom:none}
+  td .app-name{
+    font-family:var(--serif);font-weight:700;font-size:19px;color:var(--ink);
+    display:block;line-height:1.24;letter-spacing:.1px;
+  }
+  td small{display:block;color:var(--ink-3);font-size:13.5px;font-weight:500;margin-top:3px;line-height:1.4}
+  td a{color:var(--seal-dark);font-weight:600;text-decoration:none;border-bottom:1.5px solid rgba(163,48,28,.4)}
+  td a:hover{border-bottom-color:var(--seal);color:var(--seal)}
+  .pct{
+    font-family:var(--serif);font-size:29px;font-weight:700;color:var(--seal);
+    display:block;line-height:1.05;letter-spacing:-.5px;margin-bottom:3px;
+  }
+  .pct-sub{font-size:15px;color:var(--ink-2);font-weight:500}
+  .num{font-family:var(--serif);font-size:21px;font-weight:700;color:var(--ink);letter-spacing:-.2px}
+  .rank{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:28px;height:28px;border-radius:6px;background:var(--ink);color:#f6efdc;
+    font-family:var(--han);font-weight:700;font-size:14px;margin-right:8px;flex:none;
+  }
+  .rank.gold{background:var(--seal)}
+  .pending-cell{color:var(--ink-3);font-style:italic;font-weight:500}
+
+  /* note box */
+  .note-box{
+    position:relative;border-left:5px solid var(--seal);
+    background:linear-gradient(96deg,rgba(163,48,28,.09),rgba(163,48,28,.03));
+    padding:20px 26px;border-radius:0 14px 14px 0;margin:26px 0;
+    font-size:17px;color:var(--ink);font-weight:400;line-height:1.66;
+    box-shadow:0 4px 16px rgba(23,21,15,.07);
+  }
+  .note-box strong{color:var(--seal-ink);font-weight:700}
+  .note-box .nb-motif{position:absolute;right:16px;bottom:10px;width:74px;height:74px;opacity:.22;pointer-events:none}
+
+  /* cloud items */
+  .chip-cloud{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+  .cloud-item{
+    border:1.5px solid var(--ink-line);border-radius:13px;padding:13px 18px;
+    background:rgba(255,253,246,.68);min-width:172px;
+    display:flex;flex-direction:column;gap:4px;
+    box-shadow:0 3px 12px rgba(23,21,15,.06);
+  }
+  .cloud-item b{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--ink);line-height:1.2}
+  .cloud-item span{font-size:14px;color:var(--ink-2);font-weight:400;line-height:1.45}
+
+  /* insights */
+  .insight{
+    display:flex;gap:22px;margin-bottom:30px;align-items:flex-start;
+    padding-bottom:26px;border-bottom:1px solid var(--ink-line-2);
+  }
+  .insight:last-child{border-bottom:none}
+  .insight .num-badge{
+    flex:none;font-family:var(--han);font-weight:700;font-size:20px;color:#f6efdc;
+    width:46px;height:46px;border-radius:8px;background:var(--ink);
+    display:flex;align-items:center;justify-content:center;transform:rotate(-2deg);
+    box-shadow:0 4px 12px rgba(23,21,15,.28);
+  }
+  .insight h4{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.22}
+  .insight p{font-size:17px;color:var(--ink-2);font-weight:400;max-width:82ch;line-height:1.68}
+  .insight p strong{color:var(--ink);font-weight:700}
+  .insight code{
+    font-family:var(--body);font-size:15.5px;font-weight:600;color:var(--seal-dark);
+    background:rgba(163,48,28,.09);padding:2px 8px;border-radius:5px;
+  }
+
+  footer{
+    position:relative;z-index:3;margin-top:70px;padding:0 24px 74px;text-align:center;
+  }
+  .foot-rule{width:100%;max-width:1180px;margin:0 auto 44px;height:1.5px;
+    background:linear-gradient(90deg,transparent,var(--ink-line),transparent)}
+  footer .hz{font-family:var(--han);font-weight:700;font-size:30px;color:rgba(23,21,15,.5);letter-spacing:11px}
+  footer .tr{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--ink-2);margin-top:14px}
+  footer .meta{font-size:14px;color:var(--ink-3);margin-top:22px;font-weight:500;letter-spacing:.4px}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .85s cubic-bezier(.2,.8,.3,1),transform .85s cubic-bezier(.2,.8,.3,1)}
+  .reveal.visible{opacity:1;transform:none}
+
+  @media (max-width:760px){
+    body{font-size:17px}
+    #nav .brand span.t{display:none}
+    section{padding:62px 0 16px}
+    .sec-motif{display:none}
+    .vhan.left{display:none}
+    .vhan.right{right:3vw;font-size:28px;letter-spacing:12px}
+    .insight{gap:14px}
+  }
+  /* Respect reduced motion for UI motion, but keep the petal drift -
+     it is the requested centrepiece of the page, not incidental decoration. */
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .scroll-hint,.crane-flock,.boat-g,.mist-band{animation:none}
+    .card:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- paper grain overlay -->
+<svg id="grain" xmlns="http://www.w3.org/2000/svg">
+  <filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="4" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="100%" height="100%" filter="url(#grainf)" opacity=".42"/>
+</svg>
+
+<!-- petals drifting across the whole page -->
+<div class="petal-layer global" id="globalPetals"><div class="gustwrap slow"></div></div>
+
+<!-- ============ SVG MOTIF SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- pine tree -->
+    <symbol id="m-pine" viewBox="0 0 100 130">
+      <g fill="none" stroke="#17150f" stroke-linecap="round">
+        <path d="M50,128 C48,100 49,74 51,48" stroke-width="3.4"/>
+        <path d="M51,60 C38,56 30,60 20,54 M51,60 C64,56 72,60 82,54" stroke-width="2"/>
+        <path d="M51,80 C36,77 27,81 16,76 M51,80 C66,77 75,81 86,76" stroke-width="2"/>
+        <path d="M51,44 C42,40 36,43 28,38 M51,44 C60,40 66,43 74,38" stroke-width="1.8"/>
+      </g>
+      <g fill="#17150f">
+        <ellipse cx="20" cy="52" rx="13" ry="5.5" opacity=".62"/>
+        <ellipse cx="82" cy="52" rx="13" ry="5.5" opacity=".62"/>
+        <ellipse cx="16" cy="74" rx="15" ry="6" opacity=".55"/>
+        <ellipse cx="86" cy="74" rx="15" ry="6" opacity=".55"/>
+        <ellipse cx="28" cy="36" rx="11" ry="5" opacity=".58"/>
+        <ellipse cx="74" cy="36" rx="11" ry="5" opacity=".58"/>
+        <ellipse cx="51" cy="26" rx="16" ry="7" opacity=".5"/>
+      </g>
+    </symbol>
+
+    <!-- crane -->
+    <symbol id="m-crane" viewBox="0 0 60 30">
+      <g fill="none" stroke="#17150f" stroke-width="2.4" stroke-linecap="round">
+        <path d="M30,18 C22,10 14,7 5,10"/>
+        <path d="M30,18 C38,10 46,7 55,10"/>
+        <path d="M30,18 C31,21 33,23 36,24"/>
+      </g>
+    </symbol>
+
+    <!-- pavilion -->
+    <symbol id="m-pavilion" viewBox="0 0 100 80">
+      <g fill="#17150f">
+        <path d="M8,32 C26,17 74,17 92,32 C74,25 26,25 8,32 Z" opacity=".82"/>
+        <path d="M20,46 C33,36 67,36 80,46 C67,41 33,41 20,46 Z" opacity=".7"/>
+      </g>
+      <g stroke="#17150f" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".8">
+        <path d="M28,46 L28,72 M72,46 L72,72 M44,48 L44,72 M56,48 L56,72"/>
+        <path d="M22,72 L78,72"/>
+      </g>
+    </symbol>
+
+    <!-- boat with canopy -->
+    <symbol id="m-boat" viewBox="0 0 90 46">
+      <path d="M6,30 C18,42 72,42 84,30 C60,36 30,36 6,30 Z" fill="#17150f" opacity=".85"/>
+      <path d="M28,28 C30,14 60,14 62,28" fill="none" stroke="#17150f" stroke-width="2.8" stroke-linecap="round" opacity=".8"/>
+      <path d="M45,14 L45,5" stroke="#17150f" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+      <ellipse cx="70" cy="24" rx="4" ry="6" fill="#17150f" opacity=".7"/>
+    </symbol>
+
+    <!-- scholar figure -->
+    <symbol id="m-scholar" viewBox="0 0 44 74">
+      <g fill="#17150f">
+        <path d="M22,6 C25.5,6 28,8.6 28,12 C28,15.4 25.5,18 22,18 C18.5,18 16,15.4 16,12 C16,8.6 18.5,6 22,6 Z"/>
+        <path d="M21,4 C22.6,1 25,1.4 25.4,3.6 C25.7,5.2 24,6 22.6,5.6 Z"/>
+        <path d="M20,18 C11,23 7,40 6,66 L38,66 C37,40 33,23 24,18 Z" opacity=".92"/>
+        <path d="M6,66 C14,70 30,70 38,66 C30,69 14,69 6,66 Z"/>
+      </g>
+      <path d="M35,30 L35,68" stroke="#17150f" stroke-width="1.8" stroke-linecap="round" opacity=".65"/>
+    </symbol>
+
+    <!-- bamboo -->
+    <symbol id="m-bamboo" viewBox="0 0 90 130">
+      <g stroke="#17150f" fill="none" stroke-linecap="round">
+        <path d="M34,130 L34,8" stroke-width="7" opacity=".78"/>
+        <path d="M58,130 L58,34" stroke-width="4.6" opacity=".58"/>
+        <path d="M27,104 L41,104 M27,74 L41,74 M27,44 L41,44 M27,18 L41,18" stroke-width="2.4" opacity=".9"/>
+        <path d="M53,100 L63,100 M53,70 L63,70 M53,44 L63,44" stroke-width="1.8" opacity=".7"/>
+      </g>
+      <g fill="#17150f">
+        <path d="M34,52 C48,42 62,38 78,40 C62,50 46,56 34,54 Z" opacity=".62"/>
+        <path d="M34,66 C22,58 12,52 2,50 C14,62 26,70 34,68 Z" opacity=".55"/>
+        <path d="M34,26 C46,18 58,15 70,16 C56,26 42,31 34,29 Z" opacity=".5"/>
+        <path d="M58,84 C68,78 76,76 86,77 C74,85 64,88 58,86 Z" opacity=".45"/>
+      </g>
+    </symbol>
+
+    <!-- lotus -->
+    <symbol id="m-lotus" viewBox="0 0 110 90">
+      <g fill="#17150f">
+        <path d="M55,16 C63,30 63,48 55,60 C47,48 47,30 55,16 Z" opacity=".7"/>
+        <path d="M55,60 C44,52 36,38 36,24 C48,32 56,46 55,60 Z" opacity=".55"/>
+        <path d="M55,60 C66,52 74,38 74,24 C62,32 54,46 55,60 Z" opacity=".55"/>
+        <path d="M55,62 C40,58 26,48 20,36 C36,42 50,52 55,62 Z" opacity=".4"/>
+        <path d="M55,62 C70,58 84,48 90,36 C74,42 60,52 55,62 Z" opacity=".4"/>
+      </g>
+      <g stroke="#17150f" fill="none" stroke-width="2.2" stroke-linecap="round" opacity=".6">
+        <path d="M55,62 L55,86"/>
+        <path d="M14,80 C26,74 40,74 50,80 C40,86 26,86 14,80 Z" fill="#17150f" opacity=".3" stroke="none"/>
+        <path d="M62,84 C72,79 86,79 96,84 C86,89 72,89 62,84 Z" fill="#17150f" opacity=".26" stroke="none"/>
+      </g>
+    </symbol>
+
+    <!-- plum blossom branch -->
+    <symbol id="m-plum" viewBox="0 0 110 90">
+      <path d="M4,80 C30,72 52,54 72,28 C80,18 88,12 104,8" fill="none" stroke="#17150f" stroke-width="3" stroke-linecap="round" opacity=".72"/>
+      <path d="M40,60 C50,56 58,48 62,38 M66,34 C74,36 82,34 88,28" fill="none" stroke="#17150f" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+      <g fill="#a3301c">
+        <g opacity=".85"><circle cx="62" cy="36" r="4"/><circle cx="69" cy="31" r="4"/><circle cx="66" cy="42" r="4"/><circle cx="57" cy="30" r="4"/><circle cx="72" cy="40" r="3.4"/></g>
+        <g opacity=".7"><circle cx="90" cy="24" r="3.6"/><circle cx="96" cy="20" r="3.6"/><circle cx="93" cy="30" r="3.4"/><circle cx="86" cy="18" r="3.2"/></g>
+        <g opacity=".6"><circle cx="38" cy="62" r="3.4"/><circle cx="44" cy="58" r="3.4"/><circle cx="41" cy="68" r="3.2"/></g>
+      </g>
+    </symbol>
+
+    <!-- enso circle + brush -->
+    <symbol id="m-enso" viewBox="0 0 110 110">
+      <path d="M78,22 C64,10 40,12 27,28 C12,46 16,74 36,86 C56,98 82,90 92,70 C99,56 97,38 86,27"
+            fill="none" stroke="#17150f" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+      <circle cx="55" cy="55" r="9" fill="#a3301c" opacity=".5"/>
+    </symbol>
+
+    <!-- brush pen -->
+    <symbol id="m-brush" viewBox="0 0 90 110">
+      <path d="M56,8 L74,26 L36,64 L18,46 Z" fill="#17150f" opacity=".2"/>
+      <path d="M58,6 C64,4 78,14 76,22 L66,32 L48,14 Z" fill="#17150f" opacity=".7"/>
+      <path d="M20,48 L14,72 C13,78 18,82 23,79 L42,66 Z" fill="#17150f" opacity=".8"/>
+      <path d="M14,72 C10,86 12,96 18,104" fill="none" stroke="#a3301c" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+    </symbol>
+
+    <!-- scroll -->
+    <symbol id="m-scroll" viewBox="0 0 110 90">
+      <rect x="16" y="18" width="78" height="56" rx="3" fill="#17150f" opacity=".12"/>
+      <g stroke="#17150f" fill="none" stroke-width="2.4" stroke-linecap="round" opacity=".7">
+        <path d="M10,14 L100,14 M10,78 L100,78"/>
+        <path d="M30,32 L80,32 M30,44 L74,44 M30,56 L84,56"/>
+      </g>
+      <circle cx="86" cy="62" r="9" fill="#a3301c" opacity=".55"/>
+    </symbol>
+
+    <!-- coin / cash seal -->
+    <symbol id="m-coin" viewBox="0 0 110 110">
+      <circle cx="55" cy="55" r="40" fill="none" stroke="#17150f" stroke-width="5" opacity=".6"/>
+      <rect x="41" y="41" width="28" height="28" fill="none" stroke="#17150f" stroke-width="4.5" opacity=".6"/>
+      <path d="M55,15 L55,41 M55,69 L55,95 M15,55 L41,55 M69,55 L95,55" stroke="#17150f" stroke-width="3" opacity=".35"/>
+      <circle cx="55" cy="55" r="52" fill="none" stroke="#a3301c" stroke-width="2.5" opacity=".3"/>
+    </symbol>
+
+    <!-- empty bowl -->
+    <symbol id="m-bowl" viewBox="0 0 110 90">
+      <path d="M18,38 C18,66 34,80 55,80 C76,80 92,66 92,38 Z" fill="none" stroke="#17150f" stroke-width="4" opacity=".62"/>
+      <path d="M10,36 L100,36" stroke="#17150f" stroke-width="4" stroke-linecap="round" opacity=".62"/>
+      <path d="M34,20 C40,10 48,8 54,14" fill="none" stroke="#17150f" stroke-width="2.2" stroke-linecap="round" opacity=".3"/>
+      <path d="M58,18 C64,8 72,7 78,13" fill="none" stroke="#17150f" stroke-width="2.2" stroke-linecap="round" opacity=".24"/>
+    </symbol>
+
+    <!-- panda -->
+    <symbol id="m-panda" viewBox="0 0 110 100">
+      <circle cx="55" cy="54" r="32" fill="#17150f" opacity=".08"/>
+      <circle cx="55" cy="54" r="32" fill="none" stroke="#17150f" stroke-width="2.5" opacity=".5"/>
+      <circle cx="30" cy="26" r="11" fill="#17150f" opacity=".8"/>
+      <circle cx="80" cy="26" r="11" fill="#17150f" opacity=".8"/>
+      <ellipse cx="42" cy="48" rx="9" ry="11" fill="#17150f" opacity=".78" transform="rotate(-12 42 48)"/>
+      <ellipse cx="68" cy="48" rx="9" ry="11" fill="#17150f" opacity=".78" transform="rotate(12 68 48)"/>
+      <circle cx="43" cy="47" r="3" fill="#f5eedd"/>
+      <circle cx="67" cy="47" r="3" fill="#f5eedd"/>
+      <ellipse cx="55" cy="66" rx="6" ry="4.5" fill="#17150f" opacity=".8"/>
+      <path d="M49,74 C52,78 58,78 61,74" fill="none" stroke="#17150f" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+    </symbol>
+
+    <!-- cliff rock -->
+    <symbol id="m-rock" viewBox="0 0 200 100">
+      <path d="M0,100 L0,52 C24,42 44,48 62,36 C82,23 104,30 124,22 C144,14 168,22 200,10 L200,100 Z" fill="#17150f"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <div class="brand"><div class="dot">汉</div><span class="t">Mandarin Research</span></div>
+  <a href="#overview">Overview</a>
+  <a href="#market">Market</a>
+  <a href="#creators">Creators</a>
+  <a href="#affiliates">Affiliates</a>
+  <a href="#models">Pay Models</a>
+  <a href="#none">No Program</a>
+  <a href="#insights">Insights</a>
+  <a href="#method">Method</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header>
+  <div class="vhan right">學海無涯</div>
+  <div class="vhan left">大道至簡</div>
+
+  <div class="hero-inner">
+    <h1>The Chinese Learning <em>Landscape</em></h1>
+    <p class="hero-sub">Learner demand, creator accounts with consistent reach, and a verified map of which
+    Chinese-learning apps pay commission and exactly how much.</p>
+    <div class="hero-meta">
+      <div class="seal-stamp">研究</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">scroll</div>
+
+  <!-- dense petal fall over the hero -->
+  <div class="petal-layer" id="heroPetals"><div class="gustwrap"></div></div>
+
+  <!-- ===== ink-wash scene ===== -->
+  <svg class="hero-scene" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMax slice">
+    <defs>
+      <filter id="hsoft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter>
+      <filter id="hsoft2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
+      <filter id="hmist" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="26"/></filter>
+      <linearGradient id="wfade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#17150f" stop-opacity=".16"/>
+        <stop offset="1" stop-color="#17150f" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="ridgefade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#17150f" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#17150f" stop-opacity=".92"/>
+      </linearGradient>
+    </defs>
+
+    <!-- far range -->
+    <g filter="url(#hsoft)" opacity=".15">
+      <path d="M-60,392 C50,300 118,236 214,262 C296,284 336,352 420,340 C498,329 536,244 638,250
+               C742,256 782,344 884,356 C986,368 1042,272 1148,284 C1250,296 1330,368 1500,344
+               L1500,620 L-60,620 Z" fill="#17150f"/>
+    </g>
+
+    <!-- second range with sharper peaks -->
+    <g filter="url(#hsoft2)" opacity=".24">
+      <path d="M-40,436 C70,392 132,300 208,318 C268,332 296,404 356,414 C420,424 452,352 528,346
+               C604,340 640,412 706,424 C780,437 820,364 900,362 C980,360 1024,428 1104,436
+               C1180,444 1240,398 1310,382 C1380,366 1440,398 1500,392 L1500,620 L-40,620 Z" fill="#17150f"/>
+      <!-- texture strokes -->
+      <g stroke="#17150f" stroke-width="2" fill="none" opacity=".5" stroke-linecap="round">
+        <path d="M208,330 C204,356 200,382 196,404"/>
+        <path d="M528,358 C524,384 520,406 518,424"/>
+        <path d="M900,374 C896,398 894,420 892,438"/>
+        <path d="M1310,394 C1306,414 1304,432 1302,448"/>
+      </g>
+    </g>
+
+    <!-- mist band 1 -->
+    <g class="mist-band">
+      <ellipse cx="380" cy="430" rx="420" ry="30" fill="#f5eedd" opacity=".85" filter="url(#hmist)"/>
+      <ellipse cx="1080" cy="446" rx="400" ry="26" fill="#f5eedd" opacity=".8" filter="url(#hmist)"/>
+    </g>
+
+    <!-- pavilion ridge (mid-right) -->
+    <g opacity=".38">
+      <path d="M980,502 C1030,470 1090,462 1150,452 C1210,442 1280,452 1360,436
+               C1420,424 1460,430 1500,424 L1500,620 L980,620 Z" fill="#17150f"/>
+    </g>
+    <g opacity=".72">
+      <svg x="1120" y="392" width="86" height="70"><use href="#m-pavilion"/></svg>
+      <svg x="1218" y="404" width="46" height="60"><use href="#m-pine"/></svg>
+      <svg x="1076" y="416" width="38" height="50"><use href="#m-pine"/></svg>
+    </g>
+
+    <!-- mist band 2 -->
+    <g class="mist-band b">
+      <ellipse cx="760" cy="492" rx="520" ry="26" fill="#f5eedd" opacity=".72" filter="url(#hmist)"/>
+    </g>
+
+    <!-- water -->
+    <rect x="0" y="500" width="1440" height="120" fill="url(#wfade)"/>
+    <g stroke="#17150f" stroke-width="1.6" opacity=".2" stroke-linecap="round" fill="none">
+      <path d="M240,540 C300,534 360,546 420,540"/>
+      <path d="M600,556 C660,550 720,562 780,556"/>
+      <path d="M860,532 C920,526 980,538 1040,532"/>
+      <path d="M420,576 C500,570 580,582 660,576"/>
+      <path d="M980,570 C1050,564 1120,576 1190,570"/>
+    </g>
+
+    <!-- boat -->
+    <g class="boat-g" opacity=".8">
+      <svg x="770" y="512" width="82" height="42"><use href="#m-boat"/></svg>
+    </g>
+
+    <!-- foreground cliff left -->
+    <g opacity=".5">
+      <path d="M-40,620 L-40,486 C40,470 110,478 176,462 C232,449 280,458 330,470
+               C356,476 372,490 380,506 C392,530 372,552 340,560 C280,574 180,566 100,584
+               C50,595 10,606 -40,620 Z" fill="#17150f"/>
+    </g>
+    <!-- cliff details: pine + scholar -->
+    <g opacity=".88">
+      <svg x="112" y="378" width="96" height="124"><use href="#m-pine"/></svg>
+      <svg x="238" y="426" width="34" height="58"><use href="#m-scholar"/></svg>
+      <svg x="46" y="440" width="52" height="66"><use href="#m-pine"/></svg>
+    </g>
+    <!-- grass strokes on cliff -->
+    <g stroke="#17150f" stroke-width="2" opacity=".4" fill="none" stroke-linecap="round">
+      <path d="M290,486 C294,476 300,470 306,468 M300,488 C302,478 308,470 314,466"/>
+      <path d="M200,502 C204,492 210,486 216,484"/>
+    </g>
+
+    <!-- cranes -->
+    <g class="crane-flock" opacity=".6">
+      <svg x="392" y="176" width="52" height="26"><use href="#m-crane"/></svg>
+      <svg x="452" y="206" width="40" height="20"><use href="#m-crane"/></svg>
+      <svg x="500" y="182" width="32" height="16"><use href="#m-crane"/></svg>
+    </g>
+  </svg>
+</header>
+
+<main>
+
+<!-- ============ 1 OVERVIEW ============ -->
+<section id="overview" class="reveal">
+  <div class="sec-head">
+    <div class="sec-seal">一</div>
+    <div><h2>Executive Overview</h2></div>
+    <svg class="sec-motif"><use href="#m-enso"/></svg>
+  </div>
+  <svg class="brush-rule" viewBox="0 0 600 12" preserveAspectRatio="none">
+    <path d="M3,7 C110,2 300,11 597,4" stroke="#17150f" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".8"/>
+  </svg>
+  <p class="sec-intro">Chinese is the <strong>fastest-growing language in 12 major learning markets</strong> while
+  remaining under-monetized through classic affiliate channels. Payouts split across several structures -
+  percentage commission through networks, creator referral codes, negotiated viewer discounts, and flat
+  per-video contracts - and the same creator often runs more than one at a time.</p>
+
+  <div class="grid cols-3">
+    <div class="card">
+      <div class="han-bg">億</div>
+      <div class="stat">200M+</div><div class="stat-rule"></div>
+      <div class="stat-label">Global learners &amp; users</div>
+      <p class="stat-note">Roughly 100 million stable active learners of Mandarin as a foreign language
+      (Chinese Ministry of Education).</p>
+    </div>
+    <div class="card">
+      <div class="han-bg">利</div>
+      <div class="stat">60%</div><div class="stat-rule"></div>
+      <div class="stat-label">Top published rate</div>
+      <p class="stat-note">Rocket Languages' "Rockstar" tier. Runner-ups: LTL Flexi Classes up to 45%,
+      Bunpo 40% for 24 months.</p>
+    </div>
+    <div class="card">
+      <div class="han-bg">片</div>
+      <div class="stat">$1,000+</div><div class="stat-rule"></div>
+      <div class="stat-label">Per single video</div>
+      <p class="stat-note">PingoAI's advertised ceiling; Airlearn pays $500-1,000 monthly base plus view
+      bonuses; HelloTalk ambassadors claim up to $10,000 a month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 MARKET ============ -->
+<section id="market" class="reveal">
+  <div class="sec-head">
+    <div class="sec-seal">二</div>
+    <div><h2>Why Chinese, Why Now</h2></div>
+    <svg class="sec-motif"><use href="#m-plum"/></svg>
+  </div>
+  <svg class="brush-rule" viewBox="0 0 600 12" preserveAspectRatio="none">
+    <path d="M3,7 C110,2 300,11 597,4" stroke="#17150f" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".8"/>
+  </svg>
+  <p class="sec-intro">Demand-side figures, gathered 10 Aug 2026. Market-size reports vary widely with scope
+  definitions, so two anchor sources are cited rather than an average.</p>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <h3>Learner base</h3>
+      <p>Over <strong>200 million</strong> people study or use Chinese internationally; the active learner pool
+      sits around <strong>100 million</strong> (Ministry of Education data via
+      <a href="https://news.cgtn.com/news/2024-04-19/How-many-people-are-learning-Chinese-as-a-foreign-language--1sV3bqZZTKo/p.html">CGTN</a>
+      and <a href="https://www.globaltimes.cn/page/202605/1361073.shtml">Global Times</a>).
+      <strong>86 countries</strong> have placed Chinese inside national education systems as of September 2025,
+      and more than 20,000 private institutions teach it, growing about 10% a year.</p>
+    </div>
+    <div class="card">
+      <h3>Market value</h3>
+      <p><a href="https://www.holoniq.com/notes/chinese-language-learning-a-7-4b-market-powered-by-over-6-million-learners-set-to-double-in-the-next-five-years">HolonIQ</a>
+      valued Chinese language learning at <strong>$7.4 billion in 2023</strong>, projected to double by 2027, with
+      more than 6 million paying learners. The online-platform slice alone runs
+      <strong>$1.5 billion (2024) toward a projected $3.2 billion by 2033</strong>
+      (<a href="https://www.verifiedmarketreports.com/product/online-chinese-learning-platform-market/">Verified Market Reports</a>,
+      about 9.9% CAGR).</p>
+    </div>
+    <div class="card">
+      <h3>Momentum signal</h3>
+      <p>In the <a href="https://blog.duolingo.com/2025-duolingo-language-report/">2025 Duolingo Language Report</a>,
+      Chinese ranks <strong>eighth by volume but is the fastest-growing language in 12 major markets</strong> -
+      Brazil, Indonesia, Thailand, South Korea, France, Germany and others - and second by growth in the United
+      States. The growth story, not the volume story, is the headline.</p>
+    </div>
+    <div class="card">
+      <h3>The core pain point</h3>
+      <p>Unlike European languages, Chinese confronts learners with <strong>characters and tones</strong>. That
+      single obstacle powers the entire creator niche - mnemonic explainers, tone drills, character breakdowns -
+      and the whole writing-practice tool category. It is the lens used to select the creators and apps below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 CREATORS ============ -->
+<section id="creators" class="reveal">
+  <div class="sec-head">
+    <div class="sec-seal">三</div>
+    <div><h2>Creator Watchlist</h2></div>
+    <svg class="sec-motif"><use href="#m-crane"/></svg>
+  </div>
+  <svg class="brush-rule" viewBox="0 0 600 12" preserveAspectRatio="none">
+    <path d="M3,7 C110,2 300,11 597,4" stroke="#17150f" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".8"/>
+  </svg>
+  <p class="sec-intro">Five TikTok and five Instagram accounts teaching Chinese with sustained output. Follower and
+  like totals are read directly from each public profile. The <strong>monetization signal</strong> column is the most
+  valuable field here: several creators openly disclose which app program they are enrolled in, which confirms from
+  the field which programs are actually live.</p>
+
+  <div class="table-block">
+    <div class="table-cap">
+      <div class="n">抖</div>
+      <h4>TikTok - five accounts</h4>
+      <div class="hint">scroll sideways →</div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Account</th><th>Followers</th><th>Total likes</th><th>Monetization signal</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="app-name"><span class="rank gold">壹</span>@kiara.yuhe</span><small>Hà Kiara - Vietnamese audience, Nanjing University student</small></td>
+            <td><span class="num">543.6K</span></td><td><span class="num">18.1M</span></td>
+            <td>Own link hub (beacons.ai); playlists structured by theme - 100 điều CN, Vlog, Tsinghua</td>
+          </tr>
+          <tr>
+            <td><span class="app-name"><span class="rank">貳</span>@tiengtrung.savage</span><small>Tiếng Trung Linh Bé - Tsinghua graduate, Vietnamese audience</small></td>
+            <td><span class="num">223.6K</span></td><td><span class="num">5.2M</span></td>
+            <td>Cross-posts to own Instagram; large themed playlists (85-95 posts each)</td>
+          </tr>
+          <tr>
+            <td><span class="app-name"><span class="rank">參</span>@angel_chineseteacher520</span><small>Chineseteacherannieee888 - daily livestream teacher</small></td>
+            <td><span class="num">120K</span></td><td><span class="num">1.2M</span></td>
+            <td>Linktree; live-gift monetization ("send coffee"); 9am China-time livestreams</td>
+          </tr>
+          <tr>
+            <td><span class="app-name"><span class="rank">肆</span>@ggsgamermandarin</span><small>Teaches Chinese through video games; also runs YouTube</small></td>
+            <td><span class="num">89.1K</span></td><td><span class="num">392.1K</span></td>
+            <td>Drives traffic to own YouTube channel @ggsgamerchinese</td>
+          </tr>
+          <tr>
+            <td><span class="app-name"><span class="rank">伍</span>@rogerlearnschinese</span><small>Learner-journey format, smallest account in the set</small></td>
+            <td><span class="num">2,563</span></td><td><span class="num">138.8K</span></td>
+            <td><strong>Bio states "Bunpo Chinese Ambassador"</strong> <span class="chip hot">program confirmed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="table-block">
+    <div class="table-cap">
+      <div class="n">图</div>
+      <h4>Instagram - five accounts</h4>
+      <div class="hint">scroll sideways →</div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Account</th><th>Followers</th><th>Posts</th><th>Monetization signal</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="app-name"><span class="rank gold">壹</span>@falafelinhotpott</span><small>Falafel - verified; bridges Chinese and Arab cultures</small></td>
+            <td><span class="num">236K</span></td><td><span class="num">151</span></td>
+            <td>Sells her own Chinese course via links.falafelinhotpot.com; newsletter funnel</td>
+          </tr>
+          <tr>
+            <td><span class="app-name"><span class="rank">貳</span>@easymandarinteacher</span><small>Yanyan - teaching since 2008, Shenzhen; 1,353 posts</small></td>
+            <td><span class="num">133K</span></td><td><span class="num">1,353</span></td>
+            <td>Linktree; sells own classes by DM - highest post volume in the set</td>
+          </tr>
+          <tr>
+            <td><span class="app-name"><span class="rank">參</span>@chinese.w.chen</span><small>Puppet-character format, whiteboard slang lessons</small></td>
+            <td><span class="num">59.9K</span></td><td><span class="num">114</span></td>
+            <td><strong>Bio carries a tracked Airlearn link</strong> (airlearn.onelink.me) <span class="chip hot">program confirmed</span></td>
+          </tr>
+          <tr>
+            <td><span class="app-name"><span class="rank">肆</span>@easychinese.__</span><small>Chinese_so_easy - teaches via cartoon clips, faceless</small></td>
+            <td><span class="num">37.5K</span></td><td><span class="num">82</span></td>
+            <td>Own booking site chinesesoeasy.com/bookwithus; offers free casual chats</td>
+          </tr>
+          <tr>
+            <td><span class="app-name"><span class="rank">伍</span>@mr.spudchinese</span><small>Mr. Spud - character-mascot brand, only 36 posts</small></td>
+            <td><span class="num">29.4K</span></td><td><span class="num">36</span></td>
+            <td>Own link page (littlelink); strong follower-per-post ratio at ~817 followers per post</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 AFFILIATES ============ -->
+<section id="affiliates" class="reveal">
+  <div class="sec-head">
+    <div class="sec-seal">四</div>
+    <div><h2>Affiliate Programs, Verified</h2></div>
+    <svg class="sec-motif"><use href="#m-coin"/></svg>
+  </div>
+  <svg class="brush-rule" viewBox="0 0 600 12" preserveAspectRatio="none">
+    <path d="M3,7 C110,2 300,11 597,4" stroke="#17150f" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".8"/>
+  </svg>
+  <p class="sec-intro">Every figure below comes from the program's <strong>official page or its network listing</strong>
+  unless tagged otherwise. Tags: <span class="chip verified">official</span> confirmed at source -
+  <span class="chip blog">unverified</span> found only on third-party blogs -
+  <span class="chip contact">on request</span> program exists but rates are private.</p>
+
+  <h3 class="sub">Tier 1 - public programs with published rates</h3>
+  <div class="table-block">
+    <div class="table-cap">
+      <div class="n">明</div>
+      <h4>Rates disclosed publicly</h4>
+      <div class="hint">scroll sideways →</div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>App</th><th>Commission</th><th>Attribution window</th><th>Payout terms</th><th>Where to join</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="app-name">Rocket Languages</span><small>Rocket Chinese</small></td>
+            <td><span class="pct">40%</span><span class="pct-sub">for content creators. 20% for coupon partners, 60% for the top "Rockstar" tier, per sale</span></td>
+            <td>60 days<small>ClickBank listing</small></td>
+            <td>Minimum $100, weekly or bi-weekly by check, ACH, wire or Payoneer</td>
+            <td><a href="https://www.rocketlanguages.com/partner-program">rocketlanguages.com</a></td>
+            <td><span class="chip verified">official</span></td>
+          </tr>
+          <tr>
+            <td><span class="app-name">Bunpo</span><small>Multi-language, includes Chinese</small></td>
+            <td><span class="pct">40%</span><span class="pct-sub">of revenue for the first 24 months of every paid customer</span></td>
+            <td>90 days</td>
+            <td>Minimum payout $30 - lowest barrier of any percentage program found</td>
+            <td><a href="https://bunpo.app/creator/lp/">bunpo.app/creator</a></td>
+            <td><span class="chip verified">official</span></td>
+          </tr>
+          <tr>
+            <td><span class="app-name">LTL / Flexi Classes</span><small>Online Chinese school</small></td>
+            <td><span class="pct">up to 45%</span><span class="pct-sub">stated as "$55-$894 per new student"</span></td>
+            <td>One commission per user, after first payment</td>
+            <td>Paid on the 15th monthly by bank or Wise; requires completing 3 trial classes first</td>
+            <td><a href="https://flexiclasses.com/affiliate/">flexiclasses.com</a></td>
+            <td><span class="chip verified">official</span></td>
+          </tr>
+          <tr>
+            <td><span class="app-name">Mondly</span><small>by Pearson</small></td>
+            <td><span class="pct">30% recurring</span><span class="pct-sub">"every time a customer makes a new purchase or a renewal" - network listing states 40%</span></td>
+            <td>30-120 days by network</td>
+            <td>Minimum $50-100, monthly through CJ or Avangate</td>
+            <td>CJ Affiliate / Avangate</td>
+            <td><span class="chip verified">official</span> <span class="chip blog">rate variance</span></td>
+          </tr>
+          <tr>
+            <td><span class="app-name">Novli</span><small>Chinese reading plus AI</small></td>
+            <td><span class="pct">30%</span><span class="pct-sub">of attributed purchases for one full year per redeemed code</span></td>
+            <td>Code-based, no cookie - the viewer enters a creator code and receives a 30-day premium trial</td>
+            <td>Monthly by PayPal, Wise or Alipay; minimum only $5</td>
+            <td><a href="https://novli.app/affiliates/">novli.app/affiliates</a></td>
+            <td><span class="chip verified">official</span> <span class="chip hot">built for short-form</span></td>
+          </tr>
+          <tr>
+            <td><span class="app-name">Drops</span><small>by Kahoot</small></td>
+            <td><span class="pct">30%</span><span class="pct-sub">per sale, including the initial sale</span></td>
+            <td>30 days</td>
+            <td>Through Paddle, minimum $100, paid on the 15th monthly; requires a relevant site or social channel</td>
+            <td><a href="https://languagedrops.com/affiliates">languagedrops.com</a></td>
+            <td><span class="chip verified">official</span></td>
+          </tr>
+          <tr>
+            <td><span class="app-name">FluentU</span><small>Video-based, includes Chinese</small></td>
+            <td><span class="pct">20%</span><span class="pct-sub">of sale value</span></td>
+            <td>30 days<small>Refersion</small></td>
+            <td>Conversion counts on a processed valid payment; blog claims a lifetime-value basis, unconfirmed</td>
+            <td><a href="https://fluentu.refersion.com/">fluentu.refersion.com</a></td>
+            <td><span class="chip verified">official</span></td>
+          </tr>
+          <tr>
+            <td><span class="app-name">Skritter</span><small>Hanzi writing - closest adjacent product</small></td>
+            <td><span class="pct">15% lifetime</span><span class="pct-sub">paid every month the referred user stays subscribed</span></td>
+            <td>30-day session, ends at account creation</td>
+            <td>PayPal about 60 days after month end; first payout only after 4-5 conversions; App Store and Google Play purchases excluded</td>
+            <td><a href="https://affiliate.skritter.com/">affiliate.skritter.com</a></td>
+            <td><span class="chip verified">official</span></td>
+          </tr>
+          <tr>
+            <td><span class="app-name">italki</span><small>Tutor marketplace</small></td>
+            <td><span class="pct">$10 flat</span><span class="pct-sub">"at least $10" per new student's first credit purchase, one-time only</span></td>
+            <td>30 days</td>
+            <td>Monthly by PayPal or Payoneer; brand-new users only, no self-referral</td>
+            <td><a href="https://www.italki.com/en/affiliates">italki.com/affiliates</a></td>
+            <td><span class="chip verified">official</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="sub">Tier 2 - programs exist, rates gated or unclear</h3>
+  <div class="table-block">
+    <div class="table-cap">
+      <div class="n">隐</div>
+      <h4>Rates behind approval or contact</h4>
+      <div class="hint">scroll sideways →</div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>App</th><th>What is known</th><th>How to get the real rate</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><span class="app-name">Preply</span></td>
+            <td>Hosted on Impact. Commission is "fixed or a percentage of the first lesson" and scales with volume. Blog figures - 22%, $30 flat, 70% of trials - contradict each other.</td>
+            <td>Apply at <a href="https://lp.preply.com/affiliate/">lp.preply.com/affiliate</a>; the rate appears after approval</td>
+            <td><span class="chip contact">on request</span></td></tr>
+          <tr><td><span class="app-name">Pimsleur</span></td>
+            <td>Hosted on Impact. The official page only promises a "significant commission". Blogs claim 15% per sale plus $5 per free trial.</td>
+            <td>Join through the Impact signup on <a href="https://www.pimsleur.com/business-inquiries/">pimsleur.com</a></td>
+            <td><span class="chip contact">on request</span> <span class="chip blog">15% unverified</span></td></tr>
+          <tr><td><span class="app-name">Busuu</span></td>
+            <td>Hosted on CJ Affiliate; the rate is described only as "competitive". Blog estimates range from 9% to 30%.</td>
+            <td>Join through the CJ link on <a href="https://www.busuu.com/en/partners">busuu.com/partners</a> or email partnerships@busuu.com</td>
+            <td><span class="chip contact">on request</span></td></tr>
+          <tr><td><span class="app-name">Maayot</span></td>
+            <td>The official affiliates page confirms rewards exist but publishes no percentage anywhere.</td>
+            <td>Reach out through <a href="https://www.maayot.com/affiliates">maayot.com/affiliates</a></td>
+            <td><span class="chip contact">on request</span></td></tr>
+          <tr><td><span class="app-name">LingoDeer</span></td>
+            <td>Ambassador partnership only - "earn a bit of money from blogging or creating social media content", negotiated individually.</td>
+            <td>Email blog@lingodeer.com with your channel</td>
+            <td><span class="chip contact">on request</span></td></tr>
+          <tr><td><span class="app-name">WuKong Education</span></td>
+            <td>No public program, but affiliate-management agency JEBCommerce lists WuKong as a client, so a private program is likely running.</td>
+            <td>Email marketing@wukongsch.com</td>
+            <td><span class="chip contact">on request</span></td></tr>
+          <tr><td><span class="app-name">GoEast Mandarin</span></td>
+            <td>Referral pays in free private classes - two for the referrer, one for the new student. The form hints a monetary option exists but publishes no rate.</td>
+            <td><a href="https://goeastmandarin.com/referral/">goeastmandarin.com/referral</a></td>
+            <td><span class="chip contact">on request</span></td></tr>
+          <tr><td><span class="app-name">ChinesePod</span></td>
+            <td>Historically paid up to $50 per new subscriber on a 90-day window, but the program page now returns 404 and the footer link is gone. Likely discontinued.</td>
+            <td>Email to confirm before planning around it</td>
+            <td><span class="chip pending">likely closed</span></td></tr>
+          <tr><td><span class="app-name">Yoyo Chinese</span></td>
+            <td>The privacy policy mentions affiliate tracking, yet no program page exists - it returns 404 and nothing links to it.</td>
+            <td>Email support@yoyochinese.com</td>
+            <td><span class="chip pending">unclear</span></td></tr>
+          <tr><td><span class="app-name">TutorMing / TutorABC</span></td>
+            <td>One blog claims an Impact program; the official site shows no affiliate link at all. Unverifiable either way.</td>
+            <td>Contact through tutorabc.com</td>
+            <td><span class="chip pending">unclear</span></td></tr>
+          <tr><td><span class="app-name">Doubao 豆包</span><small>ByteDance AI assistant</small></td>
+            <td>No public international program. China-only new-user acquisition campaigns reportedly pay 5-12 CNY per install, sourced only from Chinese blogs.</td>
+            <td>No official signup exists outside China</td>
+            <td><span class="chip pending">unclear</span> <span class="chip blog">figures unverified</span></td></tr>
+          <tr><td><span class="app-name">HSK Mock</span><small>hskmock.com.vn - Vietnam-market discovery</small></td>
+            <td>Runs an affiliate partner registration page, but the site was unreachable during research so no terms could be confirmed.</td>
+            <td>hskmock.com.vn/dang-ky-doi-tac-affiliate</td>
+            <td><span class="chip pending">unverified</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 PAY MODELS ============ -->
+<section id="models" class="reveal">
+  <div class="sec-head">
+    <div class="sec-seal">五</div>
+    <div><h2>How Creators Actually Get Paid</h2></div>
+    <svg class="sec-motif"><use href="#m-bamboo"/></svg>
+  </div>
+  <svg class="brush-rule" viewBox="0 0 600 12" preserveAspectRatio="none">
+    <path d="M3,7 C110,2 300,11 597,4" stroke="#17150f" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".8"/>
+  </svg>
+  <p class="sec-intro">Short-form apps rarely rely on classic cookie-tracked links, but that does not mean they skip
+  affiliate economics. <strong>Four structures run in parallel</strong>, and a single creator commonly stacks two or
+  three of them at once. Figures from recruiting pages and job listings are performance-marketing claims rather than
+  signed contracts, so treat the upper ranges as ceilings.</p>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <div class="han-bg">码</div>
+      <h3>1 - Referral codes <span class="chip verified">field-confirmed</span></h3>
+      <p>The creator reads out a personal code; the viewer types it and receives a bonus trial or discount, which
+      simultaneously attributes the sale. <strong>Novli</strong> is the clearest documented example at 30% for a full
+      year, and the mechanic survives platforms where links never get clicked.</p>
+    </div>
+    <div class="card">
+      <div class="han-bg">链</div>
+      <h3>2 - Tracked bio links <span class="chip verified">field-confirmed</span></h3>
+      <p>A deep link in the profile bio carries attribution parameters. Observed live on
+      <strong>@chinese.w.chen</strong>, whose Instagram bio points at <code>airlearn.onelink.me/FBTy/rtgzvlka</code> -
+      a per-creator tracked install link, which is affiliate attribution regardless of how the payout is structured.</p>
+    </div>
+    <div class="card">
+      <div class="han-bg">折</div>
+      <h3>3 - Negotiated viewer discounts</h3>
+      <p>Instead of a network, the creator negotiates a discount code directly with the brand and takes a cut or a
+      flat fee per redemption. This is how most products in the "no public program" list below still end up promoted -
+      <strong>The Chairman's Bao</strong>, <strong>Du Chinese</strong> and <strong>Hack Chinese</strong> all issue
+      private partner codes with no public program page.</p>
+    </div>
+    <div class="card">
+      <div class="han-bg">聘</div>
+      <h3>4 - Flat per-video and retainer deals</h3>
+      <p><strong>PingoAI</strong> advertises "$20-$1,000+ per video" with top creators at "$10,000+ per month",
+      requiring daily posting across three platforms. <strong>Airlearn</strong> hires like a casting call -
+      $500-1,000 monthly base plus $100-1,000 bonuses for videos passing 250K to 2.5M organic views, at 60-150 videos
+      a month. <strong>HelloTalk</strong>'s Global Ambassador Program pays per approved post with stackable view
+      bonuses, advertising up to $10,000 a month, and asks only one post a month at 3-8 hours a week.
+      <span class="chip blog">recruiting-page figures</span></p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <svg class="nb-motif"><use href="#m-panda"/></svg>
+    <strong>Field evidence beats directory listings.</strong> Two accounts in the watchlist disclose their program in
+    the bio itself - <strong>@rogerlearnschinese</strong> as a Bunpo Chinese Ambassador and
+    <strong>@chinese.w.chen</strong> through a tracked Airlearn link. Reading creator bios turned out to be a faster
+    way to confirm a program is live and paying than searching affiliate directories, which are frequently stale.
+  </div>
+</section>
+
+<!-- ============ 6 NO PROGRAM ============ -->
+<section id="none" class="reveal">
+  <div class="sec-head">
+    <div class="sec-seal">六</div>
+    <div><h2>No Affiliate, No Commission</h2></div>
+    <svg class="sec-motif"><use href="#m-bowl"/></svg>
+  </div>
+  <svg class="brush-rule" viewBox="0 0 600 12" preserveAspectRatio="none">
+    <path d="M3,7 C110,2 300,11 597,4" stroke="#17150f" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".8"/>
+  </svg>
+  <p class="sec-intro">Confirmed by checking each product's site footer, help centre and the major affiliate networks -
+  Impact, ShareASale, CJ, Awin, PartnerStack, Refersion and Tapfiliate. "No" means <strong>no public paid program</strong>
+  as of 10 Aug 2026; private one-off deals and negotiated discount codes may still exist, as described above.</p>
+  <div class="chip-cloud">
+    <div class="cloud-item"><b>Duolingo</b><span>Officially none; in-app referral only</span></div>
+    <div class="cloud-item"><b>HelloChinese</b><span>Nothing on site or networks</span></div>
+    <div class="cloud-item"><b>Memrise</b><span>Help centre: "no affiliate programme"</span></div>
+    <div class="cloud-item"><b>Pleco</b><span>One-time purchases, no program</span></div>
+    <div class="cloud-item"><b>ChineseSkill</b><span>Nothing indexed or listed</span></div>
+    <div class="cloud-item"><b>The Chairman's Bao</b><span>Private reviewer codes only</span></div>
+    <div class="cloud-item"><b>Hack Chinese</b><span>States "no affiliate payments" - swaps codes instead</span></div>
+    <div class="cloud-item"><b>Du Chinese</b><span>Content partners, no commission</span></div>
+    <div class="cloud-item"><b>Readibu</b><span>No program</span></div>
+    <div class="cloud-item"><b>SuperChinese</b><span>B2B and corporate channel only</span></div>
+    <div class="cloud-item"><b>HSK Online / SuperTest</b><span>Same company; B2B only</span></div>
+    <div class="cloud-item"><b>Corodomo</b><span>No public program; creator deals are private</span></div>
+    <div class="cloud-item"><b>Miraa</b><span>The /affiliate path returns 404</span></div>
+    <div class="cloud-item"><b>Read Bean</b><span>Contact-only collaboration</span></div>
+    <div class="cloud-item"><b>Jade</b><span>usejade.app - no program found</span></div>
+    <div class="cloud-item"><b>Daily Hanzi</b><span>Lock-screen widget; no program</span></div>
+    <div class="cloud-item"><b>Kippy AI</b><span>Nothing on site or networks</span></div>
+    <div class="cloud-item"><b>MyMandarin</b><span>No partner or referral pages</span></div>
+    <div class="cloud-item"><b>Migii HSK</b><span>eUp Group; no affiliate channel</span></div>
+    <div class="cloud-item"><b>Hanzii</b><span>eUp Group; cheap-premium resellers are unofficial</span></div>
+    <div class="cloud-item"><b>BaoBao</b><span>Vietnamese indie app, no program</span></div>
+    <div class="cloud-item"><b>Laoshi</b><span>laoshi.io - no program</span></div>
+    <div class="cloud-item"><b>Anki</b><span>Open source and free</span></div>
+  </div>
+</section>
+
+<!-- ============ 7 INSIGHTS ============ -->
+<section id="insights" class="reveal">
+  <div class="sec-head">
+    <div class="sec-seal">七</div>
+    <div><h2>Strategic Insights</h2></div>
+    <svg class="sec-motif"><use href="#m-lotus"/></svg>
+  </div>
+  <svg class="brush-rule" viewBox="0 0 600 12" preserveAspectRatio="none">
+    <path d="M3,7 C110,2 300,11 597,4" stroke="#17150f" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".8"/>
+  </svg>
+
+  <div class="insight"><div class="num-badge">壹</div><div>
+    <h4>Four payment structures, often stacked</h4>
+    <p>Established course platforms pay percentage commission through networks and expect blog or search traffic.
+    Mobile-first newcomers lean on <strong>referral codes, tracked bio links, negotiated viewer discounts and flat
+    per-video contracts</strong>. These are not mutually exclusive: a creator can carry a tracked install link, read
+    out a discount code and still hold a monthly retainer. Any pitch or evaluation should name which structures a
+    target app supports rather than asking whether it "has an affiliate program".</p>
+  </div></div>
+
+  <div class="insight"><div class="num-badge">貳</div><div>
+    <h4>Recurring beats headline rates</h4>
+    <p>A 60% one-time payout is worth less than <strong>15% lifetime</strong> or <strong>40% across 24 months</strong>
+    for a subscriber who stays. Skritter, Bunpo, Mondly's renewal-inclusive 30% and Novli's full-year 30% are the only
+    recurring structures found in the whole survey. For evergreen content that keeps surfacing months after posting,
+    recurring programs compound while one-time payouts do not.</p>
+  </div></div>
+
+  <div class="insight"><div class="num-badge">參</div><div>
+    <h4>Code-based attribution is built for short-form</h4>
+    <p>Novli's mechanic - the viewer types a creator code and gets a 30-day trial - survives an environment where
+    cookies never fire and links go unclicked. It also gives the viewer something concrete, which raises redemption
+    over a bare link. Expect more apps to copy this; it is the cleanest attribution mechanic for exactly the channel
+    this research targets.</p>
+  </div></div>
+
+  <div class="insight"><div class="num-badge">肆</div><div>
+    <h4>Creator bios are the fastest verification source</h4>
+    <p>Affiliate directories go stale - Memrise's program has been dead since at least 2024 while directories still
+    list 15%, and ChinesePod's page now 404s. Meanwhile <strong>live creator bios</strong> confirmed two active
+    programs in seconds: a declared Bunpo ambassadorship and a per-creator Airlearn tracking link. When auditing
+    whether a program actually pays, check who is promoting it right now before trusting any listing.</p>
+  </div></div>
+</section>
+
+<!-- ============ 8 METHOD ============ -->
+<section id="method" class="reveal">
+  <div class="sec-head">
+    <div class="sec-seal">八</div>
+    <div><h2>Method &amp; Limits</h2></div>
+    <svg class="sec-motif"><use href="#m-scroll"/></svg>
+  </div>
+  <svg class="brush-rule" viewBox="0 0 600 12" preserveAspectRatio="none">
+    <path d="M3,7 C110,2 300,11 597,4" stroke="#17150f" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".8"/>
+  </svg>
+  <div class="grid cols-2">
+    <div class="card">
+      <div class="han-bg">法</div>
+      <h3>How figures were sourced</h3>
+      <p>Official program pages and network marketplace listings came first; third-party blog figures appear only when
+      tagged <span class="chip blog">unverified</span>. Every check carries the audit date of 10 August 2026. Traffic,
+      MAU and revenue claims without a direct source were excluded entirely. Creator follower and like counts were read
+      from the live public profiles.</p>
+    </div>
+    <div class="card">
+      <div class="han-bg">限</div>
+      <h3>Known limits</h3>
+      <p>"Not found" is not proof of absence - private creator deals are invisible by design. Some sites block
+      automated access, including Preply, WuKong and archive services, so a few attribution windows rest on secondary
+      sources. Gated rates at Preply and Busuu only become visible after network approval. Per-video view counts are
+      collected from public profile grids, where pinned posts are excluded because they are not recent.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-rule"></div>
+  <div class="hz">千里之行 始於足下</div>
+  <div class="tr">A journey of a thousand miles begins beneath one's feet</div>
+</footer>
+
+<script>
+  // floating nav: hide on scroll down, reveal on scroll up
+  const nav = document.getElementById('nav');
+  let lastY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 150 && y > lastY + 4) nav.classList.add('hidden');
+    else if (y < lastY - 4 || y < 150) nav.classList.remove('hidden');
+    lastY = y;
+  }, {passive:true});
+
+  // reveal sections
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, {threshold:.06});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // active nav highlighting
+  const links = [...document.querySelectorAll('#nav a')];
+  const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+  const spy = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    });
+  }, {rootMargin:'-42% 0px -53% 0px'});
+  secs.forEach(s => s && spy.observe(s));
+
+  /* ---------- petals on the wind ---------- */
+  const SHAPES = [
+    // single plum petal
+    '<svg viewBox="0 0 24 24"><path d="M12 1.4 C18.4 6 20 15.2 12 22.6 C4 15.2 5.6 6 12 1.4 Z" fill="%C"/></svg>',
+    // five-petal blossom
+    '<svg viewBox="0 0 24 24"><g fill="%C">'
+      + '<ellipse cx="12" cy="5.6" rx="4.1" ry="5.2"/>'
+      + '<ellipse cx="18.7" cy="10.4" rx="4.1" ry="5.2" transform="rotate(72 18.7 10.4)"/>'
+      + '<ellipse cx="16.1" cy="18.4" rx="4.1" ry="5.2" transform="rotate(144 16.1 18.4)"/>'
+      + '<ellipse cx="7.9" cy="18.4" rx="4.1" ry="5.2" transform="rotate(216 7.9 18.4)"/>'
+      + '<ellipse cx="5.3" cy="10.4" rx="4.1" ry="5.2" transform="rotate(288 5.3 10.4)"/>'
+      + '</g><circle cx="12" cy="12" r="2.1" fill="#8a6a2c" opacity=".65"/></svg>',
+    // curled petal caught side-on
+    '<svg viewBox="0 0 24 24"><path d="M3.6 20.4 C6 10.4 12.8 3 21 2.6 C18.8 12.8 12.4 20 3.6 20.4 Z" fill="%C"/></svg>',
+    // slender falling petal
+    '<svg viewBox="0 0 24 24"><path d="M12 2 C16 8 15 16 11 22 C8.5 15.5 8.8 8 12 2 Z" fill="%C"/></svg>'
+  ];
+  const COLORS = [
+    'rgba(163,48,28,.74)','rgba(163,48,28,.56)','rgba(125,35,19,.62)',
+    'rgba(191,96,70,.62)','rgba(214,152,132,.66)','rgba(138,106,44,.5)',
+    'rgba(224,180,164,.6)'
+  ];
+  const rnd = (a,b) => a + Math.random()*(b-a);
+
+  function seedPetals(hostSel, count, minSize, maxSize, spread){
+    const host = document.querySelector(hostSel);
+    if (!host) return;
+    const wrap = host.querySelector('.gustwrap');
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < count; i++){
+      const size = rnd(minSize, maxSize);
+      const dur  = rnd(9, 26);
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = rnd(-4, 102) + '%';
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      // horizontal travel: how hard the wind pushes this one
+      p.style.setProperty('--dx', (Math.random() < .78 ? 1 : -1) * rnd(50, spread) + 'px');
+      p.style.animationDuration = dur + 's';
+      // negative delay => already mid-flight when the page opens
+      p.style.animationDelay = (-rnd(0, dur)) + 's';
+      const inner = document.createElement('i');
+      inner.style.animationDuration = rnd(3.5, 11) + 's';
+      inner.style.animationDirection = Math.random() < .5 ? 'normal' : 'reverse';
+      inner.innerHTML = SHAPES[(Math.random()*SHAPES.length)|0]
+                          .replaceAll('%C', COLORS[(Math.random()*COLORS.length)|0]);
+      p.appendChild(inner);
+      frag.appendChild(p);
+    }
+    wrap.appendChild(frag);
+  }
+
+  seedPetals('#heroPetals', 48, 11, 32, 340);   // dense drift over the hero
+  seedPetals('#globalPetals', 28, 9, 22, 260);  // lighter layer that follows you down the page
+</script>
+</body>
+</html>
