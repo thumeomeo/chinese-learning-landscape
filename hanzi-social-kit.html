@@ -3,23 +3,27 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
-<title>Hanzi Practice Social Kit</title>
+<title>Hanzi Practice Brand Book</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700;900&family=Ma+Shan+Zheng&display=swap">
 <style>
-  /* Trang này cam kết một thế giới thị giác duy nhất - thế giới giấy dó của Hanzi Practice -
-     nên mọi màu đều được sơn tường minh, không phụ thuộc theme của host. */
+  /* Trang cam kết một thế giới thị giác duy nhất - "xưởng mực" của Hanzi Practice.
+     Nền mực đêm, nội dung đặt trên những tờ giấy dó - mọi màu sơn tường minh. */
   :root {
+    --night: #241A12;
+    --night-2: #2E2115;
+    --cream: #EFE3CD;
+    --cream-dim: rgb(239 227 205 / 0.62);
     --parchment: #F3EAD9;
     --ivory: #F6EFE2;
     --ink: #3B2A20;
+    --ink-dim: rgb(59 42 32 / 0.65);
     --terracotta: #8A4A2C;
     --chestnut: #5C3620;
     --warmgray: #C9BFA9;
     --gridline: #D9D0BD;
-    --cinnabar: #BE4A2A;      /* đề xuất mới - dấu triện & CTA */
-    --inkdark: #261B12;       /* đề xuất mới - nền post đảo màu */
+    --cinnabar: #BE4A2A;
     --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
     --sans: Inter, "Segoe UI", Arial, sans-serif;
     --sc: "Noto Serif SC", "Source Han Serif SC", serif;
@@ -28,743 +32,684 @@
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    margin: 0;
-    background: var(--parchment);
-    background-image:
-      radial-gradient(circle at 15% 20%, rgb(92 54 32 / 0.035) 0 0.7px, transparent 0.9px),
-      radial-gradient(circle at 72% 64%, rgb(138 74 44 / 0.03) 0 0.6px, transparent 0.85px);
-    background-size: 11px 13px, 17px 19px;
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.65;
+    margin: 0; background: var(--night);
+    background-image: radial-gradient(circle at 20% 15%, rgb(190 74 42 / 0.05), transparent 45%),
+                      radial-gradient(circle at 85% 80%, rgb(138 74 44 / 0.06), transparent 50%);
+    color: var(--cream); font-family: var(--sans); font-size: 16px; line-height: 1.65;
   }
-  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 28px; }
-
-  a { color: var(--terracotta); }
-  h1, h2, h3 { font-family: var(--serif); color: var(--chestnut); text-wrap: balance; }
-  p { max-width: 68ch; }
-  .muted { color: rgb(59 42 32 / 0.62); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  a { color: #D98B5F; }
+  p { max-width: 70ch; }
+  .dim { color: var(--cream-dim); }
   .small { font-size: 13.5px; }
 
   /* ===== Hero ===== */
-  header { padding: 64px 0 28px; }
-  .hero { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
-  .hero-copy { flex: 1 1 460px; min-width: 300px; }
-  .eyebrow {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--terracotta); margin-bottom: 18px;
+  header { position: relative; padding: 76px 0 40px; overflow: hidden; }
+  .hero-han {
+    position: absolute; right: -40px; top: -60px; font-family: var(--sc); font-weight: 900;
+    font-size: 380px; line-height: 1; color: rgb(243 234 217 / 0.045); pointer-events: none; user-select: none;
   }
-  h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.08; margin: 0 0 18px; font-weight: 700; }
-  .lede { font-size: 18px; line-height: 1.6; margin: 0 0 14px; }
-
-  /* Ô điền chữ hero */
-  .hero-cell-zone { flex: 0 1 300px; display: flex; justify-content: center; }
-  .tzg {
-    position: relative; background: var(--ivory);
-    border: 2.5px solid var(--chestnut); border-radius: 10px;
-    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.6), 0 4px 14px rgb(59 42 32 / 0.13);
-  }
-  .tzg::before, .tzg::after { content: ""; position: absolute; }
-  .tzg::before {
-    inset: 4%; border: 1px dashed rgb(201 191 169 / 0.85);
-    background:
-      linear-gradient(to right, transparent calc(50% - 0.5px), rgb(201 191 169 / 0.8) 50%, transparent calc(50% + 0.5px)),
-      linear-gradient(to bottom, transparent calc(50% - 0.5px), rgb(201 191 169 / 0.8) 50%, transparent calc(50% + 0.5px)),
-      linear-gradient(45deg, transparent 49.5%, rgb(217 208 189 / 0.75) 50%, transparent 50.5%),
-      linear-gradient(-45deg, transparent 49.5%, rgb(217 208 189 / 0.75) 50%, transparent 50.5%);
-  }
-  .hero-cell { width: 280px; height: 280px; display: grid; place-items: center; }
-  .hero-cell .han {
-    font-family: var(--sc); font-weight: 900; font-size: 168px; line-height: 1;
-    color: var(--ink); position: relative; z-index: 2;
-    animation: inkin 1.1s ease-out both;
-  }
-  @keyframes inkin { from { opacity: 0; filter: blur(6px); } to { opacity: 1; filter: blur(0); } }
-  @media (prefers-reduced-motion: reduce) { .hero-cell .han { animation: none; } }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #D98B5F; margin-bottom: 18px; }
+  h1 { font-family: var(--serif); font-size: clamp(36px, 5.5vw, 58px); line-height: 1.05; margin: 0 0 20px; color: var(--parchment); text-wrap: balance; font-weight: 700; }
+  .lede { font-size: 18.5px; line-height: 1.6; }
   .seal {
-    display: inline-grid; place-items: center;
-    width: 44px; height: 44px; border-radius: 7px;
-    background: var(--cinnabar); color: #F6EFE2;
-    font-family: var(--sc); font-weight: 700; font-size: 24px;
-    transform: rotate(-3deg);
-    box-shadow: inset 0 0 0 2px rgb(246 239 226 / 0.35), 0 2px 6px rgb(59 42 32 / 0.25);
+    display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 8px;
+    background: var(--cinnabar); color: var(--ivory); font-family: var(--sc); font-weight: 700; font-size: 25px;
+    transform: rotate(-3deg); box-shadow: inset 0 0 0 2px rgb(246 239 226 / 0.35), 0 3px 8px rgb(0 0 0 / 0.35);
   }
-  .hero-cell .seal { position: absolute; right: -14px; bottom: -14px; z-index: 3; }
-  .brushline { display: block; height: 12px; width: 130px; margin-top: -6px; }
-
-  /* ===== TOC chips ===== */
-  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 34px 0 10px; }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
   .toc a {
-    text-decoration: none; font-size: 13px; font-weight: 500;
-    color: var(--chestnut); background: var(--ivory);
-    border: 1px solid var(--gridline); border-radius: 99px; padding: 6px 14px;
+    text-decoration: none; font-size: 13px; font-weight: 500; color: var(--cream);
+    border: 1px solid rgb(239 227 205 / 0.25); border-radius: 99px; padding: 6px 14px; background: rgb(239 227 205 / 0.05);
   }
-  .toc a:hover { border-color: var(--terracotta); color: var(--terracotta); }
+  .toc a:hover { border-color: var(--cinnabar); color: #E9A583; }
 
-  /* ===== Sections ===== */
-  section { padding: 52px 0 8px; }
-  .secmark { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
-  .secmark .num {
-    font-family: var(--sc); font-weight: 700; font-size: 22px; color: var(--parchment);
-    background: var(--terracotta); width: 42px; height: 42px; border-radius: 8px;
-    display: grid; place-items: center; flex-shrink: 0; transform: translateY(6px);
+  /* ===== Chapters ===== */
+  section { padding: 58px 0 10px; }
+  .chap { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .chap .stamp {
+    width: 46px; height: 46px; border-radius: 8px; background: var(--cinnabar); color: var(--ivory);
+    display: grid; place-items: center; font-family: var(--sc); font-weight: 700; font-size: 22px;
+    transform: rotate(-2deg); box-shadow: inset 0 0 0 2px rgb(246 239 226 / 0.3); flex-shrink: 0;
   }
-  h2 { font-size: clamp(24px, 3.4vw, 32px); margin: 0; }
-  .secsub { margin: 10px 0 26px; }
-  h3 { font-size: 19px; margin: 30px 0 10px; }
+  h2 { font-family: var(--serif); font-size: clamp(25px, 3.4vw, 34px); margin: 0; color: var(--parchment); text-wrap: balance; }
+  .chapsub { margin: 12px 0 28px; color: var(--cream-dim); }
+  h3 { font-family: var(--serif); font-size: 19.5px; margin: 34px 0 12px; color: #E8CFA8; }
 
-  /* Cards */
-  .grid { display: grid; gap: 16px; }
-  .g2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-  .g3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-  .card {
-    background: var(--ivory); border: 1px solid var(--gridline); border-radius: 12px;
-    padding: 20px 22px; box-shadow: 0 1px 4px rgb(59 42 32 / 0.05);
+  /* Tờ giấy trên bàn mực */
+  .sheet {
+    background: var(--parchment);
+    background-image: radial-gradient(circle at 15% 20%, rgb(92 54 32 / 0.04) 0 0.7px, transparent 0.9px),
+                      radial-gradient(circle at 72% 64%, rgb(138 74 44 / 0.03) 0 0.6px, transparent 0.85px);
+    background-size: 11px 13px, 17px 19px;
+    color: var(--ink); border-radius: 14px; padding: 26px 28px;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.35);
   }
-  .card h4 { font-family: var(--serif); color: var(--chestnut); font-size: 16.5px; margin: 0 0 8px; }
-  .card p, .card li { font-size: 14.5px; }
-  .card ul { margin: 8px 0 0; padding-left: 18px; }
-  .card li { margin-bottom: 5px; }
-  code {
-    font-family: Consolas, "Courier New", monospace; font-size: 12.5px;
-    background: rgb(217 208 189 / 0.45); border-radius: 4px; padding: 1px 6px; color: var(--chestnut);
-    overflow-wrap: anywhere;
+  .sheet h4 { font-family: var(--serif); color: var(--chestnut); font-size: 17px; margin: 0 0 8px; }
+  .sheet p, .sheet li { font-size: 14.5px; }
+  .sheet .muted { color: var(--ink-dim); }
+  .sheet ul { margin: 8px 0 0; padding-left: 18px; }
+  .sheet li { margin-bottom: 6px; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 12.5px; background: rgb(217 208 189 / 0.5); border-radius: 4px; padding: 1px 6px; color: var(--chestnut); overflow-wrap: anywhere; }
+  .on-dark code { background: rgb(239 227 205 / 0.12); color: #E8CFA8; }
+
+  .grid { display: grid; gap: 18px; }
+  .g2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .g3 { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+
+  /* Lớp nhận diện - diagram */
+  .layers { display: grid; gap: 10px; margin: 24px 0 6px; }
+  .layer { display: flex; gap: 0; border-radius: 12px; overflow: hidden; border: 1px solid rgb(239 227 205 / 0.14); }
+  .layer .name {
+    flex: 0 0 200px; padding: 16px 18px; background: rgb(239 227 205 / 0.07);
+    font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--parchment);
+    display: flex; flex-direction: column; justify-content: center;
   }
+  .layer .name small { font-family: var(--sans); font-weight: 500; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #D98B5F; margin-bottom: 3px; }
+  .layer .items { flex: 1; padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 7px; align-items: center; background: rgb(239 227 205 / 0.03); }
+  .pill { font-size: 12.5px; padding: 4px 12px; border-radius: 99px; border: 1px solid transparent; }
+  .pill.have { background: rgb(138 74 44 / 0.35); color: #F0D9C4; border-color: rgb(216 155 123 / 0.4); }
+  .pill.part { background: rgb(190 74 42 / 0.16); color: #E9A583; border-color: rgb(190 74 42 / 0.5); border-style: dashed; }
+  .pill.miss { background: transparent; color: var(--cream-dim); border-color: rgb(239 227 205 / 0.28); border-style: dashed; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; font-size: 12.5px; color: var(--cream-dim); align-items: center; }
+
+  /* Concept rows */
+  .concept-row { border: 1px solid rgb(239 227 205 / 0.14); border-radius: 16px; overflow: hidden; margin-bottom: 22px; background: var(--night-2); }
+  .concept-head { display: flex; align-items: baseline; gap: 14px; padding: 20px 26px 0; flex-wrap: wrap; }
+  .concept-head .kicker { font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #D98B5F; }
+  .concept-head .kicker.rec { color: var(--ivory); background: var(--cinnabar); border-radius: 5px; padding: 3px 10px; }
+  .concept-head h4 { font-family: var(--serif); font-size: 24px; margin: 0; color: var(--parchment); }
+  .concept-head .zh { font-family: var(--brush); font-size: 26px; color: #E8CFA8; }
+  .concept-body { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0; }
+  .concept-text { padding: 14px 26px 24px; }
+  .concept-text p { font-size: 15px; }
+  .concept-text .facet { font-size: 13.5px; margin: 10px 0 0; }
+  .facet b { color: #E8CFA8; font-weight: 600; }
+  .concept-visual { padding: 20px; display: flex; flex-direction: column; gap: 10px; justify-content: center; background: rgb(239 227 205 / 0.03); border-left: 1px solid rgb(239 227 205 / 0.1); }
+  .strip { display: flex; height: 26px; border-radius: 6px; overflow: hidden; }
+  .strip div { flex: 1; }
+  .concept-visual .demo { border-radius: 10px; padding: 14px; font-size: 12px; }
+  @media (max-width: 760px) { .concept-body { grid-template-columns: 1fr; } .concept-visual { border-left: none; border-top: 1px solid rgb(239 227 205 / 0.1); } }
+
+  .verdict { background: var(--parchment); color: var(--ink); border-radius: 14px; padding: 24px 28px; box-shadow: 0 10px 30px rgb(0 0 0 / 0.35); }
+  .verdict h4 { font-family: var(--serif); color: var(--chestnut); margin: 0 0 8px; font-size: 19px; }
+  .verdict p { margin: 0; font-size: 15px; max-width: 78ch; }
+  .verdict .seal { float: right; margin-left: 16px; }
 
   /* Swatches */
-  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 12px; }
-  .sw { border: 1px solid var(--gridline); border-radius: 10px; overflow: hidden; background: var(--ivory); }
-  .sw .chip { height: 64px; }
-  .sw .meta { padding: 8px 10px; font-size: 12px; line-height: 1.45; }
-  .sw .meta b { display: block; font-size: 12.5px; color: var(--chestnut); }
-  .sw .meta span { color: rgb(59 42 32 / 0.6); font-variant-numeric: tabular-nums; }
-
-  .ratio-bar { display: flex; height: 34px; border-radius: 8px; overflow: hidden; border: 1px solid var(--gridline); margin: 14px 0 6px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(114px, 1fr)); gap: 12px; }
+  .sw { border-radius: 10px; overflow: hidden; background: var(--night-2); border: 1px solid rgb(239 227 205 / 0.14); }
+  .sw .chip { height: 60px; }
+  .sw .meta { padding: 8px 10px; font-size: 11.5px; line-height: 1.45; color: var(--cream-dim); }
+  .sw .meta b { display: block; font-size: 12.5px; color: var(--cream); }
+  .sw .meta span { font-variant-numeric: tabular-nums; }
+  .ratio-bar { display: flex; height: 36px; border-radius: 8px; overflow: hidden; margin: 16px 0 6px; border: 1px solid rgb(239 227 205 / 0.15); }
   .ratio-bar div { display: grid; place-items: center; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
 
-  /* Bảng kiểm có / chưa có */
-  .audit { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-  .audit .col { border-radius: 12px; padding: 20px 22px; border: 1px solid var(--gridline); }
-  .audit .have { background: var(--ivory); }
-  .audit .miss { background: rgb(190 74 42 / 0.06); border-color: rgb(190 74 42 / 0.25); }
-  .audit h4 { margin: 0 0 10px; font-family: var(--serif); font-size: 16.5px; color: var(--chestnut); }
-  .audit ul { margin: 0; padding-left: 4px; list-style: none; }
-  .audit li { font-size: 14.5px; margin-bottom: 8px; padding-left: 24px; position: relative; }
-  .have li::before { content: "✓"; position: absolute; left: 0; color: var(--terracotta); font-weight: 700; }
-  .miss li::before { content: "•"; position: absolute; left: 6px; color: var(--cinnabar); font-weight: 700; }
+  /* Type rows on sheet */
+  .typerow { display: flex; align-items: baseline; gap: 18px; padding: 12px 0; border-bottom: 1px dashed var(--gridline); flex-wrap: wrap; }
+  .typerow:last-child { border-bottom: none; }
+  .typerow .lbl { width: 215px; font-size: 12px; color: var(--ink-dim); flex-shrink: 0; }
 
-  /* Concept cards */
-  .concept { position: relative; overflow: hidden; }
-  .concept .tag {
-    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--parchment); background: var(--chestnut); border-radius: 5px; padding: 3px 9px; margin-bottom: 10px;
-  }
-  .concept.rec .tag { background: var(--cinnabar); }
-  .concept .hanbg {
-    position: absolute; right: -12px; top: -26px; font-family: var(--sc); font-weight: 900;
-    font-size: 120px; color: rgb(138 74 44 / 0.08); pointer-events: none; line-height: 1;
-  }
-  .pros { font-size: 13.5px; margin-top: 10px; }
-  .pros b { color: var(--chestnut); }
-  .verdict {
-    margin-top: 18px; background: var(--inkdark); color: #EFE6D4; border-radius: 12px; padding: 22px 26px;
-  }
-  .verdict h4 { font-family: var(--serif); font-size: 18px; margin: 0 0 8px; color: #F3EAD9; }
-  .verdict p { font-size: 15px; margin: 0; max-width: 75ch; color: rgb(243 234 217 / 0.85); }
-  .verdict .seal { float: right; margin-left: 14px; }
-
-  /* Word lockup demo */
-  .lockup {
-    display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
-    background: var(--ivory); border: 1px solid var(--gridline); border-radius: 12px; padding: 22px 26px;
-  }
-  .lockup .cell { width: 108px; height: 108px; border-radius: 8px; display: grid; place-items: center; flex-shrink: 0; }
-  .lockup .cell .han { font-family: var(--sc); font-weight: 900; font-size: 64px; color: var(--ink); position: relative; z-index: 2; }
+  /* Lockup */
+  .lockup { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .tzg { position: relative; background: var(--ivory); border: 2.5px solid var(--chestnut); border-radius: 10px; }
+  .tzg::before { content: ""; position: absolute; inset: 4%; border: 1px dashed rgb(201 191 169 / 0.9);
+    background: linear-gradient(to right, transparent calc(50% - 0.5px), rgb(201 191 169 / 0.8) 50%, transparent calc(50% + 0.5px)),
+                linear-gradient(to bottom, transparent calc(50% - 0.5px), rgb(201 191 169 / 0.8) 50%, transparent calc(50% + 0.5px)),
+                linear-gradient(45deg, transparent 49.5%, rgb(217 208 189 / 0.7) 50%, transparent 50.5%),
+                linear-gradient(-45deg, transparent 49.5%, rgb(217 208 189 / 0.7) 50%, transparent 50.5%); }
+  .lockup .cell { width: 112px; height: 112px; display: grid; place-items: center; flex-shrink: 0; }
+  .lockup .han { font-family: var(--sc); font-weight: 900; font-size: 66px; color: var(--ink); position: relative; z-index: 1; }
   .lockup dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 3px 16px; font-size: 15px; }
   .lockup dt { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); align-self: center; }
   .lockup dd { margin: 0; }
-  .lockup dd.py { font-style: italic; }
-  .lockup dd.hv { font-weight: 700; color: var(--chestnut); }
+  .lockup .py { font-style: italic; }
+  .lockup .hv { font-family: var(--serif); font-weight: 700; color: var(--chestnut); letter-spacing: 0.06em; }
 
-  /* Type scale demo */
-  .typerow { display: flex; align-items: baseline; gap: 18px; padding: 12px 0; border-bottom: 1px dashed var(--gridline); flex-wrap: wrap; }
-  .typerow:last-child { border-bottom: none; }
-  .typerow .lbl { width: 210px; font-size: 12px; color: rgb(59 42 32 / 0.6); flex-shrink: 0; }
-
-  /* ===== Template mockups ===== */
-  .mocks { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-  .mockwrap { display: flex; flex-direction: column; gap: 8px; }
-  .mock {
-    aspect-ratio: 1/1; border-radius: 12px; border: 1px solid var(--gridline);
-    box-shadow: 0 2px 8px rgb(59 42 32 / 0.08); overflow: hidden; position: relative;
-    display: flex; flex-direction: column; padding: 14px;
+  /* Mascot cards */
+  .mascot { position: relative; }
+  .mascot .face {
+    width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center;
+    font-family: var(--brush); font-size: 44px; margin-bottom: 12px;
+    background: var(--ivory); border: 2px solid var(--chestnut); color: var(--ink);
   }
-  .mockwrap figcaption { font-size: 13px; line-height: 1.5; }
+  .mascot .role { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); }
+  .vs { font-size: 13.5px; }
+  .vs b { color: var(--chestnut); }
+
+  /* Voice table */
+  .voice { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .voice .ex { border-radius: 12px; padding: 18px 20px; font-size: 14.5px; }
+  .voice .yes { background: var(--ivory); color: var(--ink); border: 1px solid var(--gridline); }
+  .voice .no { background: rgb(190 74 42 / 0.12); color: var(--cream); border: 1px dashed rgb(190 74 42 / 0.6); }
+  .voice .tagchip { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px; padding: 2px 8px; margin-bottom: 8px; }
+  .voice .yes .tagchip { background: var(--terracotta); color: var(--parchment); }
+  .voice .no .tagchip { background: var(--cinnabar); color: var(--ivory); }
+
+  /* ===== Social mockups (trên sheet) ===== */
+  .mocks { display: grid; grid-template-columns: repeat(auto-fill, minmax(225px, 1fr)); gap: 18px; }
+  .mockwrap { display: flex; flex-direction: column; gap: 8px; margin: 0; }
+  .mock { aspect-ratio: 1/1; border-radius: 12px; border: 1px solid var(--gridline); overflow: hidden; position: relative; display: flex; flex-direction: column; padding: 13px; box-shadow: 0 2px 8px rgb(59 42 32 / 0.12); }
+  .mockwrap figcaption { font-size: 12.5px; line-height: 1.5; color: var(--ink-dim); }
   .mockwrap figcaption b { color: var(--chestnut); }
-  .mock .brandchip {
-    display: flex; align-items: center; gap: 6px; font-family: var(--serif); font-weight: 600;
-    font-size: 10px; color: var(--chestnut);
-  }
-  .mock .brandchip .mk {
-    width: 16px; height: 16px; border: 1.5px solid var(--chestnut); border-radius: 4px;
-    display: grid; place-items: center; font-family: var(--sc); font-size: 9px; background: var(--ivory); color: var(--ink);
-  }
-  .mock .sl { position: absolute; right: 10px; bottom: 10px; width: 26px; height: 26px; font-size: 14px; border-radius: 5px; }
+  .mock .sl { position: absolute; right: 10px; bottom: 10px; width: 25px; height: 25px; font-size: 13px; border-radius: 5px; }
   .m-parch { background: var(--parchment); }
-  .m-ivory { background: var(--ivory); }
-  .m-dark { background: var(--inkdark); }
+  .m-dark { background: var(--night); }
   .m-terra { background: var(--terracotta); }
-
   .mock .minicell { border: 1.5px solid var(--chestnut); border-radius: 6px; background: var(--ivory); display: grid; place-items: center; position: relative; }
-  .mock .minicell::before { content: ""; position: absolute; inset: 6%; background:
-      linear-gradient(to right, transparent calc(50% - 0.5px), rgb(201 191 169 / 0.7) 50%, transparent calc(50% + 0.5px)),
-      linear-gradient(to bottom, transparent calc(50% - 0.5px), rgb(201 191 169 / 0.7) 50%, transparent calc(50% + 0.5px)); }
+  .mock .minicell::before { content: ""; position: absolute; inset: 6%;
+    background: linear-gradient(to right, transparent calc(50% - 0.5px), rgb(201 191 169 / 0.7) 50%, transparent calc(50% + 0.5px)),
+                linear-gradient(to bottom, transparent calc(50% - 0.5px), rgb(201 191 169 / 0.7) 50%, transparent calc(50% + 0.5px)); }
   .mock .han { font-family: var(--sc); font-weight: 900; color: var(--ink); position: relative; z-index: 1; }
-
-  /* word day */
   .mo-word { align-items: center; justify-content: space-between; }
-  .mo-word .minicell { width: 46%; aspect-ratio: 1; margin-top: 4px; }
-  .mo-word .han { font-size: 52px; }
-  .mo-word .py { font-style: italic; font-size: 13px; }
-  .mo-word .hv { font-family: var(--serif); font-weight: 700; font-size: 15px; color: var(--chestnut); letter-spacing: 0.06em; }
-  .mo-word .vi { font-size: 11.5px; color: rgb(59 42 32 / 0.75); }
   .mo-word .top { width: 100%; display: flex; justify-content: space-between; align-items: center; }
-  .mo-word .top .lbl { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); }
-
-  /* chiết tự */
+  .mo-word .top .brand { font-family: var(--serif); font-weight: 600; font-size: 10px; color: var(--chestnut); }
+  .mo-word .top .lbl { font-size: 8.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); }
+  .mo-word .minicell { width: 45%; aspect-ratio: 1; }
+  .mo-word .han { font-size: 46px; }
+  .mo-word .py { font-style: italic; font-size: 12.5px; color: var(--ink); }
+  .mo-word .hv { font-family: var(--serif); font-weight: 700; font-size: 14px; color: var(--chestnut); letter-spacing: 0.06em; }
+  .mo-word .vi { font-size: 11px; color: var(--ink-dim); }
   .mo-comp { justify-content: center; gap: 10px; }
-  .mo-comp .row { display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .mo-comp .minicell { width: 52px; height: 52px; }
-  .mo-comp .han { font-size: 28px; }
-  .mo-comp .op { font-family: var(--serif); font-size: 20px; color: var(--terracotta); font-weight: 600; }
-  .mo-comp .cap { text-align: center; font-size: 10.5px; color: rgb(59 42 32 / 0.7); }
-  .mo-comp .headline { text-align: center; font-family: var(--serif); font-weight: 600; font-size: 13px; color: var(--chestnut); }
-
-  /* stroke order */
-  .mo-stroke { justify-content: center; gap: 12px; }
-  .mo-stroke .row { display: flex; justify-content: center; gap: 8px; }
-  .mo-stroke .minicell { width: 44px; height: 44px; }
-  .mo-stroke .han { font-size: 24px; }
-  .mo-stroke .step { font-size: 9px; text-align: center; color: rgb(59 42 32 / 0.6); margin-top: 3px; }
-  .mo-stroke .headline { text-align: center; font-family: var(--serif); font-weight: 600; font-size: 13.5px; color: var(--chestnut); }
-
-  /* song */
-  .mo-song { color: #EFE6D4; justify-content: space-between; }
-  .mo-song .lbl { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #D89B7B; }
-  .mo-song .art { width: 54px; height: 54px; border-radius: 8px; background: linear-gradient(135deg, #8A4A2C, #5C3620); display: grid; place-items: center; font-size: 20px; }
-  .mo-song .zh { font-family: var(--sc); font-size: 17px; font-weight: 700; color: #F3EAD9; }
-  .mo-song .py { font-style: italic; font-size: 11px; color: rgb(239 230 212 / 0.75); }
-  .mo-song .vi { font-size: 10.5px; color: rgb(239 230 212 / 0.6); }
-
-  /* flatlay */
-  .mo-flat { align-items: center; justify-content: center; }
-  .mo-flat .sheet {
-    width: 72%; height: 78%; background: var(--ivory); border-radius: 6px;
-    box-shadow: 0 6px 16px rgb(38 27 18 / 0.28); transform: rotate(-2.5deg);
-    padding: 10px; display: flex; flex-direction: column; gap: 6px;
-  }
-  .mo-flat .sheet .ttl { font-family: var(--serif); font-size: 9px; font-weight: 700; color: var(--chestnut); }
-  .mo-flat .sheet .rowline { display: flex; gap: 3px; }
-  .mo-flat .sheet .c { flex: 1; aspect-ratio: 1; border: 0.5px solid var(--gridline); border-radius: 2px; display: grid; place-items: center; font-family: var(--sc); font-size: 9px; color: rgb(59 42 32 / 0.85); }
-  .mo-flat .sheet .c.ghost { color: rgb(59 42 32 / 0.25); }
-
-  /* quote */
+  .mo-comp .row { display: flex; align-items: center; justify-content: center; gap: 7px; }
+  .mo-comp .minicell { width: 46px; height: 46px; }
+  .mo-comp .han { font-size: 25px; }
+  .mo-comp .op { font-family: var(--serif); font-size: 19px; color: var(--terracotta); font-weight: 600; }
+  .mo-comp .cap { text-align: center; font-size: 10px; color: var(--ink-dim); }
+  .mo-comp .headline { text-align: center; font-family: var(--serif); font-weight: 600; font-size: 12.5px; color: var(--chestnut); }
+  .mo-song { color: var(--cream); justify-content: space-between; }
+  .mo-song .lbl { font-size: 8.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #D98B5F; }
+  .mo-song .art { width: 50px; height: 50px; border-radius: 8px; background: linear-gradient(135deg, #8A4A2C, #5C3620); display: grid; place-items: center; font-size: 18px; }
+  .mo-song .zh { font-family: var(--sc); font-size: 15.5px; font-weight: 700; color: var(--parchment); }
+  .mo-song .py { font-style: italic; font-size: 10.5px; color: var(--cream-dim); }
+  .mo-song .vi { font-size: 10px; color: var(--cream-dim); }
   .mo-quote { align-items: center; justify-content: center; gap: 4px; }
-  .mo-quote .bq { font-family: var(--brush); font-size: 52px; color: var(--ink); line-height: 1.1; }
-  .mo-quote .tr { font-family: var(--serif); font-style: italic; font-size: 12.5px; color: var(--chestnut); }
-
-  /* stories 9:16 */
-  .stories { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 20px; }
+  .mo-quote .bq { font-family: var(--brush); font-size: 44px; color: var(--ink); line-height: 1.1; }
+  .mo-quote .tr { font-family: var(--serif); font-style: italic; font-size: 11.5px; color: var(--chestnut); }
+  .stories { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 18px; }
   .story { aspect-ratio: 9/16; border-radius: 14px; }
   .mo-poll { justify-content: center; gap: 10px; }
-  .mo-poll .minicell { width: 78px; height: 78px; margin: 0 auto; }
-  .mo-poll .han { font-size: 44px; }
-  .mo-poll .q { text-align: center; font-family: var(--serif); font-weight: 600; font-size: 14px; color: var(--chestnut); }
-  .mo-poll .opt { background: var(--ivory); border: 1px solid var(--warmgray); border-radius: 99px; text-align: center; font-size: 11.5px; padding: 6px; width: 80%; margin: 0 auto; }
+  .mo-poll .minicell { width: 72px; height: 72px; margin: 0 auto; }
+  .mo-poll .han { font-size: 40px; }
+  .mo-poll .q { text-align: center; font-family: var(--serif); font-weight: 600; font-size: 13px; color: var(--chestnut); }
+  .mo-poll .opt { background: var(--ivory); border: 1px solid var(--warmgray); border-radius: 99px; text-align: center; font-size: 10.5px; padding: 5px; width: 85%; margin: 0 auto; color: var(--ink); }
   .mo-poll .opt.on { background: var(--terracotta); color: var(--parchment); border-color: var(--terracotta); font-weight: 600; }
-  .mo-reel { color: #EFE6D4; justify-content: flex-end; gap: 8px; }
-  .mo-reel .ep { align-self: flex-start; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--cinnabar); color: #F6EFE2; border-radius: 4px; padding: 3px 8px; }
-  .mo-reel .bighan { font-family: var(--sc); font-weight: 900; font-size: 64px; color: rgb(243 234 217 / 0.14); position: absolute; top: 16px; right: 12px; line-height: 1; }
-  .mo-reel .hook { font-family: var(--serif); font-weight: 700; font-size: 16.5px; line-height: 1.3; color: #F3EAD9; }
-  .mo-reel .sub { font-size: 10.5px; color: rgb(239 230 212 / 0.65); }
-
-  /* IG grid rhythm */
-  .iggrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; max-width: 460px; }
-  .igtile { aspect-ratio: 1; border-radius: 4px; display: grid; place-items: center; text-align: center; font-size: 10.5px; font-weight: 600; padding: 8px; line-height: 1.35; }
-  .igtile small { display: block; font-weight: 400; font-size: 9px; opacity: 0.7; }
+  .mo-reel { color: var(--cream); justify-content: flex-end; gap: 8px; }
+  .mo-reel .ep { align-self: flex-start; font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--cinnabar); color: var(--ivory); border-radius: 4px; padding: 3px 8px; }
+  .mo-reel .bighan { font-family: var(--sc); font-weight: 900; font-size: 58px; color: rgb(243 234 217 / 0.13); position: absolute; top: 14px; right: 12px; line-height: 1; }
+  .mo-reel .hook { font-family: var(--serif); font-weight: 700; font-size: 15px; line-height: 1.3; color: var(--parchment); }
+  .mo-reel .sub { font-size: 10px; color: var(--cream-dim); }
+  .iggrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; max-width: 440px; }
+  .igtile { aspect-ratio: 1; border-radius: 4px; display: grid; place-items: center; text-align: center; font-size: 10px; font-weight: 600; padding: 6px; line-height: 1.35; }
+  .igtile small { display: block; font-weight: 400; font-size: 8.5px; opacity: 0.7; }
   .t-parch { background: var(--ivory); border: 1px solid var(--gridline); color: var(--chestnut); }
-  .t-dark { background: var(--inkdark); color: #EFE6D4; }
+  .t-dark { background: var(--night); color: var(--cream); }
   .t-terra { background: var(--terracotta); color: var(--parchment); }
 
-  /* channel table */
-  .chan { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  /* TOC of guideline */
+  .gtoc { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .gtoc th { text-align: left; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); padding: 8px 12px; border-bottom: 2px solid var(--warmgray); }
+  .gtoc td { padding: 9px 12px; border-bottom: 1px dashed var(--gridline); vertical-align: top; }
+  .gtoc td:first-child { font-family: var(--sc); color: var(--chestnut); font-weight: 700; white-space: nowrap; }
+  .st { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; border-radius: 4px; padding: 2px 8px; white-space: nowrap; }
+  .st.done { background: rgb(138 74 44 / 0.18); color: var(--terracotta); }
+  .st.part { background: rgb(190 74 42 / 0.14); color: var(--cinnabar); }
+  .st.todo { background: rgb(59 42 32 / 0.08); color: var(--ink-dim); }
+  .tablewrap { overflow-x: auto; }
 
-  /* do dont */
-  .dodont { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-  .dodont .col { border-radius: 12px; padding: 20px 22px; }
-  .dodont .do { background: var(--ivory); border: 1px solid var(--gridline); }
-  .dodont .dont { background: rgb(38 27 18 / 0.04); border: 1px solid rgb(190 74 42 / 0.3); }
-  .dodont h4 { margin: 0 0 10px; font-family: var(--serif); font-size: 16.5px; color: var(--chestnut); }
-  .dodont ul { margin: 0; padding-left: 4px; list-style: none; }
-  .dodont li { font-size: 14.5px; margin-bottom: 8px; padding-left: 26px; position: relative; }
-  .dodont .do li::before { content: "✓"; position: absolute; left: 2px; color: var(--terracotta); font-weight: 700; }
-  .dodont .dont li::before { content: "✕"; position: absolute; left: 2px; color: var(--cinnabar); font-weight: 700; }
-
-  /* roadmap */
   .steps { counter-reset: step; display: grid; gap: 12px; }
-  .step {
-    display: flex; gap: 16px; align-items: flex-start; background: var(--ivory);
-    border: 1px solid var(--gridline); border-radius: 12px; padding: 16px 20px;
-  }
-  .step::before {
-    counter-increment: step; content: counter(step);
-    font-family: var(--serif); font-weight: 700; font-size: 17px; color: var(--parchment);
-    background: var(--chestnut); width: 32px; height: 32px; border-radius: 50%;
-    display: grid; place-items: center; flex-shrink: 0; margin-top: 2px;
-  }
-  .step b { color: var(--chestnut); }
-  .step p { margin: 2px 0 0; font-size: 14.5px; }
+  .step { display: flex; gap: 16px; align-items: flex-start; background: var(--night-2); border: 1px solid rgb(239 227 205 / 0.14); border-radius: 12px; padding: 16px 20px; }
+  .step::before { counter-increment: step; content: counter(step);
+    font-family: var(--serif); font-weight: 700; font-size: 17px; color: var(--night);
+    background: #E8CFA8; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; margin-top: 2px; }
+  .step b { color: var(--parchment); }
+  .step p { margin: 2px 0 0; font-size: 14.5px; color: var(--cream-dim); }
 
-  footer { padding: 46px 0 70px; }
-  .src { font-size: 13px; color: rgb(59 42 32 / 0.62); border-top: 1px dashed var(--warmgray); padding-top: 22px; }
-  .src code { font-size: 11.5px; }
+  footer { padding: 48px 0 76px; }
+  .src { font-size: 13px; color: var(--cream-dim); border-top: 1px dashed rgb(239 227 205 / 0.25); padding-top: 22px; }
 
-  @media (max-width: 640px) {
-    .hero { gap: 28px; }
-    .typerow .lbl { width: 100%; }
-  }
+  @media (max-width: 640px) { .typerow .lbl { width: 100%; } .layer { flex-direction: column; } .layer .name { flex-basis: auto; } }
 </style>
 </head>
 <body>
 
-<header class="wrap">
-  <div class="hero">
-    <div class="hero-copy">
-      <div class="eyebrow">Techieslab - Hanzi Practice - Đề xuất concept 08/2026</div>
-      <h1>Bộ nhận diện social cho Hanzi Practice</h1>
-      <p class="lede">Đối thủ không có social media để tham khảo - nghĩa là không có chuẩn nào để bị so sánh, và Hanzi Practice được quyền <em>định nghĩa</em> luôn diện mạo của "app luyện viết chữ Hán" trên mạng xã hội Việt Nam.</p>
-      <p class="muted">Tài liệu này kiểm kê những gì brand đã có trong repo, chỉ ra khoảng trống, đề xuất 3 hướng concept và triển khai hướng được chọn thành hệ template dùng được ngay cho Facebook, Instagram, TikTok.</p>
-    </div>
-    <div class="hero-cell-zone">
-      <div class="tzg hero-cell">
-        <span class="han">汉</span>
-        <span class="seal">练</span>
-      </div>
-    </div>
-  </div>
+<header class="wrap on-dark">
+  <div class="hero-han" aria-hidden="true">汉</div>
+  <div class="eyebrow">Techieslab - Hanzi Practice - Brand Book v2 - 08/2026</div>
+  <h1>Nhận diện thương hiệu Hanzi Practice, đủ mọi tầng</h1>
+  <p class="lede" style="max-width:62ch;">Không chỉ template social. Tài liệu này đi từ định nghĩa <em>nhận diện thương hiệu gồm những gì</em>, soi Hanzi Practice đang đứng ở đâu trên từng thành phần, rồi đề xuất ba concept trọn vẹn - kèm logo mở rộng, mascot (tuỳ chọn), giọng nói, motion và ứng dụng. <span class="seal" style="width:34px;height:34px;font-size:18px;vertical-align:-8px;">练</span></p>
   <nav class="toc">
-    <a href="#s1">一 Đã có gì</a>
-    <a href="#s2">二 Còn thiếu gì</a>
-    <a href="#s3">三 Ba hướng concept</a>
-    <a href="#s4">四 Hệ nhận diện</a>
-    <a href="#s5">五 Hệ template</a>
-    <a href="#s6">六 Nhịp feed</a>
-    <a href="#s7">七 Theo kênh</a>
-    <a href="#s8">八 Do &amp; Don't</a>
-    <a href="#s9">九 Lộ trình</a>
+    <a href="#c0">〇 Bản đồ nhận diện</a>
+    <a href="#c1">一 Brand platform</a>
+    <a href="#c2">二 Ba concept</a>
+    <a href="#c3">三 Hệ visual</a>
+    <a href="#c4">四 Mascot</a>
+    <a href="#c5">五 Voice &amp; tone</a>
+    <a href="#c6">六 Ứng dụng social</a>
+    <a href="#c7">七 Mục lục guideline</a>
   </nav>
 </header>
 
-<section id="s1" class="wrap">
-  <div class="secmark"><span class="num">一</span><h2>Nền tảng đã có - nhiều hơn ta tưởng</h2></div>
-  <p class="secsub">Repo <code>Techieslab-app/Hanzi-Practice</code> không chỉ có bảng màu + font. File <code>web-frontend/public/design-system.png</code> thực chất là một mini brand guideline hoàn chỉnh cho product. Việc của social kit là <b>kế thừa</b>, không phát minh lại.</p>
-  <div class="grid g3">
-    <div class="card">
-      <h4>Logo system (đã chốt)</h4>
-      <ul>
-        <li>Chữ 汉 trong ô điền chữ (tianzige) dạng trang sổ tay, gáy lò xo terracotta, nét bút son quét dưới chân</li>
-        <li>4 biến thể: primary, icon mark, lockup ngang, one-color</li>
-        <li>Đã có quy định clear space (bằng chiều cao nét bút) và cỡ tối thiểu 120px / 25mm</li>
-      </ul>
+<section id="c0" class="wrap on-dark">
+  <div class="chap"><span class="stamp">〇</span><h2>Bản đồ nhận diện - và Hanzi đang có gì</h2></div>
+  <p class="chapsub">Một bộ nhận diện hoàn chỉnh có 4 tầng, tầng trên quyết định tầng dưới. Brand guideline là <em>cuốn tài liệu quy tắc</em> gói cả 4 tầng lại để bất kỳ ai làm design/content đều ra cùng một brand. Màu đậm = đã có trong repo, viền đứt cam = mới có một nửa, viền đứt xám = chưa có.</p>
+  <div class="layers">
+    <div class="layer">
+      <div class="name"><small>Tầng 1</small>Chiến lược</div>
+      <div class="items">
+        <span class="pill part">Định vị</span><span class="pill have">Thuộc tính tính cách (5)</span><span class="pill miss">Brand essence</span><span class="pill miss">Archetype</span><span class="pill part">Khách hàng mục tiêu</span>
+      </div>
     </div>
-    <div class="card">
-      <h4>Bảng màu (7 màu, token trong code)</h4>
-      <ul>
-        <li>Parchment #F3EAD9 - nền chủ đạo</li>
-        <li>Soft Ivory #F6EFE2 - nền thẻ</li>
-        <li>Ink Brown #3B2A20 - chữ</li>
-        <li>Terracotta #8A4A2C + Deep Chestnut #5C3620 - nhấn</li>
-        <li>Warm Gray #C9BFA9 + Faint Grid #D9D0BD - viền, lưới</li>
-      </ul>
+    <div class="layer">
+      <div class="name"><small>Tầng 2</small>Verbal identity</div>
+      <div class="items">
+        <span class="pill have">Tên + tagline EN</span><span class="pill miss">Tagline VI</span><span class="pill miss">Voice &amp; tone</span><span class="pill miss">Naming series nội dung</span><span class="pill miss">Hashtag system</span>
+      </div>
     </div>
-    <div class="card">
-      <h4>Typography (4 vai trò)</h4>
-      <ul>
-        <li>Source Serif 4 - display, tiêu đề</li>
-        <li>Inter - UI, chữ chạy</li>
-        <li>Noto Serif SC / Source Han Serif SC - chữ Hán</li>
-        <li>Ma Shan Zheng - nét bút viết tay (accent)</li>
-      </ul>
+    <div class="layer">
+      <div class="name"><small>Tầng 3</small>Visual identity</div>
+      <div class="items">
+        <span class="pill have">Logo (4 biến thể)</span><span class="pill have">Màu (7 token)</span><span class="pill have">Typography (4 font)</span><span class="pill have">Motif giấy-mực</span><span class="pill part">Illustration thuỷ mặc</span><span class="pill miss">Mascot</span><span class="pill miss">Icon set</span><span class="pill miss">Motion &amp; sound</span><span class="pill miss">Photography</span>
+      </div>
     </div>
-    <div class="card">
-      <h4>Hoạ tiết đồ hoạ</h4>
-      <ul>
-        <li>Nét bút son (brush stroke)</li>
-        <li>Lưới tianzige nét đứt</li>
-        <li>Góc giấy cong, texture giấy dó</li>
-        <li>Ảnh minh hoạ: tranh thuỷ mặc núi + trúc + mặt trời son, ảnh nghiên mực - bút lông</li>
-      </ul>
+    <div class="layer">
+      <div class="name"><small>Tầng 4</small>Ứng dụng</div>
+      <div class="items">
+        <span class="pill have">Web app</span><span class="pill have">Phiếu PDF</span><span class="pill miss">Social template</span><span class="pill miss">Avatar / cover kênh</span><span class="pill miss">Video frame</span><span class="pill miss">Merch / print</span>
+      </div>
     </div>
-    <div class="card">
-      <h4>Tính cách &amp; khẩu hiệu</h4>
-      <ul>
-        <li>5 thuộc tính: Calm - Scholarly - Tactile - Contemporary - Educational</li>
-        <li>Tagline: "Chinese Writing Practice &amp; Worksheet Generator"</li>
-        <li>Đã dùng trên stationery: "Learn. Write. Grow." / 书写·练习·成长</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4>Chất liệu nội dung có sẵn</h4>
-      <ul>
-        <li>33 ảnh preview template phiếu (webp) - dùng làm content được ngay</li>
-        <li>~4.800 từ đã enrich / 13.865 mục, 58 chủ đề, HSK 1-6 cả 3 chuẩn (gồm HSK 3.0 - 2026)</li>
-        <li>Điểm khác biệt độc quyền: âm <b>Hán Việt</b> + chiết tự + phiếu từ bài hát / video YouTube</li>
-      </ul>
-    </div>
+  </div>
+  <div class="legend">
+    <span><span class="pill have" style="margin-right:6px;">đã có</span>nằm trong <code>design-system.png</code> + <code>index.css</code> + <code>public/brand/</code></span>
+    <span><span class="pill part" style="margin-right:6px;">một nửa</span>có chất liệu nhưng chưa thành quy tắc</span>
+    <span><span class="pill miss" style="margin-right:6px;">chưa có</span>tài liệu này đề xuất</span>
   </div>
 </section>
 
-<section id="s2" class="wrap">
-  <div class="secmark"><span class="num">二</span><h2>Khoảng trống cần lấp cho social</h2></div>
-  <p class="secsub">Guideline hiện tại phục vụ product UI và print. Chưa có lớp nào quy định brand xuất hiện thế nào trong feed - nơi ảnh bị thu nhỏ còn 3cm, lướt qua trong 0,8 giây.</p>
-  <div class="audit">
-    <div class="col have">
-      <h4>Đã có - kế thừa nguyên trạng</h4>
+<section id="c1" class="wrap on-dark">
+  <div class="chap"><span class="stamp">一</span><h2>Brand platform - tầng chiến lược</h2></div>
+  <p class="chapsub">Mọi lựa chọn visual bên dưới phải trả lời được về tầng này. Đề xuất dựa trên chính sản phẩm: phiếu luyện viết đẹp, có âm Hán Việt, chiết tự, học qua bài hát - cho người Việt học tiếng Trung.</p>
+  <div class="grid g3">
+    <div class="sheet">
+      <h4>Brand essence</h4>
+      <p style="font-family:var(--serif);font-size:19px;color:var(--chestnut);margin:6px 0;">"Viết để nhớ"</p>
+      <p class="muted">Niềm tin lõi: chữ Hán không học được bằng mắt, phải học bằng tay. Mọi nội dung đều quy về hành động <b>viết</b> - chậm, đều, có chủ đích.</p>
+    </div>
+    <div class="sheet">
+      <h4>Archetype: Người thầy điềm tĩnh</h4>
+      <p class="muted">The Sage pha Caregiver - một gia sư kiên nhẫn, chuộng ví dụ hơn lý thuyết, khen đúng lúc, không bao giờ hối thúc. Đối lập chủ đích với sự ồn ào gamification của các app lớn.</p>
+    </div>
+    <div class="sheet">
+      <h4>Tính cách (đã chốt trong guideline gốc)</h4>
       <ul>
-        <li>Logo 4 biến thể + quy tắc dùng</li>
-        <li>7 màu lõi, 4 font, texture giấy</li>
-        <li>Hoạ tiết: nét bút, lưới ô, góc giấy</li>
-        <li>Illustration style thuỷ mặc đã thống nhất</li>
-        <li>Tone sản phẩm: điềm tĩnh, học thuật, ấm</li>
+        <li><b>Calm</b> - nhịp chậm, nhiều khoảng thở</li>
+        <li><b>Scholarly</b> - chính xác, có nguồn</li>
+        <li><b>Tactile</b> - giấy, mực, tay viết thật</li>
+        <li><b>Contemporary</b> - gọn, không cổ trang hoá</li>
+        <li><b>Educational</b> - mỗi post dạy được một thứ</li>
       </ul>
     </div>
-    <div class="col miss">
-      <h4>Chưa có - social kit này giải quyết</h4>
-      <ul>
-        <li>Avatar + cover chuẩn cho từng kênh</li>
-        <li>Hệ template post: từ vựng, chiết tự, carousel, quote, story, reel cover</li>
-        <li>Đơn vị nội dung chuẩn (word lockup) lặp lại để tạo nhận biết</li>
-        <li>Quy tắc tương phản trên mobile (palette hiện tại rất nhã nhưng dễ chìm trong feed)</li>
-        <li>Motion identity cho video ngắn + nhịp feed Instagram</li>
-        <li>Do &amp; Don't về văn hoá và chữ Hán</li>
-      </ul>
-    </div>
+  </div>
+  <h3>Tagline - đã có tiếng Anh, đề xuất bổ sung tiếng Việt</h3>
+  <div class="grid g3">
+    <div class="sheet"><h4>Giữ nguyên (EN + CN)</h4><p>"Learn. Write. Grow." và 书写·练习·成长 - đã dùng trên stationery, giữ làm chuẩn quốc tế.</p></div>
+    <div class="sheet"><h4>Đề xuất VI chính</h4><p style="font-family:var(--serif);font-size:17px;color:var(--chestnut);">"Viết để nhớ lâu"</p><p class="muted">Ngắn, đúng insight (viết tay giúp ghi nhớ), dùng được làm CTA.</p></div>
+    <div class="sheet"><h4>Đề xuất VI phụ (campaign)</h4><p style="font-family:var(--serif);font-size:17px;color:var(--chestnut);">"Mỗi ngày một chữ, mỗi chữ một chuyện"</p><p class="muted">Dùng cho series content chủ lực, gắn với chiết tự - kể chuyện đằng sau con chữ.</p></div>
   </div>
 </section>
 
-<section id="s3" class="wrap">
-  <div class="secmark"><span class="num">三</span><h2>Ba hướng concept</h2></div>
-  <p class="secsub">Cả ba đều đứng trên nền tảng sẵn có - khác nhau ở <b>thiết bị thị giác trung tâm</b> mà mọi post xoay quanh.</p>
-  <div class="grid g3">
-    <div class="card concept">
-      <span class="hanbg">纸</span>
-      <span class="tag">Concept A</span>
-      <h4>Bàn học thư pháp</h4>
-      <p>Mọi post là một tờ giấy đặt trên mặt bàn: phiếu luyện viết chụp flat-lay, kẹp giấy, bút lông, bóng đổ thật. Carousel = lật từng trang sổ.</p>
-      <p class="pros"><b>Mạnh:</b> tactile, khoe được chính sản phẩm (phiếu đẹp), rất hợp Facebook group seeding.<br><b>Yếu:</b> tốn công chụp/dựng mockup, khó scale khi cần 15-20 post/tháng.</p>
-    </div>
-    <div class="card concept rec">
-      <span class="hanbg">田</span>
-      <span class="tag">Concept B - đề xuất làm khung</span>
-      <h4>Ô vuông kể chuyện</h4>
-      <p>Ô điền chữ tianzige trở thành hệ lưới của mọi layout: chữ của ngày nằm trong ô, carousel là dãy ô, feed Instagram 3x3 đọc như một tờ phiếu khổng lồ đang được điền dần.</p>
-      <p class="pros"><b>Mạnh:</b> độc quyền (không app nào dám nhận ô tianzige làm logo-lưới), scale vô hạn bằng template, gắn chặt với sản phẩm.<br><b>Yếu:</b> cần kỷ luật layout để không đơn điệu - giải bằng nhịp màu đảo (mục 六).</p>
-    </div>
-    <div class="card concept">
-      <span class="hanbg">墨</span>
-      <span class="tag">Concept C</span>
-      <h4>Mực &amp; Son</h4>
-      <p>Editorial hiện đại: typo serif lớn, đánh số mục bằng chữ Hán 一二三, dấu triện son đỏ làm chữ ký. Tham chiếu trực tiếp UI trang nghiên cứu chinese-learning-landscape (số mục chữ Hán, divider ký tự, bảng dữ liệu sạch).</p>
-      <p class="pros"><b>Mạnh:</b> sang, hợp nội dung kiến thức/số liệu, chi phí sản xuất thấp nhất.<br><b>Yếu:</b> đứng một mình sẽ lạnh, thiếu chất "luyện viết".</p>
+<section id="c2" class="wrap on-dark">
+  <div class="chap"><span class="stamp">二</span><h2>Ba concept - ba thế giới trọn vẹn</h2></div>
+  <p class="chapsub">Mỗi concept là một bộ nhận diện đầy đủ (ý niệm - logo - màu - mascot - motif), không phải ba kiểu template. Chọn một thế giới, các chương sau triển khai nó.</p>
+
+  <div class="concept-row">
+    <div class="concept-head"><span class="kicker">Concept A</span><h4>Thư phòng</h4><span class="zh">书房</span></div>
+    <div class="concept-body">
+      <div class="concept-text">
+        <p>Thế giới của một bàn học thư pháp đương đại: giấy dó, nghiên mực, tranh thuỷ mặc, ánh chiều. Kế thừa 100% chất liệu đã có trong repo - đây là hướng "an toàn, làm ngay".</p>
+        <p class="facet"><b>Logo:</b> giữ nguyên mark 汉 trang sổ. <b>Mascot:</b> không cần - đồ vật (bút, nghiên, giấy) tự kể chuyện. <b>Motif:</b> tranh thuỷ mặc, ảnh flat-lay thật. <b>Hợp khi:</b> muốn ra kênh trong 2 tuần, đội design mỏng.</p>
+        <p class="facet"><b>Rủi ro:</b> đẹp nhưng tĩnh - dễ giống một trang sưu tầm thư pháp hơn một app; khó làm video ngắn có nhân vật.</p>
+      </div>
+      <div class="concept-visual">
+        <div class="strip"><div style="background:#F3EAD9;"></div><div style="background:#C9BFA9;"></div><div style="background:#8A4A2C;"></div><div style="background:#3B2A20;"></div></div>
+        <div class="demo" style="background:var(--parchment);color:var(--ink);font-family:var(--serif);">Ảnh thật + chữ serif trên giấy. Mặt trời son là điểm đỏ duy nhất.</div>
+      </div>
     </div>
   </div>
+
+  <div class="concept-row">
+    <div class="concept-head"><span class="kicker rec">Concept B - đề xuất</span><h4>Ô vuông sống</h4><span class="zh">田字格</span></div>
+    <div class="concept-body">
+      <div class="concept-text">
+        <p>Ô điền chữ tianzige - thứ mọi người học chữ Hán đều cầm trên tay - trở thành <b>hệ lưới và nhân vật chính</b>: chữ của ngày sống trong ô, feed Instagram là tờ phiếu khổng lồ đang điền dần, logo động thay chữ trong ô theo mùa. Hiện đại, có hệ thống, không app nào chiếm được vì nó chính là sản phẩm của Hanzi.</p>
+        <p class="facet"><b>Logo:</b> mark 汉 hiện tại + phiên bản động (mục 三). <b>Mascot:</b> tương thích cả 3 phương án ở mục 四. <b>Motif:</b> lưới ô, dấu triện, nét bút son. <b>Hợp khi:</b> cần scale 15-20 post/tháng bằng template và muốn nhận diện tức thì khi lướt feed.</p>
+        <p class="facet"><b>Rủi ro:</b> kỷ luật kém sẽ đơn điệu - trị bằng nhịp màu đảo và các post hero flat-lay mượn từ A.</p>
+      </div>
+      <div class="concept-visual">
+        <div class="strip"><div style="background:#F3EAD9;"></div><div style="background:#BE4A2A;"></div><div style="background:#3B2A20;"></div><div style="background:#261B12;"></div></div>
+        <div class="demo" style="background:var(--parchment);display:flex;align-items:center;gap:10px;">
+          <span class="tzg" style="width:44px;height:44px;display:grid;place-items:center;"><span style="font-family:var(--sc);font-weight:900;font-size:24px;color:var(--ink);position:relative;z-index:1;">茶</span></span>
+          <span style="color:var(--ink);">Ô vuông = khung của mọi layout</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-row">
+    <div class="concept-head"><span class="kicker">Concept C</span><h4>Cầu chữ</h4><span class="zh">汉越</span></div>
+    <div class="concept-body">
+      <div class="concept-text">
+        <p>Xây cả nhận diện quanh vũ khí độc quyền: <b>âm Hán Việt</b>. Mọi layout là hai cột song song Việt - Trung nối nhau bằng nét son; typography-first, gần như không cần hình. Người Việt nhìn vào thấy ngay "app này hiểu mình": 汉 không chỉ là "hàn", nó là "HÁN" trong Hán Việt, "hảo hán", "Hán học".</p>
+        <p class="facet"><b>Logo:</b> lockup hai ngôn ngữ đối xứng. <b>Mascot:</b> Mèo Mão (mục 四) sinh ra từ chính concept này. <b>Motif:</b> dấu nối, ngoặc kép, cặp cột chữ. <b>Hợp khi:</b> đánh mạnh content kiến thức từ nguyên - chiết tự trên Threads/Facebook.</p>
+        <p class="facet"><b>Rủi ro:</b> nặng chữ, kén người lướt nhanh; khó nổi trên TikTok nếu thiếu nhân vật dẫn.</p>
+      </div>
+      <div class="concept-visual">
+        <div class="strip"><div style="background:#F6EFE2;"></div><div style="background:#5C3620;"></div><div style="background:#BE4A2A;"></div><div style="background:#3B2A20;"></div></div>
+        <div class="demo" style="background:var(--ivory);color:var(--ink);display:flex;justify-content:center;gap:10px;align-items:center;">
+          <span style="font-family:var(--sc);font-weight:900;font-size:22px;">汉</span>
+          <span style="color:var(--cinnabar);font-weight:700;">-</span>
+          <span style="font-family:var(--serif);font-weight:700;letter-spacing:0.08em;color:var(--chestnut);">HÁN</span>
+          <span style="color:var(--cinnabar);font-weight:700;">-</span>
+          <span>hảo hán</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="verdict">
     <span class="seal">汉</span>
-    <h4>Đề xuất: B làm khung xương, A làm chất liệu, C làm giọng chữ</h4>
-    <p>Lưới tianzige (B) là hệ layout của mọi template. Texture giấy, flat-lay phiếu và ảnh thuỷ mặc (A) là chất liệu nền cho các post "hero" mỗi tuần. Typo serif lớn, số mục chữ Hán và dấu triện son (C) là giọng điệu và chữ ký. Một hệ - ba nguồn, và cả ba đều đã có mầm trong repo.</p>
+    <h4>Khuyến nghị: B làm hệ xương, A làm chất liệu ảnh, C làm chất liệu nội dung</h4>
+    <p>Ô vuông sống cho nhận diện tức thì và khả năng scale; các post hero mỗi tuần mượn thế giới ảnh của Thư phòng; còn Cầu chữ trở thành format nội dung chủ lực (word lockup 4 tầng, series chiết tự). Nếu team chỉ được chọn một và muốn khác biệt tối đa: chọn B.</p>
   </div>
 </section>
 
-<section id="s4" class="wrap">
-  <div class="secmark"><span class="num">四</span><h2>Hệ nhận diện đề xuất</h2></div>
+<section id="c3" class="wrap on-dark">
+  <div class="chap"><span class="stamp">三</span><h2>Hệ visual - triển khai concept đã chọn</h2></div>
 
-  <h3>4.1 - Bốn thiết bị chữ ký (signature devices)</h3>
-  <p class="secsub">Bốn thứ lặp lại trên mọi ấn phẩm để người lướt feed nhận ra Hanzi Practice trước cả khi đọc tên.</p>
-  <div class="grid g2">
-    <div class="card">
-      <h4>1. Dấu triện son <span class="seal" style="width:30px;height:30px;font-size:16px;vertical-align:middle;margin-left:6px;">练</span></h4>
-      <p>Con dấu vuông màu chu sa (#BE4A2A) khắc chữ 练 (luyện), nghiêng nhẹ 3 độ, đặt cố định góc phải-dưới mọi post - như cách hoạ sĩ đóng triện lên tranh. Đây là chữ ký thay logo ở những layout chật.</p>
+  <h3>3.1 - Logo: giữ mark, mở rộng cách dùng</h3>
+  <div class="grid g3">
+    <div class="sheet">
+      <h4>Giữ nguyên</h4>
+      <p class="muted">Mark 汉 trong trang sổ + 4 biến thể, clear space, min size - đã chuẩn trong <code>design-system.png</code>, không vẽ lại.</p>
     </div>
-    <div class="card">
-      <h4>2. Word lockup - đơn vị nội dung chuẩn</h4>
-      <p>Một khối 4 tầng cố định: chữ Hán trong ô - pinyin - âm Hán Việt - nghĩa tiếng Việt. Âm Hán Việt là thứ không đối thủ quốc tế nào có, nên được in đậm màu chestnut để thành điểm nhận diện. Demo ở dưới.</p>
+    <div class="sheet">
+      <h4>Mới: logo động theo mùa</h4>
+      <p class="muted">Khung sổ và gáy lò xo bất biến; <b>chữ trong ô được thay theo chiến dịch</b>: Tết đổi thành 福, mùa thi HSK thành 考, khai giảng thành 学. Quy tắc: một chữ duy nhất, luôn Noto Serif SC Black, không đổi khung - đổi ruột.</p>
     </div>
-    <div class="card">
-      <h4>3. Nét bút son quét</h4>
-      <p>Brush stroke terracotta (đã có sẵn <code>public/brand/brush-stroke.webp</code>) dùng làm gạch chân từ khoá trong tiêu đề và làm transition trong video. Chỉ một nét mỗi layout - dùng nhiều sẽ loãng.</p>
-    </div>
-    <div class="card">
-      <h4>4. Gáy sổ &amp; góc giấy</h4>
-      <p>Ba vạch gáy lò xo terracotta bên trái (từ logo) đánh dấu các post dạng "trang sổ tay"; góc giấy cong (<code>paper-corner.webp</code>) kết thúc carousel như một trang sắp lật - mời người xem vuốt tiếp.</p>
+    <div class="sheet">
+      <h4>Mới: bộ dấu triện phụ</h4>
+      <p class="muted">Triện vuông chu sa 练 (luyện) làm chữ ký góc mọi ấn phẩm; thêm 汉 cho watermark phiếu PDF và 好 cho sticker khen trong cộng đồng. Tối đa 3 con dấu, không sinh thêm.</p>
     </div>
   </div>
 
-  <h3>4.2 - Word lockup demo</h3>
-  <div class="lockup">
-    <div class="tzg cell"><span class="han">汉</span></div>
-    <dl>
-      <dt>Pinyin</dt><dd class="py">hàn</dd>
-      <dt>Hán Việt</dt><dd class="hv">HÁN</dd>
-      <dt>Nghĩa</dt><dd>chữ Hán, dân tộc Hán</dd>
-      <dt>Ví dụ</dt><dd><span style="font-family:var(--sc);">我在学汉字</span> <span class="muted small">- Tôi đang học chữ Hán</span></dd>
-    </dl>
-  </div>
-
-  <h3>4.3 - Bảng màu social: 7 màu lõi + 2 màu mở rộng</h3>
-  <p class="secsub">Giữ nguyên 7 token trong <code>index.css</code>. Đề xuất thêm 2 màu chỉ dùng cho social, giải quyết đúng một vấn đề: palette giấy dó rất nhã nhưng <b>thiếu tương phản khi bị thu nhỏ trong feed</b>.</p>
+  <h3>3.2 - Màu: 7 token gốc + 2 màu social</h3>
   <div class="swatches">
     <div class="sw"><div class="chip" style="background:#F3EAD9;"></div><div class="meta"><b>Parchment</b><span>#F3EAD9 - nền chính</span></div></div>
     <div class="sw"><div class="chip" style="background:#F6EFE2;"></div><div class="meta"><b>Soft Ivory</b><span>#F6EFE2 - nền thẻ</span></div></div>
     <div class="sw"><div class="chip" style="background:#3B2A20;"></div><div class="meta"><b>Ink Brown</b><span>#3B2A20 - chữ</span></div></div>
     <div class="sw"><div class="chip" style="background:#8A4A2C;"></div><div class="meta"><b>Terracotta</b><span>#8A4A2C - nhấn</span></div></div>
-    <div class="sw"><div class="chip" style="background:#5C3620;"></div><div class="meta"><b>Deep Chestnut</b><span>#5C3620 - tiêu đề</span></div></div>
+    <div class="sw"><div class="chip" style="background:#5C3620;"></div><div class="meta"><b>Chestnut</b><span>#5C3620 - tiêu đề</span></div></div>
     <div class="sw"><div class="chip" style="background:#C9BFA9;"></div><div class="meta"><b>Warm Gray</b><span>#C9BFA9 - viền</span></div></div>
-    <div class="sw"><div class="chip" style="background:#D9D0BD;"></div><div class="meta"><b>Faint Grid</b><span>#D9D0BD - lưới ô</span></div></div>
-    <div class="sw" style="outline:2px solid var(--cinnabar); outline-offset:2px;"><div class="chip" style="background:#BE4A2A;"></div><div class="meta"><b>Chu Sa (mới)</b><span>#BE4A2A - dấu triện, CTA</span></div></div>
-    <div class="sw" style="outline:2px solid var(--cinnabar); outline-offset:2px;"><div class="chip" style="background:#261B12;"></div><div class="meta"><b>Mực Đêm (mới)</b><span>#261B12 - nền post đảo</span></div></div>
+    <div class="sw"><div class="chip" style="background:#D9D0BD;"></div><div class="meta"><b>Faint Grid</b><span>#D9D0BD - lưới</span></div></div>
+    <div class="sw" style="outline:2px solid var(--cinnabar);outline-offset:2px;"><div class="chip" style="background:#BE4A2A;"></div><div class="meta"><b>Chu Sa (mới)</b><span>#BE4A2A - triện, CTA</span></div></div>
+    <div class="sw" style="outline:2px solid var(--cinnabar);outline-offset:2px;"><div class="chip" style="background:#261B12;"></div><div class="meta"><b>Mực Đêm (mới)</b><span>#261B12 - nền đảo</span></div></div>
   </div>
   <div class="ratio-bar">
     <div style="flex:60;background:#F3EAD9;color:#5C3620;">60% giấy</div>
-    <div style="flex:20;background:#261B12;color:#EFE6D4;">20% mực</div>
+    <div style="flex:20;background:#261B12;color:#EFE3CD;">20% mực</div>
     <div style="flex:12;background:#8A4A2C;color:#F3EAD9;">12% đất nung</div>
     <div style="flex:8;background:#BE4A2A;color:#F6EFE2;">8% son</div>
   </div>
-  <p class="small muted">Tỷ lệ tính trên toàn feed một tháng, không phải từng post. Post nền Mực Đêm chen giữa các post giấy tạo tương phản và nhịp - xem mục 六.</p>
+  <p class="small dim">Hai màu mới giải đúng một bài toán: palette giấy dó rất nhã nhưng thiếu tương phản khi bị nén nhỏ trong feed. Chu Sa chỉ dành cho dấu triện + CTA; Mực Đêm chỉ làm nền post đảo - không dùng lẫn vai.</p>
 
-  <h3>4.4 - Thang chữ cho social</h3>
-  <div class="card">
-    <div class="typerow"><span class="lbl">Hook / tiêu đề post - Source Serif 4 Bold</span><span style="font-family:var(--serif);font-weight:700;font-size:26px;color:var(--chestnut);">Chữ này 90% người học viết sai nét đầu</span></div>
-    <div class="typerow"><span class="lbl">Chữ Hán hero - Noto Serif SC Black</span><span style="font-family:var(--sc);font-weight:900;font-size:40px;">学而不厌</span></div>
-    <div class="typerow"><span class="lbl">Nét viết tay accent - Ma Shan Zheng</span><span style="font-family:var(--brush);font-size:34px;">每天一字</span></div>
-    <div class="typerow"><span class="lbl">Pinyin - Inter Italic</span><span style="font-style:italic;font-size:17px;">xué ér bú yàn</span></div>
-    <div class="typerow"><span class="lbl">Âm Hán Việt - Serif SemiBold, giãn cách</span><span style="font-family:var(--serif);font-weight:600;letter-spacing:0.08em;color:var(--chestnut);font-size:17px;">HỌC NHI BẤT YẾM</span></div>
-    <div class="typerow"><span class="lbl">Chữ chạy / caption - Inter Regular</span><span style="font-size:15px;">Học không biết chán - lời Khổng Tử về sự bền bỉ khi luyện chữ.</span></div>
+  <h3>3.3 - Typography: 4 font, 6 vai trò, quy tắc cứng</h3>
+  <div class="sheet">
+    <div class="typerow"><span class="lbl">Hook / tiêu đề - Source Serif 4 Bold</span><span style="font-family:var(--serif);font-weight:700;font-size:25px;color:var(--chestnut);">Chữ này 90% người học viết sai nét đầu</span></div>
+    <div class="typerow"><span class="lbl">Chữ Hán hero - Noto Serif SC Black</span><span style="font-family:var(--sc);font-weight:900;font-size:38px;color:var(--ink);">学而不厌</span></div>
+    <div class="typerow"><span class="lbl">Accent viết tay - Ma Shan Zheng</span><span style="font-family:var(--brush);font-size:32px;color:var(--ink);">每天一字</span></div>
+    <div class="typerow"><span class="lbl">Pinyin - Inter Italic</span><span style="font-style:italic;font-size:16.5px;">xué ér bú yàn</span></div>
+    <div class="typerow"><span class="lbl">Âm Hán Việt - Serif SemiBold giãn cách</span><span style="font-family:var(--serif);font-weight:600;letter-spacing:0.08em;color:var(--chestnut);font-size:16.5px;">HỌC NHI BẤT YẾM</span></div>
+    <div class="typerow"><span class="lbl">Caption - Inter Regular</span><span style="font-size:15px;">Học không biết chán - lời Khổng Tử về sự bền bỉ khi luyện chữ.</span></div>
   </div>
-  <p class="small muted">Quy tắc cứng: chữ Hán chỉ được set bằng Noto Serif SC hoặc Ma Shan Zheng, không bao giờ dùng font hệ thống, không bold giả, không kéo giãn. Pinyin luôn nghiêng, Hán Việt luôn viết hoa có giãn cách - hai tầng này không đổi chỗ cho nhau.</p>
+  <p class="small dim">Quy tắc cứng: chữ Hán chỉ set bằng Noto Serif SC hoặc Ma Shan Zheng - không font hệ thống, không bold giả, không kéo giãn. Pinyin luôn nghiêng; Hán Việt luôn viết hoa giãn cách. Hai tầng này không đổi chỗ.</p>
+
+  <h3>3.4 - Word lockup: đơn vị nội dung chuẩn (từ concept C)</h3>
+  <div class="sheet lockup">
+    <div class="tzg cell"><span class="han">汉</span></div>
+    <dl>
+      <dt>Pinyin</dt><dd class="py">hàn</dd>
+      <dt>Hán Việt</dt><dd class="hv">HÁN</dd>
+      <dt>Nghĩa</dt><dd>chữ Hán, dân tộc Hán</dd>
+      <dt>Gặp trong</dt><dd>hảo hán, Hán học, chữ Hán</dd>
+    </dl>
+  </div>
+  <p class="small dim">Khối 4 tầng cố định, xuất hiện nguyên dạng trên mọi kênh. Âm Hán Việt là thứ không đối thủ quốc tế nào có - luôn được in đậm màu chestnut.</p>
+
+  <h3>3.5 - Motif, icon, ảnh, motion</h3>
+  <div class="grid g2">
+    <div class="sheet">
+      <h4>Motif &amp; icon</h4>
+      <ul>
+        <li>Bộ motif: lưới tianzige, nét bút son, gáy sổ 3 vạch, góc giấy cong, dấu triện - đủ 5, không thêm</li>
+        <li>Icon set: nét line 1.75px, đầu nét bo tròn như đầu bút lông, màu chestnut trên nền sáng / cream trên nền tối</li>
+        <li>Mỗi layout tối đa 1 nét bút son và 2 chấm đỏ (triện + một điểm nhấn)</li>
+      </ul>
+    </div>
+    <div class="sheet">
+      <h4>Illustration &amp; photography</h4>
+      <ul>
+        <li>Illustration: thuỷ mặc ấm (đã có 11 file trong <code>public/brand/</code>) - chỉ dùng làm nền hero, không làm nền chữ nhỏ</li>
+        <li>Photo: tay người thật viết trên phiếu in từ app, ánh sáng ấm, góc nhìn qua vai - không dùng stock người mẫu Tây</li>
+        <li>KHÔNG dùng style 3D vinyl-toy - đó là nhận diện của Antibot, hai brand không được lẫn</li>
+      </ul>
+    </div>
+    <div class="sheet">
+      <h4>Motion identity</h4>
+      <ul>
+        <li>Mở video: nét bút son quét ngang lộ hook (0,4s)</li>
+        <li>Kết video: đóng dấu triện "cộp" + logo 1 giây</li>
+        <li>Transition: loang mực, lật trang giấy - không dùng zoom/glitch</li>
+      </ul>
+    </div>
+    <div class="sheet">
+      <h4>Sound identity</h4>
+      <ul>
+        <li>Tiếng bút sột soạt trên giấy = âm thanh chữ ký (hợp ASMR TikTok)</li>
+        <li>Nhạc nền: guzheng/piano chậm, không EDM</li>
+        <li>Tiếng "cộp" khi đóng triện kết video - dần thành audio branding</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
-<section id="s5" class="wrap">
-  <div class="secmark"><span class="num">五</span><h2>Hệ template - 6 dạng post + 2 dạng dọc</h2></div>
-  <p class="secsub">Mỗi content pillar có một template cố định. Người theo dõi học được "ngữ pháp" của kênh: thấy ô vuông là từ mới, thấy nền mực là bài hát, thấy phép cộng là chiết tự.</p>
+<section id="c4" class="wrap on-dark">
+  <div class="chap"><span class="stamp">四</span><h2>Mascot - ba phương án (tuỳ chọn)</h2></div>
+  <p class="chapsub">Mascot không bắt buộc phải có ngay - hệ tĩnh ở chương 三 đã đủ chạy kênh. Nhưng nếu muốn một gương mặt cho video ngắn và sticker cộng đồng, đây là ba hướng, xếp theo mức đầu tư tăng dần.</p>
+  <div class="grid g3">
+    <div class="sheet mascot">
+      <div class="face">墨</div>
+      <div class="role">Phương án 1 - Mực</div>
+      <h4>Giọt mực biến hình</h4>
+      <p class="muted">Sinh ra từ nghiên mực, biến hình thành bộ thủ, nét chữ, dấu chấm hỏi. Tò mò, lém lỉnh, không nói - chỉ biến hình.</p>
+      <p class="vs"><b>Hợp:</b> transition video, reaction sticker, chỉ vào lỗi sai.<br><b>Mạnh:</b> animation-first, dễ vẽ mọi cỡ, trung tính văn hoá.<br><b>Yếu:</b> trừu tượng, khó "ôm được", ít bán được merch.</p>
+    </div>
+    <div class="sheet mascot">
+      <div class="face">笔</div>
+      <div class="role">Phương án 2 - Tiểu Bút</div>
+      <h4>Cây bút lông nhỏ</h4>
+      <p class="muted">Thân trúc, ngọn bút là mái tóc, nghiêm túc mà ấm - đúng chất "người thầy điềm tĩnh". Dẫn series "60 giây một chữ", gõ nhẹ vào nét viết sai.</p>
+      <p class="vs"><b>Hợp:</b> nhân vật dẫn chuyện video kiến thức, icon hướng dẫn trong app.<br><b>Mạnh:</b> gắn chặt sản phẩm, đúng Tactile/Scholarly.<br><b>Yếu:</b> hình thể cứng, biểu cảm hạn chế, dễ đơ nếu vẽ ẩu.</p>
+    </div>
+    <div class="sheet mascot" style="outline:2px solid var(--cinnabar);outline-offset:3px;">
+      <div class="face">猫</div>
+      <div class="role">Phương án 3 - Mão (khuyến nghị nếu làm)</div>
+      <h4>Mèo thư sinh</h4>
+      <p class="muted">Chú mèo đất vàng vẽ bằng 5-6 nét brush, ngồi điền phiếu, thi thoảng ngủ gật trên nghiên mực. Cài cắm độc quyền: <b>Mão là chi duy nhất người Việt khác Trung Quốc</b> - ta cầm tinh mèo, họ cầm tinh thỏ 兔. Chính là tinh thần "cầu chữ Việt - Trung" của brand.</p>
+      <p class="vs"><b>Hợp:</b> toàn bộ phễu - video, sticker, merch, cộng đồng.<br><b>Mạnh:</b> mèo thống trị social; câu chuyện văn hoá không ai bắt chước được.<br><b>Yếu:</b> cần character sheet bài bản (5 pose, 5 biểu cảm) trước khi dùng, nếu không sẽ trôi về "mèo cute chung chung".</p>
+    </div>
+  </div>
+  <p class="small dim" style="margin-top:16px;">Trình tự khuyên dùng: chạy hệ tĩnh 1-2 tháng → đo format video nào thắng → đầu tư character sheet cho Mão theo đúng style brush 2 màu (ink + terracotta) của brand, không 3D, không gradient.</p>
+</section>
+
+<section id="c5" class="wrap on-dark">
+  <div class="chap"><span class="stamp">五</span><h2>Voice &amp; tone - giọng của người thầy điềm tĩnh</h2></div>
+  <p class="chapsub">Bốn nguyên tắc: (1) nói như gia sư, không nói như sàn sale; (2) mỗi post dạy đúng một thứ; (3) chữ Hán không bao giờ đứng trần - luôn đủ pinyin + Hán Việt + nghĩa; (4) tiếng Việt trước, song ngữ khi cần.</p>
+  <div class="voice">
+    <div class="ex yes">
+      <span class="tagchip">Đúng giọng</span>
+      <p style="margin:0;">Chữ <span style="font-family:var(--sc);font-weight:700;">休</span> <i>(xiū - HƯU - nghỉ)</i> là hình một người đang tựa vào gốc cây. Hôm nay điền xong 10 ô thì cứ tựa cây một chút nhé.</p>
+    </div>
+    <div class="ex no">
+      <span class="tagchip">Sai giọng</span>
+      <p style="margin:0;">🔥🔥 XẢ KHO 500 CHỮ HSK MIỄN PHÍ!!! LƯU NGAY KẺO MẤT 😱😱 tag ngay đứa bạn lười học vào đây!!!</p>
+    </div>
+    <div class="ex yes">
+      <span class="tagchip">Khen kiểu Hanzi</span>
+      <p style="margin:0;">Nét mác của bạn đã thẳng hơn tuần trước rồi. 好 <i>(hǎo - HẢO)</i> - cứ đà này.</p>
+    </div>
+    <div class="ex no">
+      <span class="tagchip">Không phải Hanzi</span>
+      <p style="margin:0;">Sai rồi bạn ơi 😅 chữ này ai cũng biết mà viết sai hoài vậy.</p>
+    </div>
+  </div>
+  <h3>Naming series &amp; hashtag</h3>
+  <div class="grid g2">
+    <div class="sheet">
+      <h4>Series cố định (tên = format)</h4>
+      <ul>
+        <li><b>Mỗi ngày một chữ</b> - word lockup, 3-4 post/tuần</li>
+        <li><b>Chuyện sau con chữ</b> - carousel chiết tự</li>
+        <li><b>60 giây một chữ</b> - reel/TikTok thứ tự nét</li>
+        <li><b>Viết theo bài hát</b> - phiếu từ lyrics, nền Mực Đêm</li>
+      </ul>
+    </div>
+    <div class="sheet">
+      <h4>Hashtag system</h4>
+      <ul>
+        <li>Chữ ký: <code>#HanziPractice</code> <code>#VietDeNho</code> - mọi post</li>
+        <li>Series: <code>#MoiNgayMotChu</code> <code>#ChuyenSauConChu</code></li>
+        <li>Reach: <code>#hoctiengtrung</code> <code>#HSK</code> <code>#luyenviettiengtrung</code> - tối đa 3/post, không spam đuôi dài</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="c6" class="wrap on-dark">
+  <div class="chap"><span class="stamp">六</span><h2>Ứng dụng social - template &amp; nhịp kênh</h2></div>
+  <p class="chapsub">Sáu khung post vuông + hai khung dọc, mỗi series một khung cố định để người theo dõi học được "ngữ pháp" của kênh.</p>
   <div class="mocks">
-    <figure class="mockwrap" style="margin:0;">
+    <figure class="mockwrap">
       <div class="mock m-parch mo-word">
-        <div class="top"><span class="brandchip"><span class="mk">汉</span>Hanzi Practice</span><span class="lbl">Mỗi ngày một chữ</span></div>
+        <div class="top"><span class="brand">汉 Hanzi Practice</span><span class="lbl">Mỗi ngày một chữ</span></div>
         <div class="tzg minicell"><span class="han">茶</span></div>
-        <div style="text-align:center;">
-          <div class="py">chá</div>
-          <div class="hv">TRÀ</div>
-          <div class="vi">trà, chè - HSK 1</div>
-        </div>
+        <div style="text-align:center;"><div class="py">chá</div><div class="hv">TRÀ</div><div class="vi">trà, chè - HSK 1</div></div>
         <span class="seal sl">练</span>
       </div>
-      <figcaption><b>Mỗi ngày một chữ.</b> Word lockup đủ 4 tầng, chữ nằm trong ô tianzige. Pillar chủ lực, 3-4 post/tuần.</figcaption>
+      <figcaption><b>Mỗi ngày một chữ.</b> Word lockup 4 tầng trong ô tianzige.</figcaption>
     </figure>
-    <figure class="mockwrap" style="margin:0;">
-      <div class="mock m-ivory mo-comp">
+    <figure class="mockwrap">
+      <div class="mock m-parch mo-comp">
         <div class="headline">Vì sao 好 nghĩa là "tốt"?</div>
         <div class="row">
-          <div class="tzg minicell"><span class="han">女</span></div>
-          <span class="op">+</span>
-          <div class="tzg minicell"><span class="han">子</span></div>
-          <span class="op">=</span>
+          <div class="tzg minicell"><span class="han">女</span></div><span class="op">+</span>
+          <div class="tzg minicell"><span class="han">子</span></div><span class="op">=</span>
           <div class="tzg minicell" style="border-color:var(--terracotta);"><span class="han" style="color:var(--terracotta);">好</span></div>
         </div>
         <div class="cap">nữ + tử = mẹ bồng con = tốt lành</div>
         <span class="seal sl">练</span>
       </div>
-      <figcaption><b>Chiết tự.</b> Carousel: mỗi slide một phép cộng bộ thủ. Dữ liệu mnemonic đã có sẵn trong app.</figcaption>
+      <figcaption><b>Chuyện sau con chữ.</b> Carousel chiết tự - phép cộng bộ thủ.</figcaption>
     </figure>
-    <figure class="mockwrap" style="margin:0;">
-      <div class="mock m-parch mo-stroke">
-        <div class="headline">Thứ tự nét: 也</div>
-        <div class="row">
-          <div><div class="tzg minicell"><span class="han" style="opacity:0.35;">乛</span></div><div class="step">nét 1</div></div>
-          <div><div class="tzg minicell"><span class="han" style="opacity:0.65;">丩</span></div><div class="step">nét 2</div></div>
-          <div><div class="tzg minicell"><span class="han">也</span></div><div class="step">nét 3</div></div>
-        </div>
-        <span class="seal sl">练</span>
-      </div>
-      <figcaption><b>Mẹo &amp; thứ tự nét.</b> Chuỗi ô hiện dần từng nét - app đã có dữ liệu stroke order để xuất hình.</figcaption>
-    </figure>
-    <figure class="mockwrap" style="margin:0;">
+    <figure class="mockwrap">
       <div class="mock m-dark mo-song">
-        <span class="lbl">Học tiếng Trung qua bài hát</span>
+        <span class="lbl">Viết theo bài hát</span>
         <div class="art">♪</div>
-        <div>
-          <div class="zh">月亮代表我的心</div>
-          <div class="py">yuèliang dàibiǎo wǒ de xīn</div>
-          <div class="vi">Ánh trăng nói hộ lòng tôi</div>
-        </div>
+        <div><div class="zh">月亮代表我的心</div><div class="py">yuèliang dàibiǎo wǒ de xīn</div><div class="vi">Ánh trăng nói hộ lòng tôi</div></div>
         <span class="seal sl">练</span>
       </div>
-      <figcaption><b>Học qua bài hát.</b> Nền Mực Đêm - dạng post duy nhất nền tối, khoe tính năng độc quyền tạo phiếu từ lyrics.</figcaption>
+      <figcaption><b>Viết theo bài hát.</b> Nền Mực Đêm - dạng nền tối duy nhất, khoe tính năng độc quyền.</figcaption>
     </figure>
-    <figure class="mockwrap" style="margin:0;">
-      <div class="mock m-terra mo-flat">
-        <div class="sheet">
-          <div class="ttl">汉 Hanzi Practice - HSK 1</div>
-          <div class="rowline"><span class="c">你</span><span class="c ghost">你</span><span class="c ghost">你</span><span class="c"></span><span class="c"></span></div>
-          <div class="rowline"><span class="c">好</span><span class="c ghost">好</span><span class="c ghost">好</span><span class="c"></span><span class="c"></span></div>
-          <div class="rowline"><span class="c">谢</span><span class="c ghost">谢</span><span class="c ghost">谢</span><span class="c"></span><span class="c"></span></div>
-        </div>
-        <span class="seal sl">练</span>
-      </div>
-      <figcaption><b>Khoe phiếu (flat-lay).</b> Nền terracotta phẳng làm phiếu ivory nổi bật - chụp thật hoặc dựng từ 33 ảnh preview có sẵn.</figcaption>
-    </figure>
-    <figure class="mockwrap" style="margin:0;">
+    <figure class="mockwrap">
       <div class="mock m-parch mo-quote">
         <div class="bq">字如其人</div>
         <div class="tr">"Nét chữ, nết người"</div>
         <span class="seal sl">练</span>
       </div>
-      <figcaption><b>Quote động lực.</b> Ma Shan Zheng cỡ đại + dịch nghĩa serif nghiêng. Post "thở" giữa các post kiến thức.</figcaption>
+      <figcaption><b>Quote.</b> Ma Shan Zheng cỡ đại - post "thở" giữa các post kiến thức.</figcaption>
     </figure>
   </div>
-
-  <h3>Dạng dọc 9:16 - Story &amp; Reel/TikTok cover</h3>
-  <div class="stories">
-    <figure class="mockwrap" style="margin:0;">
-      <div class="mock story m-parch mo-poll">
-        <div class="q">Chữ này đọc là gì?</div>
-        <div class="tzg minicell"><span class="han">馬</span></div>
-        <div class="opt on">mǎ - MÃ - con ngựa</div>
-        <div class="opt">niǎo - ĐIỂU - con chim</div>
-        <span class="seal sl">练</span>
+  <h3>Khung dọc 9:16 &amp; nhịp feed</h3>
+  <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start;">
+    <div class="stories" style="flex:1;min-width:300px;">
+      <figure class="mockwrap">
+        <div class="mock story m-parch mo-poll">
+          <div class="q">Chữ này đọc là gì?</div>
+          <div class="tzg minicell"><span class="han">馬</span></div>
+          <div class="opt on">mǎ - MÃ - con ngựa</div>
+          <div class="opt">niǎo - ĐIỂU - con chim</div>
+          <span class="seal sl">练</span>
+        </div>
+        <figcaption><b>Story quiz</b> - đáp án luôn kèm Hán Việt.</figcaption>
+      </figure>
+      <figure class="mockwrap">
+        <div class="mock story m-dark mo-reel">
+          <span class="ep">Tập 07 - 60 giây một chữ</span>
+          <span class="bighan">写</span>
+          <div class="hook">Viết 写 sai thứ tự nét, người bản xứ nhận ra ngay</div>
+          <div class="sub">Tay viết thật trên phiếu in từ app</div>
+        </div>
+        <figcaption><b>Reel/TikTok cover</b> - hook serif + chip số tập son đỏ.</figcaption>
+      </figure>
+    </div>
+    <div style="flex:1;min-width:300px;">
+      <div class="iggrid">
+        <div class="igtile t-parch">Từ mới<small>ô tianzige</small></div>
+        <div class="igtile t-dark">Bài hát<small>nền mực</small></div>
+        <div class="igtile t-parch">Chiết tự<small>carousel</small></div>
+        <div class="igtile t-terra">Flat-lay phiếu<small>nền đất nung</small></div>
+        <div class="igtile t-parch">Thứ tự nét<small>chuỗi ô</small></div>
+        <div class="igtile t-parch">Quote<small>bút lông</small></div>
+        <div class="igtile t-parch">Từ mới<small>ô tianzige</small></div>
+        <div class="igtile t-dark">Reel<small>60s một chữ</small></div>
+        <div class="igtile t-parch">Chiết tự<small>carousel</small></div>
       </div>
-      <figcaption><b>Story tương tác.</b> Poll/quiz đọc chữ - Hán Việt xuất hiện trong cả đáp án để luyện phản xạ.</figcaption>
-    </figure>
-    <figure class="mockwrap" style="margin:0;">
-      <div class="mock story m-dark mo-reel">
-        <span class="ep">Tập 07 - 60 giây một chữ</span>
-        <span class="bighan">写</span>
-        <div class="hook">Viết 写 sai thứ tự nét, người bản xứ nhận ra ngay</div>
-        <div class="sub">Xem tay viết thật trên phiếu in từ app</div>
-      </div>
-      <figcaption><b>Reel/TikTok cover.</b> Hook serif lớn + chữ Hán mờ làm nền + chip số tập son đỏ để dựng thành series.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section id="s6" class="wrap">
-  <div class="secmark"><span class="num">六</span><h2>Nhịp feed Instagram - tờ phiếu đang điền dần</h2></div>
-  <p class="secsub">Lưới 3x3 luân phiên giấy - mực - đất nung theo chu kỳ cố định, để trang profile nhìn tổng thể như một tờ phiếu luyện viết có nhịp. Không bao giờ hai post nền tối đứng cạnh nhau.</p>
-  <div style="display:flex; gap:32px; flex-wrap:wrap; align-items:flex-start;">
-    <div class="iggrid">
-      <div class="igtile t-parch">Từ mới<small>ô tianzige</small></div>
-      <div class="igtile t-dark">Bài hát<small>nền mực</small></div>
-      <div class="igtile t-parch">Chiết tự<small>carousel</small></div>
-      <div class="igtile t-terra">Flat-lay phiếu<small>nền đất nung</small></div>
-      <div class="igtile t-parch">Thứ tự nét<small>chuỗi ô</small></div>
-      <div class="igtile t-parch">Quote<small>bút lông</small></div>
-      <div class="igtile t-parch">Từ mới<small>ô tianzige</small></div>
-      <div class="igtile t-dark">Reel<small>60s một chữ</small></div>
-      <div class="igtile t-parch">Chiết tự<small>carousel</small></div>
-    </div>
-    <div style="flex:1; min-width:280px;">
-      <div class="card">
-        <h4>Quy tắc nhịp</h4>
-        <ul>
-          <li>Chu kỳ 9 post lặp lại: 6 giấy - 2 mực - 1 đất nung</li>
-          <li>Post nền tối luôn ở cột giữa hoặc so le chéo, không dồn cạnh nhau</li>
-          <li>Dấu triện 练 cùng một góc trên mọi post - khi xem lưới, các con dấu tạo thành hàng chấm son đều đặn</li>
-          <li>Mỗi hàng ngang có ít nhất một chữ Hán cỡ lớn</li>
-        </ul>
-      </div>
+      <p class="small dim" style="margin-top:12px;">Nhịp 9 post: 6 giấy - 2 mực - 1 đất nung; nền tối không đứng cạnh nhau; dấu triện cùng một góc để khi xem lưới các chấm son thẳng hàng. Avatar mọi kênh = icon mark trên nền ivory; cover Facebook = tranh thuỷ mặc <code>landing-hero-backdrop.jpg</code> + tagline "Viết để nhớ lâu".</p>
     </div>
   </div>
 </section>
 
-<section id="s7" class="wrap">
-  <div class="secmark"><span class="num">七</span><h2>Ứng dụng theo kênh</h2></div>
-  <div class="chan">
-    <div class="card">
-      <h4>Avatar &amp; cover (mọi kênh)</h4>
-      <ul>
-        <li><b>Avatar:</b> icon mark 汉 trong ô sổ tay, nền ivory, không kèm chữ - đã có sẵn trong logo system, xuất 1:1 từ 512px</li>
-        <li><b>Cover Facebook:</b> tranh thuỷ mặc <code>landing-hero-backdrop.jpg</code> (núi + trúc + mặt trời son) + lockup ngang + tagline tiếng Việt "Biến mọi văn bản thành phiếu luyện viết"</li>
-        <li>Mặt trời son trong tranh và dấu triện son là hai chấm đỏ duy nhất - đừng thêm chấm đỏ thứ ba</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4>Facebook - kênh chuyển đổi</h4>
-      <ul>
-        <li>Ưu tiên template flat-lay phiếu + carousel chiết tự (dân group thích lưu về học)</li>
-        <li>Post seeding trong group dùng bản "trần": ảnh phiếu chụp thật, ít branding, chỉ giữ dấu triện</li>
-        <li>Album "Kho phiếu theo chủ đề" - 58 chủ đề của app là 58 album tiềm năng</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4>Instagram - kênh nhận diện</h4>
-      <ul>
-        <li>Theo đúng nhịp lưới mục 六; carousel tối đa 6 slide, slide cuối luôn là góc giấy cong + CTA</li>
-        <li>Story: quiz đọc chữ (2-3/tuần) + countdown chữ HSK trước kỳ thi</li>
-        <li>Highlight cover: nền ivory + một bộ thủ mỗi mục (人 giới thiệu, 学 mẹo học, 歌 bài hát, 纸 phiếu)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h4>TikTok - kênh khám phá</h4>
-      <ul>
-        <li><b>Motion identity:</b> mở đầu bằng nét bút son quét ngang màn hình lộ ra hook; kết bằng đóng dấu triện "cộp" + logo 1 giây</li>
-        <li>Format chủ lực: ASMR tay viết thật trên phiếu in từ app; timelapse "biến bài hát Châu Kiệt Luân thành phiếu trong 30 giây"; "chữ này 90% người học viết sai"</li>
-        <li>Phụ đề: hook bằng serif trắng trên nền mực, chữ Hán luôn kèm pinyin + Hán Việt ở dòng dưới</li>
-      </ul>
-    </div>
+<section id="c7" class="wrap on-dark">
+  <div class="chap"><span class="stamp">七</span><h2>Mục lục brand guideline hoàn chỉnh + lộ trình</h2></div>
+  <p class="chapsub">Khung 10 chương chuẩn của một cuốn guideline - đây cũng là checklist việc cần làm. Ba cột: chương, nội dung, trạng thái hiện tại.</p>
+  <div class="sheet tablewrap">
+    <table class="gtoc">
+      <tr><th>Chương</th><th>Nội dung</th><th>Trạng thái</th></tr>
+      <tr><td>一 Brand core</td><td>Essence, định vị, archetype, tính cách, khách hàng</td><td><span class="st part">5 thuộc tính đã có - còn lại ở chương 一 tài liệu này</span></td></tr>
+      <tr><td>二 Logo</td><td>Biến thể, clear space, min size, misuse, logo động</td><td><span class="st done">Đã có - bổ sung logo động + bộ triện</span></td></tr>
+      <tr><td>三 Màu</td><td>Palette, tỷ lệ, tương phản, nền sáng/tối</td><td><span class="st done">7 token đã có - thêm 2 màu social</span></td></tr>
+      <tr><td>四 Typography</td><td>4 font, thang cỡ, quy tắc chữ Hán/pinyin/Hán Việt</td><td><span class="st done">Font đã có - thang social ở chương 三</span></td></tr>
+      <tr><td>五 Motif &amp; icon</td><td>5 motif, icon style, quy tắc mật độ</td><td><span class="st part">Motif có file - icon set cần vẽ</span></td></tr>
+      <tr><td>六 Mascot</td><td>Character sheet: pose, biểu cảm, quy tắc dùng</td><td><span class="st todo">Chọn 1 trong 3 phương án chương 四</span></td></tr>
+      <tr><td>七 Illustration &amp; photo</td><td>Style thuỷ mặc, quy tắc chụp, thư viện ảnh</td><td><span class="st part">11 file nền đã có - thiếu quy tắc chụp</span></td></tr>
+      <tr><td>八 Motion &amp; sound</td><td>Intro/outro, transition, âm chữ ký</td><td><span class="st todo">Spec ở chương 三 - cần dựng file mẫu</span></td></tr>
+      <tr><td>九 Voice &amp; tone</td><td>Nguyên tắc, ví dụ đúng/sai, naming, hashtag</td><td><span class="st todo">Chương 五 tài liệu này là bản nháp đầu</span></td></tr>
+      <tr><td>十 Ứng dụng</td><td>Social template, avatar/cover, phiếu PDF, merch</td><td><span class="st todo">Chương 六 - cần dựng file Figma/Canva</span></td></tr>
+    </table>
   </div>
-</section>
-
-<section id="s8" class="wrap">
-  <div class="secmark"><span class="num">八</span><h2>Do &amp; Don't</h2></div>
-  <div class="dodont">
-    <div class="col do">
-      <h4>Luôn luôn</h4>
-      <ul>
-        <li>Chữ Hán đi kèm đủ pinyin + Hán Việt + nghĩa - không bao giờ đứng trần</li>
-        <li>Giữ tối thiểu 30% khoảng thở mỗi layout - "Calm" là thuộc tính số một</li>
-        <li>Texture giấy trên mọi nền sáng, kể cả khi xuất ảnh nén</li>
-        <li>Kiểm tra chữ đúng - giản thể nhất quán, đúng nét - trước khi đăng; một chữ sai là mất uy tín kênh học thuật</li>
-        <li>Dùng ảnh tay viết thật của người Việt đang học - đúng khán giả</li>
-      </ul>
-    </div>
-    <div class="col dont">
-      <h4>Không bao giờ</h4>
-      <ul>
-        <li>Kéo giãn, bóp méo, bold giả hoặc dùng font hệ thống cho chữ Hán</li>
-        <li>Neon, gradient tím-xanh, mascot hoạt hình flat kiểu Duolingo - ngược hoàn toàn với "Scholarly"</li>
-        <li>Lẫn motif Nhật Bản: torii, sakura, kana - sai văn hoá là lỗi nặng nhất của kênh này</li>
-        <li>Quá một nét bút son và quá hai chấm đỏ trong một layout</li>
-        <li>Ảnh stock người mẫu Tây cầm sách - khán giả là người Việt học HSK</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="s9" class="wrap">
-  <div class="secmark"><span class="num">九</span><h2>Lộ trình triển khai</h2></div>
-  <p class="secsub">Khớp với các đầu việc đang ở Backlog trong sheet kế hoạch (design system - calendar - visual asset - 20 hook video).</p>
+  <h3>Lộ trình 5 bước (khớp task sheet: design system - calendar - asset - hook video)</h3>
   <div class="steps">
-    <div class="step"><div><b>Chốt concept với team.</b><p>Duyệt hướng "B làm khung + A chất liệu + C giọng chữ", chốt 2 màu mở rộng Chu Sa / Mực Đêm và dấu triện 练.</p></div></div>
-    <div class="step"><div><b>Dựng master template trên Figma/Canva.</b><p>8 khung ở mục 五 thành file template có auto-layout: đổi chữ - đổi màu nền theo nhịp - xuất hàng loạt. Font và token lấy đúng từ <code>web-frontend/src/index.css</code>.</p></div></div>
-    <div class="step"><div><b>Sản xuất bộ asset kênh.</b><p>Avatar, cover FB, 4 highlight cover IG, end-card video có dấu triện + logo, khung phụ đề TikTok.</p></div></div>
-    <div class="step"><div><b>Lên calendar tháng đầu theo nhịp 9 post.</b><p>Chu kỳ 6 giấy - 2 mực - 1 đất nung; mỗi tuần 1 post hero flat-lay. Nội dung rút từ 58 chủ đề + 33 template có sẵn.</p></div></div>
-    <div class="step"><div><b>Viết 20 hook video từ motion identity.</b><p>Ba dòng format đã định hình ở mục 七 (ASMR viết tay, timelapse tạo phiếu, "viết sai nét") - phát triển mỗi dòng 6-7 hook.</p></div></div>
+    <div class="step"><div><b>Duyệt concept.</b><p>Team chốt B (+A+C), 2 màu mới, tagline VI, có/không làm mascot ngay.</p></div></div>
+    <div class="step"><div><b>Dựng master template Figma/Canva.</b><p>8 khung ở chương 六 với auto-layout, token màu/font lấy từ <code>web-frontend/src/index.css</code>.</p></div></div>
+    <div class="step"><div><b>Sản xuất asset kênh.</b><p>Avatar, cover, highlight cover, end-card video, khung phụ đề TikTok, watermark phiếu.</p></div></div>
+    <div class="step"><div><b>Calendar tháng đầu theo nhịp 9 post.</b><p>Nội dung rút từ 58 chủ đề + 33 template preview có sẵn trong repo.</p></div></div>
+    <div class="step"><div><b>20 hook video từ 3 dòng format.</b><p>ASMR viết tay - timelapse tạo phiếu từ bài hát - "viết sai nét": mỗi dòng 6-7 hook.</p></div></div>
   </div>
 </section>
 
-<footer class="wrap">
+<footer class="wrap on-dark">
   <div class="src">
-    <b>Nguồn đã kiểm kê:</b> repo <code>Techieslab-app/Hanzi-Practice</code> - guideline ảnh <code>web-frontend/public/design-system.png</code>, token màu/font <code>web-frontend/src/index.css</code>, logo <code>web-frontend/public/logo.png</code>, hoạ tiết &amp; tranh thuỷ mặc <code>public/brand/</code> (11 file), 33 preview phiếu <code>public/template-previews/</code>, copy landing song ngữ trong <code>web-frontend/src/pages/LandingPage.tsx</code>. Tham chiếu UI editorial: trang chinese-learning-landscape (số mục chữ Hán, divider ký tự, bảng sạch). Sản phẩm: hanzi.retrolab.com.vn.
+    <b>Nguồn kiểm kê:</b> repo <code>Techieslab-app/Hanzi-Practice</code> - guideline gốc <code>web-frontend/public/design-system.png</code>, token <code>web-frontend/src/index.css</code>, logo <code>web-frontend/public/logo.png</code>, hoạ tiết + thuỷ mặc <code>public/brand/</code> (11 file), 33 preview phiếu <code>public/template-previews/</code>. Sản phẩm: hanzi.retrolab.com.vn. Trang chinese-learning-landscape chỉ được tham chiếu làm nguồn nghiên cứu thị trường - không dùng lại thiết kế.
   </div>
 </footer>
 </body></html>
