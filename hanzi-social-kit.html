@@ -120,16 +120,34 @@
   .concept-head .kicker.rec { color: var(--ivory); background: var(--cinnabar); border-radius: 5px; padding: 3px 10px; }
   .concept-head h4 { font-family: var(--serif); font-size: 24px; margin: 0; color: var(--parchment); }
   .concept-head .zh { font-family: var(--brush); font-size: 26px; color: #E8CFA8; }
-  .concept-body { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0; }
   .concept-text { padding: 14px 26px 24px; }
   .concept-text p { font-size: 15px; }
   .concept-text .facet { font-size: 13.5px; margin: 10px 0 0; }
   .facet b { color: #E8CFA8; font-weight: 600; }
-  .concept-visual { padding: 20px; display: flex; flex-direction: column; gap: 10px; justify-content: center; background: rgb(239 227 205 / 0.03); border-left: 1px solid rgb(239 227 205 / 0.1); }
-  .strip { display: flex; height: 26px; border-radius: 6px; overflow: hidden; }
-  .strip div { flex: 1; }
-  .concept-visual .demo { border-radius: 10px; padding: 14px; font-size: 12px; }
-  @media (max-width: 760px) { .concept-body { grid-template-columns: 1fr; } .concept-visual { border-left: none; border-top: 1px solid rgb(239 227 205 / 0.1); } }
+
+  /* Key visual illustrations - ảnh động ambient */
+  .kv { line-height: 0; border-bottom: 1px solid rgb(239 227 205 / 0.1); }
+  .kv svg { display: block; width: 100%; height: auto; }
+  .kvcap { padding: 10px 26px 0; font-size: 12.5px; color: var(--cream-dim); line-height: 1.5; font-style: italic; }
+  .kv-drift { animation: kv-drift 18s ease-in-out infinite alternate; }
+  .kv-drift.d2 { animation-duration: 26s; animation-delay: -9s; }
+  .kv-drift.d3 { animation-duration: 32s; animation-delay: -16s; }
+  @keyframes kv-drift { from { transform: translateX(-44px); } to { transform: translateX(44px); } }
+  .kv-sway { transform-box: fill-box; transform-origin: 50% 0%; animation: kv-sway 5.5s ease-in-out infinite alternate; }
+  .kv-sway.d2 { animation-duration: 6.8s; animation-delay: -2.4s; }
+  @keyframes kv-sway { from { transform: rotate(-2.6deg); } to { transform: rotate(2.6deg); } }
+  .kv-steam { animation: kv-steam 4.2s ease-out infinite; }
+  .kv-steam.d2 { animation-delay: -2.1s; }
+  @keyframes kv-steam { 0% { transform: translateY(0); opacity: 0.55; } 100% { transform: translateY(-18px); opacity: 0; } }
+  .kv-flick { animation: kv-flick 2.8s ease-in-out infinite; }
+  @keyframes kv-flick { 0%, 100% { opacity: 0.9; } 42% { opacity: 0.55; } 68% { opacity: 0.8; } }
+  .kv-fall { transform-box: fill-box; animation: kv-fall var(--dur, 9s) linear infinite; animation-delay: var(--delay, 0s); }
+  @keyframes kv-fall { 0% { transform: translate(0, -30px) rotate(0deg); opacity: 0; } 8% { opacity: 0.9; } 82% { opacity: 0.85; } 100% { transform: translate(-52px, 330px) rotate(230deg); opacity: 0; } }
+  .kv-shim { animation: kv-shim 6s ease-in-out infinite; animation-delay: var(--delay, 0s); }
+  @keyframes kv-shim { 0%, 100% { opacity: 0.14; } 50% { opacity: 0.5; } }
+  .kv-flag { transform-box: fill-box; transform-origin: 100% 0%; animation: kv-flag 3.2s ease-in-out infinite alternate; }
+  @keyframes kv-flag { from { transform: rotate(-4deg); } to { transform: rotate(5deg); } }
+  @media (prefers-reduced-motion: reduce) { .kv svg * { animation: none !important; } }
 
   .verdict { background: var(--parchment); color: var(--ink); border-radius: 14px; padding: 24px 28px; box-shadow: 0 10px 30px rgb(0 0 0 / 0.35); }
   .verdict h4 { font-family: var(--serif); color: var(--chestnut); margin: 0 0 8px; font-size: 19px; }
@@ -370,66 +388,287 @@
 
 <section id="c2" class="wrap on-dark">
   <div class="chap"><span class="stamp">二</span><h2>Ba concept - ba thế giới trọn vẹn</h2></div>
-  <p class="chapsub">Mỗi concept là một bộ nhận diện đầy đủ (ý niệm - logo - màu - mascot - motif), không phải ba kiểu template. Chọn một thế giới, các chương sau triển khai nó.</p>
+  <p class="chapsub">Mỗi concept là một bộ nhận diện đầy đủ (ý niệm - logo - màu - mascot - motif) và mở màn bằng một key visual sống động - có sương trôi, đèn đung đưa, hoa rơi - chứ không phải bảng màu khô khan. Chọn một thế giới, các chương sau triển khai nó.</p>
 
   <div class="concept-row">
+    <div class="kv">
+      <svg viewBox="0 0 1200 500" role="img" aria-label="Thư phòng - key visual: cửa sổ trăng nhìn ra núi, bàn viết với phiếu luyện chữ, trà và đèn dầu">
+        <defs>
+          <linearGradient id="a-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7efdd"/><stop offset="1" stop-color="#e9dcbc"/>
+          </linearGradient>
+          <radialGradient id="a-sun"><stop offset="0" stop-color="#a3301c" stop-opacity="0.4"/><stop offset="1" stop-color="#a3301c" stop-opacity="0"/></radialGradient>
+          <radialGradient id="a-lamp"><stop offset="0" stop-color="#e0b34f" stop-opacity="0.6"/><stop offset="1" stop-color="#e0b34f" stop-opacity="0"/></radialGradient>
+          <clipPath id="a-win"><circle cx="820" cy="205" r="152"/></clipPath>
+          <filter id="a-blur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
+        </defs>
+        <rect width="1200" height="500" fill="url(#a-sky)"/>
+        <circle cx="820" cy="205" r="152" fill="#f4e9cb"/>
+        <g clip-path="url(#a-win)">
+          <circle cx="882" cy="122" r="58" fill="url(#a-sun)"/>
+          <circle cx="882" cy="122" r="25" fill="#a3301c"/>
+          <path d="M650,268 Q724,186 792,252 Q826,220 862,250 T980,242 L980,370 L650,370 Z" fill="#3f6152" opacity="0.16"/>
+          <path d="M640,300 Q716,228 788,292 Q848,244 906,296 Q944,272 985,298 L985,370 L640,370 Z" fill="#2c4739" opacity="0.26"/>
+          <path d="M645,330 Q740,282 830,326 Q900,296 985,330 L985,370 L645,370 Z" fill="#17150f" opacity="0.3"/>
+          <g class="kv-drift"><ellipse cx="760" cy="300" rx="130" ry="20" fill="#f5eedd" opacity="0.55" filter="url(#a-blur)"/></g>
+          <g class="kv-drift d2"><ellipse cx="900" cy="262" rx="110" ry="16" fill="#f5eedd" opacity="0.4" filter="url(#a-blur)"/></g>
+          <g stroke="#2c4739" fill="none" stroke-linecap="round" opacity="0.85">
+            <path d="M944,352 Q940,240 948,120" stroke-width="7"/>
+            <path d="M948,300 h10 M944,214 h10 M947,150 h9" stroke-width="3"/>
+            <path d="M905,332 Q908,250 902,168" stroke-width="4.5"/>
+          </g>
+          <g fill="#2c4739" opacity="0.9">
+            <path d="M948,132 Q918,120 900,128 Q922,132 936,142 Z"/>
+            <path d="M948,128 Q970,108 992,110 Q972,122 954,138 Z"/>
+            <path d="M947,196 Q920,190 906,200 Q926,202 938,210 Z"/>
+            <path d="M902,172 Q878,160 862,166 Q882,172 894,182 Z"/>
+          </g>
+        </g>
+        <circle cx="820" cy="205" r="152" fill="none" stroke="#4a3423" stroke-width="15"/>
+        <circle cx="820" cy="205" r="142" fill="none" stroke="#6b4c33" stroke-width="2.5" opacity="0.5"/>
+        <g>
+          <rect x="112" y="46" width="158" height="11" rx="5" fill="#4a3423"/>
+          <rect x="126" y="57" width="130" height="272" fill="#f8f1df" stroke="#d9d0bd" stroke-width="2"/>
+          <text x="191" y="118" text-anchor="middle" font-family="'Ma Shan Zheng', cursive" font-size="48" fill="#241a12">字</text>
+          <text x="191" y="176" text-anchor="middle" font-family="'Ma Shan Zheng', cursive" font-size="48" fill="#241a12">如</text>
+          <text x="191" y="234" text-anchor="middle" font-family="'Ma Shan Zheng', cursive" font-size="48" fill="#241a12">其</text>
+          <text x="191" y="292" text-anchor="middle" font-family="'Ma Shan Zheng', cursive" font-size="48" fill="#241a12">人</text>
+          <rect x="216" y="298" width="24" height="24" rx="4" fill="#a3301c" transform="rotate(-3 228 310)"/>
+          <rect x="112" y="329" width="158" height="11" rx="5" fill="#4a3423"/>
+        </g>
+        <rect x="340" y="396" width="860" height="24" fill="#55402a"/>
+        <rect x="340" y="420" width="860" height="80" fill="#3a2c1d"/>
+        <g transform="rotate(-1.6 630 375)">
+          <rect x="452" y="346" width="16" height="58" rx="8" fill="#e2d6ba" stroke="#c9bfa9" stroke-width="2"/>
+          <rect x="792" y="346" width="16" height="58" rx="8" fill="#e2d6ba" stroke="#c9bfa9" stroke-width="2"/>
+          <rect x="466" y="350" width="328" height="50" rx="3" fill="#f8f1df" stroke="#d9d0bd" stroke-width="2"/>
+          <rect x="502" y="358" width="34" height="34" fill="none" stroke="#d9d0bd" stroke-width="1.5"/>
+          <rect x="576" y="358" width="34" height="34" fill="none" stroke="#d9d0bd" stroke-width="1.5"/>
+          <rect x="650" y="358" width="34" height="34" fill="none" stroke="#d9d0bd" stroke-width="1.5"/>
+          <text x="519" y="386" text-anchor="middle" font-family="'Ma Shan Zheng', cursive" font-size="28" fill="#241a12">永</text>
+          <text x="593" y="386" text-anchor="middle" font-family="'Ma Shan Zheng', cursive" font-size="28" fill="#241a12">永</text>
+          <text x="667" y="386" text-anchor="middle" font-family="'Ma Shan Zheng', cursive" font-size="28" fill="#241a12" opacity="0.25">永</text>
+        </g>
+        <path d="M706,336 L768,362" stroke="#6b4c33" stroke-width="6" stroke-linecap="round"/>
+        <path d="M768,362 Q780,366 786,376 Q774,374 766,370 Z" fill="#241a12"/>
+        <circle cx="786" cy="376" r="2.6" fill="#a3301c"/>
+        <rect x="876" y="348" width="56" height="50" rx="9" fill="#5c3620"/>
+        <path d="M894,348 Q890,314 893,296 M916,348 Q920,310 916,292" stroke="#8a6a2c" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M893,296 q-4,-12 0,-18 q5,6 4,18 Z" fill="#241a12"/>
+        <path d="M916,292 q-4,-12 0,-18 q5,6 4,18 Z" fill="#241a12"/>
+        <ellipse cx="988" cy="390" rx="40" ry="13" fill="#241a12"/>
+        <ellipse cx="988" cy="387" rx="28" ry="8" fill="#17150f"/>
+        <g>
+          <path d="M1062,372 h40 l-5,26 q-15,6 -30,0 Z" fill="#f2e6c9" stroke="#c9bfa9" stroke-width="2"/>
+          <path class="kv-steam" d="M1074,364 c-6,-12 8,-16 2,-30" stroke="#f5eedd" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <path class="kv-steam d2" d="M1090,364 c6,-12 -8,-16 -2,-30" stroke="#f5eedd" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
+        <g>
+          <circle cx="415" cy="362" r="34" fill="url(#a-lamp)" class="kv-flick"/>
+          <rect x="401" y="380" width="28" height="16" rx="4" fill="#55402a"/>
+          <rect x="411" y="374" width="8" height="8" fill="#4a3423"/>
+          <ellipse cx="415" cy="364" rx="6" ry="11" fill="#e0b34f" class="kv-flick"/>
+          <ellipse cx="415" cy="368" rx="3" ry="6" fill="#a3301c" opacity="0.8"/>
+        </g>
+        <rect y="488" width="1200" height="12" fill="#241a12" opacity="0.28"/>
+      </svg>
+      <p class="kvcap">Key visual A - "Thư phòng": chiều muộn, chữ 永 luyện dở trên phiếu, trà còn bốc khói, đèn dầu lập loè, ngoài cửa sổ trăng là núi và mặt trời son. Ảnh động: khói trà bay, sương trôi sau núi, lửa đèn thở.</p>
+    </div>
     <div class="concept-head"><span class="kicker">Concept A</span><h4>Thư phòng</h4><span class="zh">书房</span></div>
-    <div class="concept-body">
-      <div class="concept-text">
-        <p>Thế giới của một bàn học thư pháp đương đại: giấy dó, nghiên mực, tranh thuỷ mặc, ánh chiều. Kế thừa 100% chất liệu đã có trong repo - đây là hướng "an toàn, làm ngay".</p>
-        <p class="facet"><b>Logo:</b> giữ nguyên mark 汉 trang sổ. <b>Mascot:</b> không cần - đồ vật (bút, nghiên, giấy) tự kể chuyện. <b>Motif:</b> tranh thuỷ mặc, ảnh flat-lay thật. <b>Hợp khi:</b> muốn ra kênh trong 2 tuần, đội design mỏng.</p>
-        <p class="facet"><b>Rủi ro:</b> đẹp nhưng tĩnh - dễ giống một trang sưu tầm thư pháp hơn một app; khó làm video ngắn có nhân vật.</p>
-      </div>
-      <div class="concept-visual">
-        <div class="strip"><div style="background:#F3EAD9;"></div><div style="background:#C9BFA9;"></div><div style="background:#8A4A2C;"></div><div style="background:#3B2A20;"></div></div>
-        <div class="demo" style="background:var(--parchment);color:var(--ink);font-family:var(--serif);">Ảnh thật + chữ serif trên giấy. Mặt trời son là điểm đỏ duy nhất.</div>
-      </div>
+    <div class="concept-text">
+      <p>Thế giới của một bàn học thư pháp đương đại: giấy dó, nghiên mực, tranh thuỷ mặc, ánh chiều. Kế thừa 100% chất liệu đã có trong repo - đây là hướng "an toàn, làm ngay". Người xem là vị khách được mời ngồi vào bàn viết còn ấm hơi trà.</p>
+      <p class="facet"><b>Logo:</b> giữ nguyên mark 汉 trang sổ. <b>Mascot:</b> không cần - đồ vật (bút, nghiên, giấy) tự kể chuyện. <b>Motif:</b> tranh thuỷ mặc, ảnh flat-lay thật. <b>Hợp khi:</b> muốn ra kênh trong 2 tuần, đội design mỏng.</p>
+      <p class="facet"><b>Rủi ro:</b> đẹp nhưng tĩnh - dễ giống trang sưu tầm thư pháp hơn một app; khó làm video ngắn có nhân vật.</p>
     </div>
   </div>
 
   <div class="concept-row">
-    <div class="concept-head"><span class="kicker rec">Concept B - đề xuất</span><h4>Ô vuông sống</h4><span class="zh">田字格</span></div>
-    <div class="concept-body">
-      <div class="concept-text">
-        <p>Ô điền chữ tianzige - thứ mọi người học chữ Hán đều cầm trên tay - trở thành <b>hệ lưới và nhân vật chính</b>: chữ của ngày sống trong ô, feed Instagram là tờ phiếu khổng lồ đang điền dần, logo động thay chữ trong ô theo mùa. Hiện đại, có hệ thống, không app nào chiếm được vì nó chính là sản phẩm của Hanzi.</p>
-        <p class="facet"><b>Logo:</b> mark 汉 hiện tại + phiên bản động (mục 三). <b>Mascot:</b> tương thích cả 3 phương án ở mục 四. <b>Motif:</b> lưới ô, dấu triện, nét bút son. <b>Hợp khi:</b> cần scale 15-20 post/tháng bằng template và muốn nhận diện tức thì khi lướt feed.</p>
-        <p class="facet"><b>Rủi ro:</b> kỷ luật kém sẽ đơn điệu - trị bằng nhịp màu đảo và các post hero flat-lay mượn từ A.</p>
-      </div>
-      <div class="concept-visual">
-        <div class="strip"><div style="background:#F3EAD9;"></div><div style="background:#BE4A2A;"></div><div style="background:#3B2A20;"></div><div style="background:#261B12;"></div></div>
-        <div class="demo" style="background:var(--parchment);display:flex;align-items:center;gap:10px;">
-          <span class="tzg" style="width:44px;height:44px;display:grid;place-items:center;"><span style="font-family:var(--sc);font-weight:900;font-size:24px;color:var(--ink);position:relative;z-index:1;">茶</span></span>
-          <span style="color:var(--ink);">Ô vuông = khung của mọi layout</span>
-        </div>
-      </div>
+    <div class="kv">
+      <svg viewBox="0 0 1200 500" role="img" aria-label="Trong khung cửa - key visual: thiếu nữ đứng lấp ló nơi thềm cửa một dinh thự bề thế, lồng đèn đung đưa, cánh mai rơi">
+        <defs>
+          <linearGradient id="b-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f5eedd"/><stop offset="1" stop-color="#e7d9b8"/>
+          </linearGradient>
+          <linearGradient id="b-int" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#14100b"/><stop offset="1" stop-color="#2c2618"/>
+          </linearGradient>
+          <radialGradient id="b-glow"><stop offset="0" stop-color="#e0b34f" stop-opacity="0.5"/><stop offset="1" stop-color="#e0b34f" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="1200" height="500" fill="url(#b-sky)"/>
+        <path d="M60,470 Q300,455 600,462 Q900,455 1140,470 L1140,500 L60,500 Z" fill="#cfc09c" opacity="0.4"/>
+        <rect x="380" y="164" width="440" height="268" fill="url(#b-int)"/>
+        <path d="M470,170 v258 M545,170 v258" stroke="#8a6a2c" stroke-width="5" opacity="0.12"/>
+        <path d="M385,240 h180 M385,330 h180" stroke="#8a6a2c" stroke-width="4" opacity="0.09"/>
+        <path d="M380,164 L412,174 L412,432 L380,432 Z" fill="#1c1510"/>
+        <circle cx="396" cy="210" r="4" fill="#8a6a2c" opacity="0.7"/>
+        <circle cx="396" cy="270" r="4" fill="#8a6a2c" opacity="0.7"/>
+        <circle cx="396" cy="330" r="4" fill="#8a6a2c" opacity="0.7"/>
+        <circle cx="396" cy="390" r="4" fill="#8a6a2c" opacity="0.7"/>
+        <g>
+          <path d="M566,352 Q548,420 556,432 L648,432 Q655,418 640,352 Q600,364 566,352 Z" fill="#e7d9b8"/>
+          <path d="M568,296 Q594,288 618,296 L630,356 Q594,368 558,356 Z" fill="#f2e6c9"/>
+          <path d="M612,298 Q630,302 628,324 Q616,332 606,326 L604,306 Z" fill="#f2e6c9"/>
+          <path d="M560,350 Q596,360 632,350 L632,364 Q596,374 560,364 Z" fill="#a3301c"/>
+          <path d="M592,366 q-5,38 2,60" stroke="#a3301c" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M576,300 L592,314 M604,297 L592,314" stroke="#4a3423" stroke-width="2.4" fill="none"/>
+          <rect x="586" y="288" width="14" height="12" fill="#f8efe0"/>
+          <ellipse cx="590" cy="270" rx="13" ry="16" fill="#f8efe0"/>
+          <path d="M574,262 Q570,244 586,238 Q604,232 612,246 Q618,258 612,274 Q612,258 602,252 Q586,246 578,262 Q575,268 577,276 Q572,270 574,262 Z" fill="#17150f"/>
+          <circle cx="606" cy="240" r="9" fill="#17150f"/>
+          <path d="M610,236 L630,226" stroke="#d9a441" stroke-width="3" stroke-linecap="round"/>
+          <path d="M628,227 l2,8" stroke="#d9a441" stroke-width="2"/>
+          <circle cx="631" cy="238" r="3" fill="#a3301c"/>
+          <path d="M580,268 q4,3 7,0 M592,268 q4,3 7,0" stroke="#241a12" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          <path d="M579,262 q4,-2.5 7,-1 M592,261 q4,-1.5 7,0" stroke="#241a12" stroke-width="1.2" fill="none" opacity="0.55" stroke-linecap="round"/>
+          <path d="M585,283 q3.5,2.5 7,0" stroke="#a3301c" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        </g>
+        <rect x="610" y="164" width="210" height="268" fill="#2e2115" stroke="#17150f" stroke-width="3"/>
+        <rect x="622" y="176" width="186" height="244" fill="none" stroke="#17150f" stroke-width="2" opacity="0.5"/>
+        <g fill="#8a6a2c" opacity="0.92">
+          <circle cx="646" cy="200" r="5.5"/><circle cx="706" cy="200" r="5.5"/><circle cx="766" cy="200" r="5.5"/>
+          <circle cx="646" cy="256" r="5.5"/><circle cx="706" cy="256" r="5.5"/><circle cx="766" cy="256" r="5.5"/>
+          <circle cx="646" cy="312" r="5.5"/><circle cx="706" cy="312" r="5.5"/><circle cx="766" cy="312" r="5.5"/>
+          <circle cx="646" cy="368" r="5.5"/><circle cx="706" cy="368" r="5.5"/><circle cx="766" cy="368" r="5.5"/>
+        </g>
+        <circle cx="630" cy="340" r="6" fill="#8a6a2c"/>
+        <circle cx="630" cy="355" r="13" fill="none" stroke="#8a6a2c" stroke-width="4"/>
+        <path d="M606,296 q8,-3 10,4 l0,16 q-5,4 -10,0 Z" fill="#f8efe0"/>
+        <rect x="306" y="122" width="46" height="300" rx="8" fill="#7d2313"/>
+        <rect x="848" y="122" width="46" height="300" rx="8" fill="#7d2313"/>
+        <rect x="306" y="122" width="9" height="300" rx="4" fill="#5e1a0e" opacity="0.6"/>
+        <rect x="848" y="122" width="9" height="300" rx="4" fill="#5e1a0e" opacity="0.6"/>
+        <rect x="352" y="130" width="496" height="34" fill="#55402a"/>
+        <rect x="372" y="154" width="456" height="10" fill="#4a3423"/>
+        <rect x="160" y="100" width="880" height="30" fill="#7d2313"/>
+        <rect x="160" y="100" width="880" height="3.5" fill="#8a6a2c" opacity="0.85"/>
+        <rect x="160" y="126" width="880" height="3.5" fill="#8a6a2c" opacity="0.85"/>
+        <path d="M175,100 Q600,28 1025,100 Z" fill="#241a12"/>
+        <path d="M30,100 Q120,92 190,72 Q600,4 1010,72 Q1080,92 1170,100 L1170,74 Q1088,64 1022,50 Q600,-20 178,50 Q112,64 30,74 Z" fill="#241a12"/>
+        <rect x="520" y="92" width="160" height="46" rx="6" fill="#17150f" stroke="#8a6a2c" stroke-width="3"/>
+        <text x="600" y="126" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="30" fill="#d9a441" letter-spacing="10">书院</text>
+        <g class="kv-sway">
+          <path d="M250,130 v22" stroke="#241a12" stroke-width="3"/>
+          <circle cx="250" cy="196" r="46" fill="url(#b-glow)" class="kv-flick"/>
+          <rect x="236" y="152" width="28" height="8" rx="3" fill="#8a6a2c"/>
+          <ellipse cx="250" cy="196" rx="29" ry="36" fill="#a3301c" stroke="#7d2313" stroke-width="3"/>
+          <path d="M236,168 Q250,164 264,168 M232,196 h36 M236,224 Q250,228 264,224" stroke="#7d2313" stroke-width="1.6" fill="none" opacity="0.7"/>
+          <text x="250" y="206" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="26" fill="#f5eedd">学</text>
+          <rect x="240" y="230" width="20" height="6" rx="3" fill="#8a6a2c"/>
+          <path d="M250,236 v16 M245,236 v12 M255,236 v12" stroke="#a3301c" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+        <g class="kv-sway d2">
+          <path d="M950,130 v22" stroke="#241a12" stroke-width="3"/>
+          <circle cx="950" cy="196" r="46" fill="url(#b-glow)" class="kv-flick"/>
+          <rect x="936" y="152" width="28" height="8" rx="3" fill="#8a6a2c"/>
+          <ellipse cx="950" cy="196" rx="29" ry="36" fill="#a3301c" stroke="#7d2313" stroke-width="3"/>
+          <path d="M936,168 Q950,164 964,168 M932,196 h36 M936,224 Q950,228 964,224" stroke="#7d2313" stroke-width="1.6" fill="none" opacity="0.7"/>
+          <text x="950" y="206" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="26" fill="#f5eedd">汉</text>
+          <rect x="940" y="230" width="20" height="6" rx="3" fill="#8a6a2c"/>
+          <path d="M950,236 v16 M945,236 v12 M955,236 v12" stroke="#a3301c" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+        <path d="M1200,118 Q1140,128 1096,158" stroke="#4a3423" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M1150,132 q-24,10 -34,26" stroke="#4a3423" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <g>
+          <circle cx="1100" cy="154" r="6" fill="#c4695a"/><circle cx="1122" cy="142" r="5" fill="#a3301c"/>
+          <circle cx="1146" cy="130" r="5.5" fill="#c4695a"/><circle cx="1082" cy="168" r="5" fill="#c4695a"/>
+          <circle cx="1100" cy="154" r="1.8" fill="#d9a441"/><circle cx="1146" cy="130" r="1.8" fill="#d9a441"/>
+        </g>
+        <ellipse cx="1092" cy="168" rx="4.5" ry="2.6" fill="#c4695a" class="kv-fall" style="--dur:8.5s;--delay:0s"/>
+        <ellipse cx="1130" cy="150" rx="4" ry="2.4" fill="#c4695a" class="kv-fall" style="--dur:11s;--delay:2.2s"/>
+        <ellipse cx="1064" cy="176" rx="4.5" ry="2.6" fill="#a3301c" class="kv-fall" style="--dur:9.5s;--delay:4.5s"/>
+        <ellipse cx="1150" cy="140" rx="4" ry="2.4" fill="#c4695a" class="kv-fall" style="--dur:12.5s;--delay:1.2s"/>
+        <ellipse cx="1108" cy="158" rx="4" ry="2.4" fill="#c4695a" class="kv-fall" style="--dur:10s;--delay:6s"/>
+        <rect x="294" y="410" width="68" height="22" rx="4" fill="#d6c7a6" stroke="#b7a888" stroke-width="2"/>
+        <rect x="838" y="410" width="68" height="22" rx="4" fill="#d6c7a6" stroke="#b7a888" stroke-width="2"/>
+        <rect x="300" y="432" width="600" height="18" fill="#ddd0af" stroke="#b7a888" stroke-width="1.5"/>
+        <rect x="270" y="450" width="660" height="22" fill="#d6c7a6" stroke="#b7a888" stroke-width="1.5"/>
+        <rect x="240" y="472" width="720" height="28" fill="#cfc09c" stroke="#b7a888" stroke-width="1.5"/>
+        <path d="M450,432 v18 M750,432 v18 M370,450 v22 M600,450 v22 M830,450 v22 M480,472 v28 M720,472 v28" stroke="#b7a888" stroke-width="1.5" opacity="0.6"/>
+      </svg>
+      <p class="kvcap">Key visual B - "Trong khung cửa": thiếu nữ dáng Lâm Đại Ngọc đứng lấp ló sau cánh cửa một dinh thự bề thế - khung cửa chính là ô chữ phóng lớn, và chữ là một con người đứng sau khung chờ được gặp. Ảnh động: lồng đèn 学/汉 đung đưa toả sáng, cánh mai rơi trước thềm.</p>
+    </div>
+    <div class="concept-head"><span class="kicker rec">Concept B - đề xuất</span><h4>Trong khung cửa</h4><span class="zh">门里</span></div>
+    <div class="concept-text">
+      <p>Mỗi ô điền chữ tianzige là một khung cửa - sau mỗi khung có một "con người" đứng lấp ló: chữ có gốc tích, có họ hàng, có tính nết. Nội dung của kênh là mở từng cánh cửa cho người học gặp từng chữ. Về hệ thống, lưới ô vẫn là khung xương của mọi template (chương 三, 六) - nhưng gương mặt truyền thông là hình ảnh con người nơi thềm cửa, không phải ô kẻ khô khan.</p>
+      <p class="facet"><b>Logo:</b> mark 汉 hiện tại + phiên bản động (mục 三). <b>Mascot:</b> tương thích cả 3 phương án ở mục 四. <b>Motif:</b> khung cửa/lưới ô, dấu triện, nét bút son, lồng đèn. <b>Hợp khi:</b> cần scale 15-20 post/tháng bằng template và muốn nhận diện tức thì khi lướt feed.</p>
+      <p class="facet"><b>Rủi ro:</b> kỷ luật kém sẽ đơn điệu - trị bằng nhịp màu đảo và các post hero mượn thế giới ảnh của A.</p>
     </div>
   </div>
 
   <div class="concept-row">
+    <div class="kv">
+      <svg viewBox="0 0 1200 500" role="img" aria-label="Cầu chữ - key visual: cây cầu vòm xây bằng chữ Hán bắc qua sông sương, một người bước trên cầu ngoảnh lại nhìn">
+        <defs>
+          <linearGradient id="c-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7efdd"/><stop offset="1" stop-color="#eee0bd"/>
+          </linearGradient>
+          <linearGradient id="c-water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e2d6b6"/><stop offset="1" stop-color="#cfc09c"/>
+          </linearGradient>
+          <radialGradient id="c-sun"><stop offset="0" stop-color="#a3301c" stop-opacity="0.38"/><stop offset="1" stop-color="#a3301c" stop-opacity="0"/></radialGradient>
+          <filter id="c-blur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10"/></filter>
+          <path id="c-rail" d="M100,318 Q600,190 1100,318" fill="none"/>
+          <path id="c-arch" d="M404,396 Q600,274 796,396" fill="none"/>
+        </defs>
+        <rect width="1200" height="500" fill="url(#c-sky)"/>
+        <circle cx="930" cy="108" r="66" fill="url(#c-sun)"/>
+        <circle cx="930" cy="108" r="30" fill="#a3301c"/>
+        <g class="kv-drift d3" stroke="#241a12" stroke-width="2.2" fill="none" opacity="0.55" stroke-linecap="round">
+          <path d="M286,128 q6,-7 12,0 q6,-7 12,0"/>
+          <path d="M336,106 q5,-6 10,0 q5,-6 10,0"/>
+          <path d="M380,136 q5,-6 10,0 q5,-6 10,0"/>
+        </g>
+        <path d="M0,344 Q140,296 280,336 Q420,300 560,338 L560,380 L0,380 Z" fill="#3f6152" opacity="0.13"/>
+        <path d="M640,340 Q800,298 940,334 Q1080,306 1200,338 L1200,380 L640,380 Z" fill="#3f6152" opacity="0.13"/>
+        <rect y="380" width="1200" height="120" fill="url(#c-water)"/>
+        <path d="M398,404 Q600,520 802,404" stroke="#241a12" stroke-width="12" fill="none" opacity="0.09" filter="url(#c-blur)"/>
+        <path d="M886,420 q22,6 44,0 q-20,10 -44,0 Z" fill="#a3301c" opacity="0.3" class="kv-shim"/>
+        <rect x="220" y="418" width="100" height="3" rx="1.5" fill="#f5eedd" class="kv-shim" style="--delay:0s"/>
+        <rect x="520" y="448" width="130" height="3" rx="1.5" fill="#f5eedd" class="kv-shim" style="--delay:1.8s"/>
+        <rect x="820" y="466" width="90" height="3" rx="1.5" fill="#f5eedd" class="kv-shim" style="--delay:3.4s"/>
+        <rect x="380" y="478" width="110" height="3" rx="1.5" fill="#f5eedd" class="kv-shim" style="--delay:4.6s"/>
+        <path d="M100,332 Q600,205 1100,332 L1100,354 Q600,234 100,354 Z" fill="#2a2115"/>
+        <path d="M404,400 Q600,274 796,400 L758,400 Q600,304 442,400 Z" fill="#2a2115"/>
+        <rect x="360" y="342" width="30" height="60" fill="#2a2115"/>
+        <rect x="810" y="342" width="30" height="60" fill="#2a2115"/>
+        <text font-family="'Noto Serif SC', serif" font-size="42" font-weight="700" fill="#241a12" letter-spacing="24"><textPath href="#c-rail" startOffset="21%">学而时习之不亦说乎</textPath></text>
+        <text font-family="'Noto Serif SC', serif" font-size="21" fill="#6b4c33" letter-spacing="9" opacity="0.9"><textPath href="#c-arch" startOffset="9%">点横竖撇捺提折钩弯</textPath></text>
+        <rect x="88" y="260" width="74" height="14" rx="5" fill="#241a12"/>
+        <rect x="96" y="272" width="58" height="66" rx="6" fill="#241a12"/>
+        <text x="125" y="318" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="36" fill="#f5eedd">越</text>
+        <rect x="1038" y="260" width="74" height="14" rx="5" fill="#241a12"/>
+        <rect x="1046" y="272" width="58" height="66" rx="6" fill="#241a12"/>
+        <text x="1075" y="318" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="36" fill="#f5eedd">汉</text>
+        <g>
+          <path d="M632,212 Q626,180 634,150 Q636,141 646,139 Q658,141 661,152 Q667,182 664,212 L651,212 Q649,199 646,199 Q643,199 641,212 Z" fill="#17150f"/>
+          <path d="M640,157 L688,128" stroke="#17150f" stroke-width="4.5" stroke-linecap="round"/>
+          <circle cx="694" cy="125" r="9.5" fill="#17150f"/>
+          <rect x="640" y="139" width="12" height="8" fill="#17150f"/>
+          <circle cx="638" cy="127" r="11.5" fill="#17150f"/>
+          <path d="M627,124 l-5,4 l6,3 Z" fill="#17150f"/>
+          <circle cx="649" cy="118" r="5.5" fill="#17150f"/>
+          <g class="kv-flag"><path d="M652,114 q11,-7 18,-3" stroke="#a3301c" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+          <path d="M635,176 q-20,9 -29,25" stroke="#a3301c" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </g>
+        <g class="kv-drift"><ellipse cx="300" cy="392" rx="150" ry="22" fill="#f5eedd" opacity="0.55" filter="url(#c-blur)"/></g>
+        <g class="kv-drift d2"><ellipse cx="660" cy="402" rx="170" ry="24" fill="#f5eedd" opacity="0.5" filter="url(#c-blur)"/></g>
+        <g class="kv-drift d3"><ellipse cx="980" cy="388" rx="140" ry="20" fill="#f5eedd" opacity="0.45" filter="url(#c-blur)"/></g>
+        <g class="kv-drift d2"><ellipse cx="520" cy="330" rx="130" ry="14" fill="#f5eedd" opacity="0.3" filter="url(#c-blur)"/></g>
+      </svg>
+      <p class="kvcap">Key visual C - "Cầu chữ": cây cầu bắc từ trụ 越 (Việt) sang trụ 汉 (Hán) - lan can xếp bằng câu Luận ngữ 学而时习之不亦说乎 "học mà luyện tập thường xuyên, chẳng vui lắm sao", vòm cầu ghép từ tên các nét bút. Người học bước về phía tiếng Hán, ngoảnh lại nhìn bờ tiếng Việt. Ảnh động: sương trôi qua chân cầu, mặt nước lấp lánh, dải khăn bay.</p>
+    </div>
     <div class="concept-head"><span class="kicker">Concept C</span><h4>Cầu chữ</h4><span class="zh">汉越</span></div>
-    <div class="concept-body">
-      <div class="concept-text">
-        <p>Xây cả nhận diện quanh vũ khí độc quyền: <b>âm Hán Việt</b>. Mọi layout là hai cột song song Việt - Trung nối nhau bằng nét son; typography-first, gần như không cần hình. Người Việt nhìn vào thấy ngay "app này hiểu mình": 汉 không chỉ là "hàn", nó là "HÁN" trong Hán Việt, "hảo hán", "Hán học".</p>
-        <p class="facet"><b>Logo:</b> lockup hai ngôn ngữ đối xứng. <b>Mascot:</b> Mèo Mão (mục 四) sinh ra từ chính concept này. <b>Motif:</b> dấu nối, ngoặc kép, cặp cột chữ. <b>Hợp khi:</b> đánh mạnh content kiến thức từ nguyên - chiết tự trên Threads/Facebook.</p>
-        <p class="facet"><b>Rủi ro:</b> nặng chữ, kén người lướt nhanh; khó nổi trên TikTok nếu thiếu nhân vật dẫn.</p>
-      </div>
-      <div class="concept-visual">
-        <div class="strip"><div style="background:#F6EFE2;"></div><div style="background:#5C3620;"></div><div style="background:#BE4A2A;"></div><div style="background:#3B2A20;"></div></div>
-        <div class="demo" style="background:var(--ivory);color:var(--ink);display:flex;justify-content:center;gap:10px;align-items:center;">
-          <span style="font-family:var(--sc);font-weight:900;font-size:22px;">汉</span>
-          <span style="color:var(--cinnabar);font-weight:700;">-</span>
-          <span style="font-family:var(--serif);font-weight:700;letter-spacing:0.08em;color:var(--chestnut);">HÁN</span>
-          <span style="color:var(--cinnabar);font-weight:700;">-</span>
-          <span>hảo hán</span>
-        </div>
-      </div>
+    <div class="concept-text">
+      <p>Xây cả nhận diện quanh vũ khí độc quyền: <b>âm Hán Việt</b>. Người học là kẻ qua cầu giữa hai bờ ngôn ngữ - mỗi chữ Hán bước qua đều ngoái về một từ Hán Việt quen thuộc. Người Việt nhìn vào thấy ngay "app này hiểu mình": 汉 không chỉ là "hàn", nó là "HÁN" trong hảo hán, Hán học.</p>
+      <p class="facet"><b>Logo:</b> lockup hai ngôn ngữ đối xứng. <b>Mascot:</b> Mèo Mão (mục 四) sinh ra từ chính concept này. <b>Motif:</b> nhịp cầu, dấu nối, cặp trụ 越-汉. <b>Hợp khi:</b> đánh mạnh content kiến thức từ nguyên - chiết tự trên Threads/Facebook.</p>
+      <p class="facet"><b>Rủi ro:</b> nặng chữ, kén người lướt nhanh; khó nổi trên TikTok nếu thiếu nhân vật dẫn.</p>
     </div>
   </div>
 
   <div class="verdict">
     <span class="seal">汉</span>
     <h4>Khuyến nghị: B làm hệ xương, A làm chất liệu ảnh, C làm chất liệu nội dung</h4>
-    <p>Ô vuông sống cho nhận diện tức thì và khả năng scale; các post hero mỗi tuần mượn thế giới ảnh của Thư phòng; còn Cầu chữ trở thành format nội dung chủ lực (word lockup 4 tầng, series chiết tự). Nếu team chỉ được chọn một và muốn khác biệt tối đa: chọn B.</p>
+    <p>Trong khung cửa cho nhận diện tức thì và khả năng scale (khung cửa = lưới ô template); các post hero mỗi tuần mượn thế giới ảnh của Thư phòng; còn Cầu chữ trở thành format nội dung chủ lực (word lockup 4 tầng, series chiết tự). Nếu team chỉ được chọn một và muốn khác biệt tối đa: chọn B.</p>
   </div>
 </section>
 
