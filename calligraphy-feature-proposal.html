@@ -1,0 +1,908 @@
+<title>Thư Pháp Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Noto+Serif+SC:wght@400;600;900&family=Ma+Shan+Zheng&display=swap">
+<style>
+  :root{
+    --paper:#fbf6ea;
+    --card:#fffdf7;
+    --ink:#1e2a26;
+    --ink-2:#4d5b55;
+    --muted:#77837d;
+    --line:#e2dccc;
+    --line-2:#efe9db;
+    --chu:#b23a2f;          /* chu sa — mực son ấn triện */
+    --chu-soft:#f6e3de;
+    --jade:#3f9c81;
+    --jade-soft:#e0f0ea;
+    --sun:#d99f3c;
+    --sun-soft:#f8ecd2;
+    --sumi:#191410;          /* mực nùng */
+    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --sans:Inter,"Segoe UI",system-ui,Arial,sans-serif;
+    --sc:"Noto Serif SC","Source Han Serif SC",serif;
+    --brush:"Ma Shan Zheng","Noto Serif SC",cursive;
+    --grid-line:rgb(178 58 47 / .30);
+    --grid-aux:rgb(178 58 47 / .16);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#15181a;
+      --card:#1c2124;
+      --ink:#ecece6;
+      --ink-2:#b9c2be;
+      --muted:#8e9a95;
+      --line:#2e3538;
+      --line-2:#262c2f;
+      --chu:#e07a6c;
+      --chu-soft:#33201e;
+      --jade:#5fbfa1;
+      --jade-soft:#182924;
+      --sun:#e2b55c;
+      --sun-soft:#2b2418;
+      --sumi:#f2efe6;
+      --grid-line:rgb(224 122 108 / .38);
+      --grid-aux:rgb(224 122 108 / .20);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15181a; --card:#1c2124; --ink:#ecece6; --ink-2:#b9c2be; --muted:#8e9a95;
+    --line:#2e3538; --line-2:#262c2f; --chu:#e07a6c; --chu-soft:#33201e; --jade:#5fbfa1;
+    --jade-soft:#182924; --sun:#e2b55c; --sun-soft:#2b2418; --sumi:#f2efe6;
+    --grid-line:rgb(224 122 108 / .38); --grid-aux:rgb(224 122 108 / .20);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62}
+  .wrap{width:min(1080px,calc(100% - 40px));margin-inline:auto}
+  h1,h2,h3,h4{text-wrap:balance;margin:0}
+  h1{font-family:var(--serif);font-size:clamp(38px,5.6vw,62px);line-height:1.02;letter-spacing:-.035em;font-weight:700}
+  h2{font-family:var(--serif);font-size:clamp(25px,3.2vw,34px);line-height:1.14;letter-spacing:-.02em;font-weight:700}
+  h3{font-family:var(--serif);font-size:19px;line-height:1.28;font-weight:600}
+  h4{font-size:13px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  p{margin:0}
+  a{color:var(--chu)}
+  .lede{font-family:var(--serif);font-size:clamp(17px,2vw,20px);line-height:1.55;color:var(--ink-2);max-width:62ch}
+  .body-col{max-width:66ch;display:flex;flex-direction:column;gap:14px;color:var(--ink-2)}
+
+  /* ── header ─────────────────────────────── */
+  header{border-bottom:1px solid var(--line);padding:54px 0 44px}
+  .kicker{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--chu);margin-bottom:22px}
+  .kicker::after{content:"";flex:1;height:1px;background:var(--line)}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,5vw,62px);align-items:center}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .tag{border:1px solid var(--line);border-radius:3px;padding:5px 10px;font-size:12px;font-weight:700;color:var(--ink-2);background:var(--card)}
+  .tag.on{background:var(--chu);border-color:var(--chu);color:#fff}
+  .seal{width:74px;height:74px;display:grid;place-items:center;border:3px solid var(--chu);border-radius:6px;color:var(--chu);font-family:var(--sc);font-weight:900;font-size:26px;line-height:1;letter-spacing:-2px;flex:none}
+
+  /* ── grid demo ──────────────────────────── */
+  .demo{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:20px}
+  .demo-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .cellbox{position:relative;aspect-ratio:1;border:1.5px solid var(--grid-line);display:grid;place-items:center}
+  .cellbox svg{position:absolute;inset:0;width:100%;height:100%}
+  .cellbox b{position:relative;font-family:var(--sc);font-weight:400;font-size:clamp(40px,7vw,64px);color:var(--sumi);line-height:1}
+  .cellbox b.brushface{font-family:var(--brush);font-weight:400}
+  .cap{margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
+
+  /* ── sections ───────────────────────────── */
+  section{padding:56px 0;border-bottom:1px solid var(--line-2)}
+  .sec-head{display:flex;gap:16px;align-items:baseline;margin-bottom:26px}
+  .sec-no{font-family:var(--sc);font-size:22px;color:var(--chu);line-height:1;flex:none;padding-top:2px}
+  .sec-head .sub{margin-top:8px;color:var(--muted);max-width:60ch;font-size:15px}
+
+  /* ── generic pieces ─────────────────────── */
+  .stack{display:flex;flex-direction:column;gap:18px}
+  .cols-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cols-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px;display:flex;flex-direction:column;gap:10px}
+  .panel p{color:var(--ink-2);font-size:14px}
+  .panel .zh{font-family:var(--sc);font-size:15px;color:var(--chu);font-weight:600}
+  .rail{border-left:3px solid var(--jade);padding-left:16px}
+  .rail.chu{border-color:var(--chu)}
+  .rail.sun{border-color:var(--sun)}
+  ul{margin:0;padding-left:1.15em;color:var(--ink-2);font-size:14px;display:flex;flex-direction:column;gap:6px}
+  li::marker{color:var(--chu)}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+  .kv dt{font-weight:700;color:var(--ink)}
+  .kv dd{margin:0;color:var(--ink-2)}
+
+  /* ── table ──────────────────────────────── */
+  .tbl-shell{overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+  th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line-2);vertical-align:top}
+  thead th{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--paper);border-bottom:1px solid var(--line)}
+  tbody tr:last-child td{border-bottom:0}
+  td.zhcell{font-family:var(--sc);font-size:24px;color:var(--sumi);line-height:1.1;white-space:nowrap}
+  td strong{display:block}
+  td .rom{color:var(--muted);font-size:12px}
+  .lvl{display:inline-flex;gap:3px;align-items:center}
+  .lvl i{width:7px;height:7px;border-radius:50%;background:var(--line);display:block}
+  .lvl i.f{background:var(--chu)}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* ── brush size scale ───────────────────── */
+  .brushes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .brush{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:12px}
+  .brush .swatchline{height:34px;display:flex;align-items:center}
+  .brush .swatchline span{display:block;background:var(--sumi);border-radius:99px}
+  .brush h3 .zh{font-family:var(--sc);color:var(--chu);font-size:15px;margin-left:6px}
+  .brush dl{margin:0}
+
+  /* ── stroke phases ──────────────────────── */
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--card)}
+  .phase{padding:20px;border-right:1px solid var(--line-2);display:flex;flex-direction:column;gap:8px}
+  .phase:last-child{border-right:0}
+  .phase .step{font-family:var(--sc);font-size:20px;color:var(--chu)}
+
+  /* ── eight principles ───────────────────── */
+  .bafa{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .fa{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px;display:flex;flex-direction:column;gap:4px}
+  .fa .g{font-family:var(--brush);font-size:30px;color:var(--sumi);line-height:1}
+  .fa b{font-size:13px}
+  .fa span{font-size:12px;color:var(--muted)}
+
+  /* ── roadmap ────────────────────────────── */
+  .road{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .wave{display:grid;grid-template-columns:150px 1fr 118px;gap:20px;padding:20px 22px;background:var(--card);border-bottom:1px solid var(--line-2);align-items:start}
+  .wave:last-child{border-bottom:0}
+  .wave .when b{display:block;font-family:var(--serif);font-size:17px}
+  .wave .when span{font-size:12px;color:var(--muted)}
+  .wave .effort{font-size:12px;font-weight:700;color:var(--ink-2);text-align:right}
+  .wave ul{font-size:13px}
+  .wave.now{background:var(--sun-soft)}
+
+  .qa{display:flex;flex-direction:column;gap:14px}
+  .q{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--chu);border-radius:0 4px 4px 0;padding:16px 18px}
+  .q b{display:block;margin-bottom:4px}
+  .q span{color:var(--ink-2);font-size:14px}
+
+  .srcs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .src{border:1px solid var(--line);border-radius:4px;padding:16px;background:var(--card);text-decoration:none;color:inherit}
+  .src b{display:block;font-size:14px}
+  .src span{display:block;margin-top:3px;font-size:12px;color:var(--muted);word-break:break-all}
+  .src:hover{border-color:var(--chu)}
+  :focus-visible{outline:2px solid var(--chu);outline-offset:2px}
+
+  footer{padding:34px 0 56px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media (max-width:900px){
+    .hero,.cols-2,.cols-3,.brushes,.phases{grid-template-columns:1fr}
+    .cols-4,.bafa{grid-template-columns:repeat(2,1fr)}
+    .phase{border-right:0;border-bottom:1px solid var(--line-2)}
+    .wave{grid-template-columns:1fr}
+    .wave .effort{text-align:left}
+    .srcs{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">Feature proposal · Hanzi Practice</div>
+    <div class="hero">
+      <div>
+        <h1>Thư Pháp Practice</h1>
+        <p class="lede" style="margin-top:18px">Hanzi Practice đang xuất template luyện <em>viết đúng</em> — ô vuông, nét mờ, thứ tự nét. Đề xuất này mở thêm một ngách kề bên: template luyện <em>viết đẹp</em>, tức thư pháp — chọn loại bút, chọn thể chữ, chọn khổ giấy và lưới, rồi in ra để tập.</p>
+        <div class="hero-meta">
+          <span class="tag on">Đề xuất — chờ duyệt</span>
+          <span class="tag">Module mới, không phá luồng cũ</span>
+          <span class="tag">Dùng lại engine render lưới</span>
+          <span class="tag">10.09.2026</span>
+        </div>
+      </div>
+      <div class="demo">
+        <div class="demo-row">
+          <div>
+            <div class="cellbox">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <path d="M50 0V100M0 50H100" stroke="var(--grid-line)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+                <path d="M0 0L100 100M100 0L0 100" stroke="var(--grid-aux)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+              </svg>
+              <b class="brushface">永</b>
+            </div>
+            <div class="cap">米字格 · Mễ tự cách</div>
+          </div>
+          <div>
+            <div class="cellbox">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <path d="M33.3 0V100M66.6 0V100M0 33.3H100M0 66.6H100" stroke="var(--grid-aux)" stroke-width="1" fill="none"/>
+              </svg>
+              <b>書</b>
+            </div>
+            <div class="cap">九宮格 · Cửu cung cách</div>
+          </div>
+        </div>
+        <p style="margin-top:14px;font-size:12px;color:var(--muted);text-align:center">Cùng một engine lưới, khác tham số — chữ mẫu hiển thị bằng font, bản in dùng nét viền rỗng để học viên tô.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 1 ── bối cảnh -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">一</span>
+      <div>
+        <h2>Vì sao thêm ngách thư pháp</h2>
+        <p class="sub">Cùng một người dùng, cùng một hành vi in – tập – chụp ảnh, nhưng động lực khác nhau.</p>
+      </div>
+    </div>
+    <div class="cols-3">
+      <div class="panel">
+        <span class="zh">識字 · nhận chữ</span>
+        <h3>Feature hiện tại giải bài toán “viết đúng”</h3>
+        <p>Template hán tự: ô 田字格, nét mờ để tô, số thứ tự nét, pinyin và nghĩa. Người dùng là học viên HSK, mục tiêu là nhớ chữ.</p>
+      </div>
+      <div class="panel">
+        <span class="zh">書藝 · nghệ chữ</span>
+        <h3>Ngách thư pháp giải bài toán “viết đẹp”</h3>
+        <p>Người tập thư pháp không cần pinyin. Họ cần đúng thể chữ, đúng tỉ lệ ô, đúng khổ giấy, và một bản mẫu (帖) để lâm.</p>
+      </div>
+      <div class="panel">
+        <span class="zh">同源 · cùng gốc</span>
+        <h3>Chi phí biên rất thấp</h3>
+        <p>Lưới, khổ giấy, xuất PDF, chọn chữ — đã có. Phần thêm chủ yếu là bộ font theo thể chữ, preset dụng cụ và lớp thông tin nền.</p>
+      </div>
+    </div>
+    <div class="rail chu" style="margin-top:24px">
+      <div class="body-col">
+        <p><strong>Nhận định:</strong> thư pháp là ngách nhỏ hơn nhưng gắn bó và chịu chi hơn (bút, mực, giấy, khoá học). Nội dung thư pháp cũng dễ lan trên social hơn nội dung HSK — một nét bút đẹp không cần dịch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 ── kiến thức nền: bút -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">二</span>
+      <div>
+        <h2>Kiến thức nền: bút cứng và bút lông</h2>
+        <p class="sub">Đây là lựa chọn đầu tiên trong luồng tạo template, vì nó quyết định cỡ ô, độ đậm nét mẫu và cả loại giấy.</p>
+      </div>
+    </div>
+
+    <div class="cols-2" style="margin-bottom:26px">
+      <div class="panel">
+        <span class="zh">硬筆書法 · ngạnh bút thư pháp</span>
+        <h3>Bút cứng</h3>
+        <p>Bút chì, bút gel, bút máy, bút sắt. Nét gần như đều, không nở ngọn — cái đẹp nằm ở kết cấu chữ (結構) chứ không ở biến thiên nét.</p>
+        <ul>
+          <li>Ô nhỏ: 12–15&nbsp;mm là cỡ tiêu chuẩn cho vở luyện</li>
+          <li>Giấy thường, in A4 hai mặt được</li>
+          <li>Thể phù hợp: khải, hành khải — không dùng cho triện, thảo</li>
+          <li>Cửa vào rẻ nhất, phù hợp người mới và học sinh</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <span class="zh">毛筆書法 · mao bút thư pháp</span>
+        <h3>Bút lông</h3>
+        <p>Ngọn lông dựng trong ống tre, có thân – bụng – ngọn. Nét thay đổi theo lực ấn (按) và lực nhấc (提), nên cùng một chữ mà độ dày mỏng khác nhau hoàn toàn.</p>
+        <ul>
+          <li>Ô lớn: 40–80&nbsp;mm tuỳ cỡ bút</li>
+          <li>Cần giấy thấm mực: giấy tuyên hoặc giấy luyện chữ (毛邊紙)</li>
+          <li>Dùng được cả năm thể</li>
+          <li>Yêu cầu bộ dụng cụ đầy đủ — xem “văn phòng tứ bảo”</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4 style="margin-bottom:12px">Bút lông chia theo cỡ ngọn</h4>
+    <div class="brushes">
+      <div class="brush">
+        <div class="swatchline"><span style="width:100%;height:5px"></span></div>
+        <h3>Tiểu <span class="zh">小楷</span></h3>
+        <dl class="kv">
+          <dt>Ngọn</dt><dd class="num">~4–6 mm đường kính, dài 20–30 mm</dd>
+          <dt>Cỡ chữ</dt><dd class="num">15–30 mm</dd>
+          <dt>Dùng cho</dt><dd>Chép kinh, lạc khoản, chữ nhỏ trong tranh</dd>
+        </dl>
+      </div>
+      <div class="brush">
+        <div class="swatchline"><span style="width:100%;height:11px"></span></div>
+        <h3>Trung <span class="zh">中楷</span></h3>
+        <dl class="kv">
+          <dt>Ngọn</dt><dd class="num">~7–9 mm, dài 35–45 mm</dd>
+          <dt>Cỡ chữ</dt><dd class="num">40–60 mm</dd>
+          <dt>Dùng cho</dt><dd>Cỡ luyện phổ thông, đa số bài lâm thiếp</dd>
+        </dl>
+      </div>
+      <div class="brush">
+        <div class="swatchline"><span style="width:100%;height:20px"></span></div>
+        <h3>Đại <span class="zh">大楷</span></h3>
+        <dl class="kv">
+          <dt>Ngọn</dt><dd class="num">~10–14 mm, dài 50–65 mm</dd>
+          <dt>Cỡ chữ</dt><dd class="num">70–120 mm</dd>
+          <dt>Dùng cho</dt><dd>Câu đối, hoành phi, chữ treo tường</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="cols-2" style="margin-top:18px">
+      <div class="panel">
+        <h3>Chất lông — ba nhóm</h3>
+        <dl class="kv">
+          <dt>狼毫 Lang hào</dt><dd>Lông cứng (chồn, thử lang). Đàn hồi mạnh, nét sắc, dễ giữ trung phong. Tốt cho khải và hành.</dd>
+          <dt>羊毫 Dương hào</dt><dd>Lông mềm (dê). Hút mực nhiều, nét mềm dày, khó điều khiển hơn. Tốt cho lệ và chữ lớn.</dd>
+          <dt>兼毫 Kiêm hào</dt><dd>Pha cứng – mềm. Lựa chọn mặc định nên đề xuất cho người mới.</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <span class="zh">文房四寶 · văn phòng tứ bảo</span>
+        <h3>Bốn món cơ bản</h3>
+        <dl class="kv">
+          <dt>筆 Bút</dt><dd>Bút lông, phân theo cỡ và chất lông như trên</dd>
+          <dt>墨 Mực</dt><dd>Thoi mực mài, hoặc mực nước pha loãng để luyện</dd>
+          <dt>紙 Giấy</dt><dd>生宣 sinh tuyên hút mạnh (dễ loe), 熟宣 thục tuyên ít hút, 半熟 bán thục ở giữa; giấy 毛邊 để luyện hằng ngày</dd>
+          <dt>硯 Nghiên</dt><dd>Nghiên mài mực, kèm chặn giấy (鎮尺) và thảm lót (氈)</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 ── ngũ thể -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">三</span>
+      <div>
+        <h2>Ngũ thể — năm phong cách chữ</h2>
+        <p class="sub">Từ Hán trở đi, chữ Hán định hình thành năm thể chính. Bảng này là nội dung nền cho bước “chọn thể chữ”, đồng thời là nội dung học trong app.</p>
+      </div>
+    </div>
+    <div class="tbl-shell">
+      <table>
+        <thead>
+          <tr>
+            <th>Thể</th><th>Mẫu</th><th>Đặc điểm nét &amp; kết cấu</th><th>Bản mẫu để lâm</th><th>Độ khó</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Triện thư</strong><span class="rom">篆書 · zhuànshū</span></td>
+            <td class="zhcell">篆</td>
+            <td>Nét đều một độ dày, đầu và cuối tròn, chữ dài theo chiều dọc, đối xứng cao. Tần Thuỷ Hoàng chuẩn hoá thành tiểu triện. Nay chủ yếu dùng khắc ấn triện.</td>
+            <td>Thạch cổ văn, Thái Sơn khắc thạch</td>
+            <td><span class="lvl"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span></td>
+          </tr>
+          <tr>
+            <td><strong>Lệ thư</strong><span class="rom">隸書 · lìshū</span></td>
+            <td class="zhcell">隸</td>
+            <td>Giản hoá từ triện, chữ bè ngang, nét ngang kết bằng đuôi “tàm đầu yến vĩ” bật lên. Phổ biến từ thế kỷ 3 TCN.</td>
+            <td>Tào Toàn bi, Trương Thiên bi</td>
+            <td><span class="lvl"><i class="f"></i><i class="f"></i><i></i><i></i><i></i></span></td>
+          </tr>
+          <tr>
+            <td><strong>Khải thư</strong><span class="rom">楷書 · kǎishū</span></td>
+            <td class="zhcell">楷</td>
+            <td>Thể chuẩn mực nhất, mỗi nét dừng dứt khoát, cấu trúc vuông vắn — nền của chữ in hiện đại. Điểm khởi đầu bắt buộc cho người mới.</td>
+            <td>Cửu Thành Cung (Âu Dương Tuân), Đa Bảo Tháp bi (Nhan Chân Khanh)</td>
+            <td><span class="lvl"><i class="f"></i><i></i><i></i><i></i><i></i></span></td>
+          </tr>
+          <tr>
+            <td><strong>Hành thư</strong><span class="rom">行書 · xíngshū</span></td>
+            <td class="zhcell">行</td>
+            <td>Viết nhanh hơn khải, nét nối liền mạch nhưng chữ vẫn đọc rõ. Thể dùng cho thư từ và phần lớn tác phẩm treo.</td>
+            <td>Lan Đình tự (Vương Hi Chi)</td>
+            <td><span class="lvl"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span></td>
+          </tr>
+          <tr>
+            <td><strong>Thảo thư</strong><span class="rom">草書 · cǎoshū</span></td>
+            <td class="zhcell">草</td>
+            <td>Nhanh nhất, nét lược và nối cả chữ thành một mạch. Biểu cảm mạnh nhất, khó đọc nhất; cuồng thảo là biến thể phóng khoáng nhất.</td>
+            <td>Tự Tự thiếp (Hoài Tố), thảo thư Trương Húc</td>
+            <td><span class="lvl"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);max-width:70ch">Trước ngũ thể còn có <strong>giáp cốt văn</strong> (khắc trên mai rùa, ~1200 TCN) và <strong>kim văn</strong> (đúc trên đồ đồng) — nên đưa vào phần lịch sử, không đưa vào bộ template vì không có chuẩn luyện tập.</p>
+  </div>
+</section>
+
+<!-- 4 ── lưới -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">四</span>
+      <div>
+        <h2>Bốn loại lưới cần hỗ trợ</h2>
+        <p class="sub">Lưới là phần cốt lõi của template. Mỗi loại dạy một việc khác nhau, nên cho chọn theo trình độ chứ không để một mặc định duy nhất.</p>
+      </div>
+    </div>
+    <div class="cols-4">
+      <div class="panel" style="padding:16px">
+        <div class="cellbox" style="aspect-ratio:1">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0V100M0 50H100" stroke="var(--grid-line)" stroke-width="1" stroke-dasharray="4 3" fill="none"/></svg>
+          <b style="font-size:44px">田</b>
+        </div>
+        <h3 style="margin-top:12px">田字格</h3>
+        <p>Điền tự cách — chia bốn. Lưới quen nhất với người học chữ, dạy canh giữa cơ bản. Đang dùng ở feature hiện tại.</p>
+      </div>
+      <div class="panel" style="padding:16px">
+        <div class="cellbox" style="aspect-ratio:1">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M50 0V100M0 50H100" stroke="var(--grid-line)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+            <path d="M0 0L100 100M100 0L0 100" stroke="var(--grid-aux)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+          </svg>
+          <b style="font-size:44px">米</b>
+        </div>
+        <h3 style="margin-top:12px">米字格</h3>
+        <p>Mễ tự cách — thêm hai đường chéo. Chuẩn cho thư pháp bút lông: bắt được góc nghiêng của nét phẩy, nét mác.</p>
+      </div>
+      <div class="panel" style="padding:16px">
+        <div class="cellbox" style="aspect-ratio:1">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M33.3 0V100M66.6 0V100M0 33.3H100M0 66.6H100" stroke="var(--grid-aux)" stroke-width="1" fill="none"/></svg>
+          <b style="font-size:44px">宮</b>
+        </div>
+        <h3 style="margin-top:12px">九宮格</h3>
+        <p>Cửu cung cách — chia chín. Dùng khi lâm thiếp: đối chiếu từng phần chữ mẫu với từng ô, chính xác về tỉ lệ.</p>
+      </div>
+      <div class="panel" style="padding:16px">
+        <div class="cellbox" style="aspect-ratio:1">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect x="20" y="20" width="60" height="60" fill="none" stroke="var(--grid-aux)" stroke-width="1"/>
+            <path d="M50 0V100M0 50H100" stroke="var(--grid-aux)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+          </svg>
+          <b style="font-size:44px">回</b>
+        </div>
+        <h3 style="margin-top:12px">回宮格</h3>
+        <p>Hồi cung cách — ô vuông lồng trong ô vuông. Dạy “thu trong nở ngoài”: phần lõi chữ phải nằm trong khung trong.</p>
+      </div>
+    </div>
+    <div class="cols-3" style="margin-top:18px">
+      <div class="panel">
+        <h4>Khổ giấy &amp; số ô</h4>
+        <dl class="kv">
+          <dt>A4 dọc, bút cứng</dt><dd class="num">ô 13 mm → 14 × 20 ô</dd>
+          <dt>A4 dọc, tiểu</dt><dd class="num">ô 25 mm → 7 × 10 ô</dd>
+          <dt>A3, trung</dt><dd class="num">ô 50 mm → 5 × 8 ô</dd>
+          <dt>Đối liên (dải dọc)</dt><dd class="num">ô 80 mm → 1 × 5–7 ô</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <h4>Ba chế độ nét mẫu</h4>
+        <ul>
+          <li><strong>Mẫu đầy</strong> — chữ in đậm để nhìn và lâm bên cạnh</li>
+          <li><strong>Viền rỗng</strong> (雙鈎) — tô theo viền, luyện tỉ lệ</li>
+          <li><strong>Mờ dần</strong> — vài ô đầu có mẫu, các ô sau trắng</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Chiều viết</h4>
+        <ul>
+          <li>Dọc từ phải sang trái — chuẩn truyền thống, nên là mặc định của module thư pháp</li>
+          <li>Ngang từ trái sang phải — cho bút cứng và người mới</li>
+          <li>Chừa lề trái cho lạc khoản khi in bản tác phẩm</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 ── kỹ thuật -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">五</span>
+      <div>
+        <h2>Kỹ thuật nét — lớp nội dung đi kèm template</h2>
+        <p class="sub">Template in ra là giấy trắng có lưới; giá trị thật nằm ở phần chú giải cạnh lưới. Đây là những gì nên in ở chân trang mỗi bản.</p>
+      </div>
+    </div>
+
+    <h4 style="margin-bottom:12px">Ba nhịp của một nét</h4>
+    <div class="phases">
+      <div class="phase">
+        <span class="step">起筆</span>
+        <h3>Khởi bút</h3>
+        <p style="font-size:14px;color:var(--ink-2)">Đặt bút. Nghịch nhập (藏鋒) thì che ngọn, nét mở đầu tròn và kín; lộ phong thì để ngọn hở, nét mở đầu nhọn.</p>
+      </div>
+      <div class="phase">
+        <span class="step">行筆</span>
+        <h3>Hành bút</h3>
+        <p style="font-size:14px;color:var(--ink-2)">Kéo nét. Giữ <strong>trung phong</strong> — ngọn bút đi giữa lòng nét — thì nét đầy và chắc; <strong>thiên phong</strong> (ngọn lệch một bên) cho nét mỏng, sắc, dùng có chủ ý.</p>
+      </div>
+      <div class="phase">
+        <span class="step">收筆</span>
+        <h3>Thu bút</h3>
+        <p style="font-size:14px;color:var(--ink-2)">Kết nét. Hồi phong thì gập nhẹ ngược lại rồi nhấc, đầu nét gọn; bật ra thì tạo đuôi vót như đuôi yến trong lệ thư.</p>
+      </div>
+    </div>
+
+    <div class="cols-2" style="margin-top:22px">
+      <div class="panel">
+        <span class="zh">執筆五字法 · chấp bút ngũ tự pháp</span>
+        <h3>Năm chữ cầm bút</h3>
+        <dl class="kv">
+          <dt>擫 Áp</dt><dd>Ngón trỏ ép mặt trong thân bút</dd>
+          <dt>押 Ấn</dt><dd>Ngón cái đè phía đối diện</dd>
+          <dt>鉤 Câu</dt><dd>Ngón giữa móc vào thân bút</dd>
+          <dt>格 Cách</dt><dd>Ngón áp út đẩy ngược ra</dd>
+          <dt>抵 Chỉ</dt><dd>Ngón út tựa sau ngón áp út</dd>
+        </dl>
+        <p style="font-size:13px;color:var(--muted)">Kèm ba tư thế tay: gối tay (chữ nhỏ), treo cổ tay, treo cả cánh tay (chữ lớn).</p>
+      </div>
+      <div class="panel">
+        <span class="zh">永字八法 · vĩnh tự bát pháp</span>
+        <h3>Tám nét trong chữ 永</h3>
+        <p style="font-size:14px">Chữ <strong>永</strong> chứa tám dạng nét cơ bản — vì vậy nó là bài tập vỡ lòng kinh điển và là chữ mặc định nên đặt ở template đầu tiên.</p>
+        <div class="bafa">
+          <div class="fa"><span class="g">丶</span><b>側 Trắc</b><span>Điểm, mũi nhọn nghiêng</span></div>
+          <div class="fa"><span class="g">一</span><b>勒 Lặc</b><span>Ngang, kéo như nắm dây</span></div>
+          <div class="fa"><span class="g">丨</span><b>努 Nỗ</b><span>Dọc, gồng sức</span></div>
+          <div class="fa"><span class="g">亅</span><b>趯 Dịch</b><span>Móc bật lên</span></div>
+          <div class="fa"><span class="g">㇀</span><b>策 Sách</b><span>Ngang ngắn hếch lên</span></div>
+          <div class="fa"><span class="g">丿</span><b>掠 Lược</b><span>Phẩy dài sang trái</span></div>
+          <div class="fa"><span class="g">丿</span><b>啄 Trác</b><span>Phẩy ngắn, mổ nhanh</span></div>
+          <div class="fa"><span class="g">乀</span><b>磔 Trách</b><span>Mác toả sang phải</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cols-3" style="margin-top:18px">
+      <div class="panel">
+        <h4>Ba lớp cần đúng</h4>
+        <ul>
+          <li><strong>用筆</strong> dụng bút — chất lượng từng nét</li>
+          <li><strong>結構</strong> kết cấu — tỉ lệ trong một chữ</li>
+          <li><strong>章法</strong> chương pháp — bố cục toàn trang</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Bố cục một tác phẩm</h4>
+        <ul>
+          <li><strong>正文</strong> chính văn — thân bài</li>
+          <li><strong>落款</strong> lạc khoản — dòng ký nhỏ, ghi nội dung, thời gian, người viết</li>
+          <li><strong>印章</strong> ấn chương — dấu son, đóng dưới hoặc bên lạc khoản</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Cách luyện</h4>
+        <ul>
+          <li><strong>描紅</strong> miêu hồng — tô lên chữ đỏ in mờ</li>
+          <li><strong>摹帖</strong> mô thiếp — can giấy mỏng lên bản mẫu</li>
+          <li><strong>臨帖</strong> lâm thiếp — đặt bản mẫu bên cạnh và viết lại</li>
+          <li><strong>背帖</strong> bối thiếp — viết lại từ ký ức</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 ── luồng sản phẩm -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">六</span>
+      <div>
+        <h2>Luồng tạo template đề xuất</h2>
+        <p class="sub">Năm bước, mỗi bước có mặc định an toàn để người mới bấm “Tạo” ngay được mà không phải hiểu hết thuật ngữ.</p>
+      </div>
+    </div>
+    <div class="road">
+      <div class="wave">
+        <div class="when"><b>Bước 1 — Dụng cụ</b><span>Mặc định: bút lông, kiêm hào, cỡ trung</span></div>
+        <ul>
+          <li>Bút cứng · Bút lông</li>
+          <li>Nếu bút lông: cỡ tiểu / trung / đại → tự đặt cỡ ô và khổ giấy gợi ý</li>
+          <li>Chất lông (cứng / mềm / pha) chỉ ảnh hưởng phần gợi ý, không đổi bản in</li>
+        </ul>
+        <div class="effort">Chọn 1 trong 2</div>
+      </div>
+      <div class="wave">
+        <div class="when"><b>Bước 2 — Thể chữ</b><span>Mặc định: khải thư</span></div>
+        <ul>
+          <li>Triện · Lệ · Khải · Hành · Thảo, mỗi thể một font mẫu riêng</li>
+          <li>Khoá bớt lựa chọn không hợp: bút cứng thì ẩn triện và thảo</li>
+          <li>Kèm một dòng mô tả và mức khó ngay tại lựa chọn</li>
+        </ul>
+        <div class="effort">5 lựa chọn</div>
+      </div>
+      <div class="wave">
+        <div class="when"><b>Bước 3 — Nội dung</b><span>Mặc định: 永</span></div>
+        <ul>
+          <li>Tự nhập chữ, hoặc chọn bộ có sẵn: bát pháp, bộ thủ, thành ngữ bốn chữ, câu thơ Đường</li>
+          <li>Bộ theo dịp: câu đối Tết, chữ Phúc – Lộc – Thọ – Tâm – Nhẫn</li>
+          <li>Cảnh báo khi chữ nhập không có glyph trong font thể đó</li>
+        </ul>
+        <div class="effort">Nhập tự do</div>
+      </div>
+      <div class="wave">
+        <div class="when"><b>Bước 4 — Lưới &amp; khổ</b><span>Mặc định: 米字格, A4 dọc</span></div>
+        <ul>
+          <li>Bốn loại lưới ở mục bốn, cỡ ô kéo được bằng slider</li>
+          <li>Khổ A4 / A3 / dải đối liên; chiều viết dọc hoặc ngang</li>
+          <li>Màu lưới: son mờ hoặc xám nhạt để tiết kiệm mực in</li>
+        </ul>
+        <div class="effort">Xem trước trực tiếp</div>
+      </div>
+      <div class="wave now">
+        <div class="when"><b>Bước 5 — Xuất</b><span>Mặc định: PDF, mẫu mờ dần</span></div>
+        <ul>
+          <li>Chế độ nét: mẫu đầy / viền rỗng / mờ dần</li>
+          <li>Chân trang tự in: tên thể chữ, nhịp nét, ghi chú kỹ thuật liên quan</li>
+          <li>Chừa lề lạc khoản, tuỳ chọn ô đóng dấu</li>
+          <li>PDF và PNG; PNG dùng luôn cho nội dung social</li>
+        </ul>
+        <div class="effort">PDF · PNG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 ── spec ky thuat -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">七</span>
+      <div>
+        <h2>Spec kỹ thuật: hình học và bản in</h2>
+        <p class="sub">Phần này để dev dựng đúng bản in mà không phải đoán. Nguồn sự thật của mọi kích thước là milimét — preview chỉ là mm nhân hệ số hiển thị.</p>
+      </div>
+    </div>
+
+    <div class="cols-2">
+      <div class="panel">
+        <h4>Hình học lưới</h4>
+        <dl class="kv">
+          <dt>Khung ngoài</dt><dd class="num">0.6 pt, liền, màu lưới 100%</dd>
+          <dt>Đường trong</dt><dd class="num">0.35 pt, gạch 3 mm – 2 mm</dd>
+          <dt>Đường chéo (米)</dt><dd class="num">0.35 pt, gạch, màu lưới 55%</dd>
+          <dt>Khung trong (回)</dt><dd class="num">cạnh = 0.6 × cạnh ô, đồng tâm</dd>
+          <dt>Chia 九宮</dt><dd class="num">chính xác 1/3, không làm tròn về px</dd>
+          <dt>Giữa các ô</dt><dd class="num">0 — hai ô kề nhau dùng chung nét viền</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <h4>Khổ giấy và lề</h4>
+        <dl class="kv">
+          <dt>A4</dt><dd class="num">210 × 297 mm</dd>
+          <dt>A3</dt><dd class="num">297 × 420 mm</dd>
+          <dt>Đối liên</dt><dd class="num">340 × 1380 mm (khổ tự đặt)</dd>
+          <dt>Lề chung</dt><dd class="num">15 mm bốn phía</dd>
+          <dt>Lề lạc khoản</dt><dd class="num">+20 mm ở cạnh cuối theo chiều viết</dd>
+          <dt>Số ô</dt><dd class="num">floor((cạnh − 2×lề) / cỡ ô), phần dư chia đều hai bên</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="cols-2" style="margin-top:18px">
+      <div class="panel">
+        <h4>Chữ mẫu trong ô</h4>
+        <ul>
+          <li>Cỡ chữ = <strong>0.86 × cạnh ô</strong> — chữ thư pháp chiếm khoảng 85% ô, không đầy ô</li>
+          <li>Canh giữa theo <strong>em-box của font</strong>, không theo baseline kiểu Latin — canh theo baseline thì chữ lệch xuống ở mọi thể</li>
+          <li>Triện thư dài theo chiều dọc, lệ thư bè ngang — cho phép hệ số riêng theo thể thay vì một con số dùng chung</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Ba chế độ nét mẫu — cách render</h4>
+        <dl class="kv">
+          <dt>Mẫu đầy</dt><dd>Tô đặc, màu son 100% hoặc xám 60%</dd>
+          <dt>Viền rỗng</dt><dd>fill none, stroke 0.4 pt. Phải là <strong>outline thật của glyph</strong> (chuyển text sang path), không phải hiệu ứng viền giả</dd>
+          <dt>Mờ dần</dt><dd class="num">ô 1–2 ở 25%, ô 3–4 ở 12%, các ô sau để trắng</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="cols-2" style="margin-top:18px">
+      <div class="panel">
+        <h4>Xuất bản</h4>
+        <ul>
+          <li><strong>PDF</strong> — vector, nhúng subset font, kích thước trang theo mm thật, không scale-to-fit</li>
+          <li>Chế độ viền rỗng: chuyển text sang path trước khi ghi PDF để không phụ thuộc renderer</li>
+          <li><strong>PNG in</strong> — 300 dpi, nền trắng đặc (không trong suốt, tránh in ra nền đen)</li>
+          <li>Tên tệp tự sinh: <span class="num">thuphap_khai_michu_50mm_A4.pdf</span></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Preset dụng cụ → tham số</h4>
+        <div class="tbl-shell" style="border:0">
+          <table style="min-width:0">
+            <thead><tr><th>Dụng cụ</th><th>Cỡ ô</th><th>Lưới</th><th>Khổ</th></tr></thead>
+            <tbody>
+              <tr><td>Bút cứng</td><td class="num">13 mm</td><td>田字格</td><td>A4 dọc, viết ngang</td></tr>
+              <tr><td>Lông tiểu</td><td class="num">25 mm</td><td>米字格</td><td>A4 dọc</td></tr>
+              <tr><td>Lông trung</td><td class="num">50 mm</td><td>米字格</td><td>A3 dọc</td></tr>
+              <tr><td>Lông đại</td><td class="num">90 mm</td><td>回宮格</td><td>Đối liên</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <h4>Cấu hình một template — các trường cần lưu</h4>
+      <div class="cols-3">
+        <dl class="kv">
+          <dt>tool</dt><dd>pen | brush</dd>
+          <dt>brushSize</dt><dd>small | medium | large</dd>
+          <dt>hairType</dt><dd>wolf | goat | mixed <em>(chỉ để gợi ý, không đổi bản in)</em></dd>
+          <dt>script</dt><dd>zhuan | li | kai | xing | cao</dd>
+        </dl>
+        <dl class="kv">
+          <dt>charset</dt><dd>traditional | simplified</dd>
+          <dt>content</dt><dd>mảng ký tự theo đúng thứ tự viết</dd>
+          <dt>grid</dt><dd>tian | mi | jiugong | huigong</dd>
+          <dt>cellSizeMm</dt><dd class="num">số thực, 10–120</dd>
+        </dl>
+        <dl class="kv">
+          <dt>paper</dt><dd>a4 | a3 | duilian | custom{w,h}</dd>
+          <dt>direction</dt><dd>vertical-rtl | horizontal-ltr</dd>
+          <dt>sampleMode</dt><dd>fill | outline | fade</dd>
+          <dt>gridColor</dt><dd>vermilion | grey</dd>
+          <dt>extras</dt><dd>footnote, signatureMargin, sealBox</dd>
+        </dl>
+      </div>
+      <p style="font-size:13px;color:var(--muted)">Nên nén được toàn bộ cấu hình vào URL để chia sẻ và tái tạo đúng bản in — cũng là cách tạo link cho bio và bài đăng mà không cần lưu server.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 ── font va glyph -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">八</span>
+      <div>
+        <h2>Font, glyph và phồn – giản</h2>
+        <p class="sub">Đây là chỗ dễ vỡ nhất của module. Ba rủi ro dưới đây nên xử lý ngay ở đợt 1, kể cả khi đợt 1 chỉ có hai thể chữ.</p>
+      </div>
+    </div>
+    <div class="cols-3">
+      <div class="panel">
+        <span class="zh">字形 · glyph</span>
+        <h3>Mỗi thể một font riêng</h3>
+        <p>Không lấy font khải rồi làm cong để giả triện — sai hoàn toàn về hình chữ. Triện, lệ, hành, thảo mỗi thể cần một font được thiết kế cho thể đó, và mỗi font có mức phủ ký tự khác nhau.</p>
+      </div>
+      <div class="panel">
+        <span class="zh">覆蓋 · coverage</span>
+        <h3>Kiểm tra glyph trước khi render</h3>
+        <p>Đọc bảng cmap của font để biết chữ người dùng nhập có tồn tại hay không. Thiếu thì cảnh báo ngay tại ô nhập kèm đề nghị đổi thể — đừng để font fallback âm thầm trả về một chữ khải giữa trang triện.</p>
+      </div>
+      <div class="panel">
+        <span class="zh">繁簡 · phồn giản</span>
+        <h3>Không chuyển đổi tự động một–một</h3>
+        <p>Một chữ giản có thể ứng nhiều chữ phồn: 发 → 發 (phát) hoặc 髮 (tóc). Cần bảng đối chiếu và hỏi lại người dùng ở các trường hợp nhập nhằng, không map máy móc.</p>
+      </div>
+    </div>
+    <div class="rail sun" style="margin-top:22px">
+      <div class="body-col">
+        <p><strong>Ràng buộc phái sinh:</strong> vì phủ glyph khác nhau giữa các font, danh sách bộ chữ mẫu có sẵn (bát pháp, bộ thủ, thành ngữ, câu đối) phải được kiểm tra riêng cho từng thể. Một bộ hiện đủ ở thể khải nhưng thiếu chữ ở thể triện thì phải bị ẩn hoặc gắn nhãn ở thể đó.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 ── nghiem thu -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">九</span>
+      <div>
+        <h2>Tiêu chí nghiệm thu và các ca biên</h2>
+        <p class="sub">Sản phẩm cuối là tờ giấy in ra, nên nghiệm thu phải diễn ra trên giấy — không chỉ trên màn hình.</p>
+      </div>
+    </div>
+    <div class="cols-2">
+      <div class="panel">
+        <h4>Nghiệm thu — làm trên bản in thật</h4>
+        <ul>
+          <li>In A4, đo ô bằng thước: sai số <strong class="num">≤ 0.5 mm</strong> so với cỡ đã chọn</li>
+          <li>Lưới vẫn thấy được khi in laser đen trắng ở chế độ xám, và không đậm đến mức lấn nét bút</li>
+          <li>Cùng một PDF mở trên Chrome, Acrobat và Preview cho ra bản in giống nhau</li>
+          <li>Chữ mẫu không tràn ô ở cả năm thể, kể cả chữ nhiều nét như 囊</li>
+          <li>Nội dung 1 chữ và nội dung 40 chữ đều ra bố cục hợp lý</li>
+          <li>Chiều dọc phải-sang-trái: đọc thử thứ tự ô, phải khớp thứ tự chữ đã nhập</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Ca biên phải xử lý</h4>
+        <ul>
+          <li>Nội dung dài hơn số ô một trang → tự sang trang, đánh số trang, không cắt giữa chữ</li>
+          <li>Chữ rộng (囊) và chữ hẹp (一) trong cùng trang → canh theo em-box, không theo bề rộng glyph</li>
+          <li>Dấu câu, chữ Latin và số lẫn trong nội dung → hoặc bỏ qua có cảnh báo, hoặc để một ô riêng</li>
+          <li>Cỡ ô lớn hơn vùng in → chặn ở slider, không để xuất ra bản bị cắt</li>
+          <li>In hai mặt làm lưới lệch nhau → mặc định một mặt cho module thư pháp</li>
+          <li>Người dùng đổi thể sau khi đã nhập nội dung → giữ nội dung, chạy lại kiểm tra glyph</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ── roadmap -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">十</span>
+      <div>
+        <h2>Phạm vi theo đợt</h2>
+        <p class="sub">Chia nhỏ để đợt đầu ra được mà không chờ bản quyền font hay nội dung dài.</p>
+      </div>
+    </div>
+    <div class="road">
+      <div class="wave">
+        <div class="when"><b>Đợt 1</b><span>Nền tảng in được</span></div>
+        <ul>
+          <li>Hai lưới mới: 米字格 và 九宮格</li>
+          <li>Hai thể: khải và lệ (font mở, giấy phép rõ ràng)</li>
+          <li>Ba cỡ bút lông, khổ A4/A3, chiều dọc</li>
+          <li>Bộ chữ mẫu: vĩnh tự bát pháp + 30 bộ thủ thường gặp</li>
+        </ul>
+        <div class="effort">Nhỏ · dùng lại engine</div>
+      </div>
+      <div class="wave">
+        <div class="when"><b>Đợt 2</b><span>Đủ ngũ thể</span></div>
+        <ul>
+          <li>Thêm triện, hành, thảo — cần soát bản quyền font từng thể</li>
+          <li>回宮格, dải đối liên, chế độ viền rỗng</li>
+          <li>Trang kiến thức nền: dụng cụ, ngũ thể, nhịp nét (nội dung ở proposal này)</li>
+        </ul>
+        <div class="effort">Trung bình</div>
+      </div>
+      <div class="wave">
+        <div class="when"><b>Đợt 3</b><span>Lâm thiếp có hướng dẫn</span></div>
+        <ul>
+          <li>Bản mẫu kinh điển hết hạn bản quyền: Lan Đình tự, Đa Bảo Tháp bi</li>
+          <li>Lộ trình theo tuần, in kèm phần tự đánh giá</li>
+          <li>Ô lạc khoản và ấn chương trong bản in tác phẩm</li>
+        </ul>
+        <div class="effort">Lớn · cần biên tập nội dung</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 ── câu hỏi mở -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">十一</span>
+      <div>
+        <h2>Cần quyết trước khi làm</h2>
+        <p class="sub">Bốn điểm chặn, mỗi điểm có phương án nghiêng sẵn.</p>
+      </div>
+    </div>
+    <div class="qa">
+      <div class="q"><b>Font theo thể chữ — mua hay dùng font mở?</b><span>Font triện và thảo chất lượng phần lớn là thương mại. Nghiêng: đợt 1 chỉ dùng font mở cho khải và lệ, dựng danh sách font trước khi mở rộng.</span></div>
+      <div class="q"><b>Giản thể hay phồn thể trong bản mẫu?</b><span>Thư pháp truyền thống dùng phồn thể, nhưng người học của app phần lớn học giản thể. Nghiêng: cho chọn, mặc định phồn thể ở module thư pháp.</span></div>
+      <div class="q"><b>Module riêng hay thêm lựa chọn vào luồng cũ?</b><span>Nghiêng: module riêng, vào từ một cửa riêng. Người tập thư pháp không cần pinyin và thứ tự nét; nhồi chung sẽ làm rối cả hai nhóm.</span></div>
+      <div class="q"><b>Có nhắm cả thư pháp Việt (chữ Quốc ngữ viết kiểu thư pháp)?</b><span>Cùng tệp người dùng ở Việt Nam và cạnh tranh thấp, nhưng khác hẳn về nét và bố cục. Nghiêng: để ngoài phạm vi, ghi nhận là hướng riêng sau này.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ── nguồn -->
+<section style="border-bottom:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">十二</span>
+      <div>
+        <h2>Nguồn tham chiếu</h2>
+        <p class="sub">Phần lịch sử và ngũ thể lấy từ hai nguồn dưới; các con số cỡ bút, cỡ ô và khổ giấy là quy ước thực hành phổ biến, nên xác nhận lại với người dạy thư pháp trước khi in vào sản phẩm.</p>
+      </div>
+    </div>
+    <div class="srcs">
+      <a class="src" href="https://vi.wikipedia.org/wiki/Th%C6%B0_ph%C3%A1p_Trung_Hoa"><b>Thư pháp Trung Hoa — Wikipedia tiếng Việt</b><span>vi.wikipedia.org/wiki/Thư_pháp_Trung_Hoa</span></a>
+      <a class="src" href="https://qtedu.vn/nghe-thuat-thu-phap-trung-hoa.html"><b>Nghệ thuật thư pháp Trung Hoa — QTEDU</b><span>qtedu.vn/nghe-thuat-thu-phap-trung-hoa.html</span></a>
+      <a class="src" href="https://github.com/thumeomeo/chinese-learning-landscape/blob/main/hanzi-social-kit.html"><b>Hanzi Practice — Social Content Kit</b><span>Hệ màu, font và ba định dạng nội dung đang dùng</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center">
+    <span>Thư Pháp Practice — đề xuất feature, bản 10.09.2026</span>
+    <span class="seal" style="width:52px;height:52px;font-size:18px;border-width:2px">書藝</span>
+  </div>
+</footer>
