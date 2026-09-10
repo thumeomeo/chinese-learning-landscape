@@ -187,7 +187,6 @@
           <span class="tag on">Đề xuất — chờ duyệt</span>
           <span class="tag">Module mới, không phá luồng cũ</span>
           <span class="tag">Dùng lại engine render lưới</span>
-          <span class="tag">10.09.2026</span>
         </div>
       </div>
       <div class="demo">
@@ -322,23 +321,13 @@
       </div>
     </div>
 
-    <div class="cols-2" style="margin-top:18px">
+    <div style="margin-top:18px">
       <div class="panel">
         <h3>Chất lông — ba nhóm</h3>
         <dl class="kv">
           <dt>狼毫 Lang hào</dt><dd>Lông cứng (chồn, thử lang). Đàn hồi mạnh, nét sắc, dễ giữ trung phong. Tốt cho khải và hành.</dd>
           <dt>羊毫 Dương hào</dt><dd>Lông mềm (dê). Hút mực nhiều, nét mềm dày, khó điều khiển hơn. Tốt cho lệ và chữ lớn.</dd>
           <dt>兼毫 Kiêm hào</dt><dd>Pha cứng – mềm. Lựa chọn mặc định nên đề xuất cho người mới.</dd>
-        </dl>
-      </div>
-      <div class="panel">
-        <span class="zh">文房四寶 · văn phòng tứ bảo</span>
-        <h3>Bốn món cơ bản</h3>
-        <dl class="kv">
-          <dt>筆 Bút</dt><dd>Bút lông, phân theo cỡ và chất lông như trên</dd>
-          <dt>墨 Mực</dt><dd>Thoi mực mài, hoặc mực nước pha loãng để luyện</dd>
-          <dt>紙 Giấy</dt><dd>生宣 sinh tuyên hút mạnh (dễ loe), 熟宣 thục tuyên ít hút, 半熟 bán thục ở giữa; giấy 毛邊 để luyện hằng ngày</dd>
-          <dt>硯 Nghiên</dt><dd>Nghiên mài mực, kèm chặn giấy (鎮尺) và thảm lót (氈)</dd>
         </dl>
       </div>
     </div>
@@ -485,91 +474,108 @@
   </div>
 </section>
 
-<!-- 5 ── kỹ thuật -->
+<!-- 5 ── net co ban -->
 <section>
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-no">五</span>
       <div>
-        <h2>Kỹ thuật nét — lớp nội dung đi kèm template</h2>
-        <p class="sub">Template in ra là giấy trắng có lưới; giá trị thật nằm ở phần chú giải cạnh lưới. Đây là những gì nên in ở chân trang mỗi bản.</p>
+        <h2>Nét cơ bản và thứ tự nét</h2>
+        <p class="sub">Phần này là dữ liệu, không phải lý thuyết: dev cần đúng danh sách nét, đúng hướng đi của từng nét và đúng quy tắc thứ tự để vẽ mũi tên hướng nét, đánh số nét và sinh chú giải chân trang.</p>
       </div>
     </div>
 
-    <h4 style="margin-bottom:12px">Ba nhịp của một nét</h4>
-    <div class="phases">
-      <div class="phase">
-        <span class="step">起筆</span>
-        <h3>Khởi bút</h3>
-        <p style="font-size:14px;color:var(--ink-2)">Đặt bút. Nghịch nhập (藏鋒) thì che ngọn, nét mở đầu tròn và kín; lộ phong thì để ngọn hở, nét mở đầu nhọn.</p>
-      </div>
-      <div class="phase">
-        <span class="step">行筆</span>
-        <h3>Hành bút</h3>
-        <p style="font-size:14px;color:var(--ink-2)">Kéo nét. Giữ <strong>trung phong</strong> — ngọn bút đi giữa lòng nét — thì nét đầy và chắc; <strong>thiên phong</strong> (ngọn lệch một bên) cho nét mỏng, sắc, dùng có chủ ý.</p>
-      </div>
-      <div class="phase">
-        <span class="step">收筆</span>
-        <h3>Thu bút</h3>
-        <p style="font-size:14px;color:var(--ink-2)">Kết nét. Hồi phong thì gập nhẹ ngược lại rồi nhấc, đầu nét gọn; bật ra thì tạo đuôi vót như đuôi yến trong lệ thư.</p>
+    <div class="panel">
+      <span class="zh">基本筆畫 · tám nét đơn</span>
+      <h3>Tám nét đơn — mọi chữ đều dựng từ đây</h3>
+      <div class="bafa" style="margin-top:6px">
+          <div class="fa"><span class="g">㇐</span><b>Ngang</b><span>横 héng</span><span>Trái → phải, hơi hếch lên 2–5°</span></div>
+          <div class="fa"><span class="g">㇑</span><b>Dọc</b><span>竖 shù</span><span>Trên → dưới, thẳng đứng</span></div>
+          <div class="fa"><span class="g">㇒</span><b>Phẩy</b><span>撇 piě</span><span>Trên phải → dưới trái, vót nhọn</span></div>
+          <div class="fa"><span class="g">㇏</span><b>Mác</b><span>捺 nà</span><span>Trên trái → dưới phải, cuối nở rồi bật</span></div>
+          <div class="fa"><span class="g">㇔</span><b>Chấm</b><span>点 diǎn</span><span>Điểm ngắn, hướng nghiêng tuỳ vị trí</span></div>
+          <div class="fa"><span class="g">㇀</span><b>Hất</b><span>提 tí</span><span>Dưới trái → trên phải, ngắn và nhanh</span></div>
+          <div class="fa"><span class="g">㇕</span><b>Gập</b><span>折 zhé</span><span>Đổi hướng giữa nét, không nhấc bút</span></div>
+          <div class="fa"><span class="g">㇖</span><b>Móc</b><span>钩 gōu</span><span>Bật ngược ở cuối nét</span></div>
       </div>
     </div>
 
-    <div class="cols-2" style="margin-top:22px">
+    <div class="panel" style="margin-top:18px">
+      <span class="zh">複合筆畫 · nét ghép</span>
+      <h3>Mười hai nét ghép hay gặp</h3>
+      <p>Nét ghép là hai hay ba hướng nối nhau mà không nhấc bút. Đây là nhóm dev hay bỏ sót khi đánh số nét, vì một nét ghép vẫn chỉ tính là <strong>một</strong> nét.</p>
+      <div class="tbl-shell" style="margin-top:4px">
+        <table style="min-width:560px">
+          <thead><tr><th>Ký hiệu</th><th>Tên</th><th>Đường đi</th><th>Chữ ví dụ</th></tr></thead>
+          <tbody>
+              <tr><td class="zhcell">㇕</td><td><strong>橫折</strong></td><td>ngang rồi gập xuống</td><td class="zhcell" style="font-size:19px">口 日</td></tr>
+              <tr><td class="zhcell">㇙</td><td><strong>豎提</strong></td><td>dọc rồi hất lên</td><td class="zhcell" style="font-size:19px">以 长</td></tr>
+              <tr><td class="zhcell">㇚</td><td><strong>豎鉤</strong></td><td>dọc rồi móc trái</td><td class="zhcell" style="font-size:19px">小 水</td></tr>
+              <tr><td class="zhcell">㇖</td><td><strong>橫鉤</strong></td><td>ngang rồi móc xuống</td><td class="zhcell" style="font-size:19px">写 字</td></tr>
+              <tr><td class="zhcell">㇆</td><td><strong>橫折鉤</strong></td><td>ngang, gập, móc</td><td class="zhcell" style="font-size:19px">月 同</td></tr>
+              <tr><td class="zhcell">㇉</td><td><strong>豎彎鉤</strong></td><td>dọc, cong, móc lên</td><td class="zhcell" style="font-size:19px">也 己</td></tr>
+              <tr><td class="zhcell">㇂</td><td><strong>斜鉤</strong></td><td>chéo dài rồi móc</td><td class="zhcell" style="font-size:19px">我 戈</td></tr>
+              <tr><td class="zhcell">㇃</td><td><strong>臥鉤</strong></td><td>cong nằm rồi móc lên</td><td class="zhcell" style="font-size:19px">心 必</td></tr>
+              <tr><td class="zhcell">㇜</td><td><strong>撇折</strong></td><td>phẩy rồi gập ngang</td><td class="zhcell" style="font-size:19px">云 去</td></tr>
+              <tr><td class="zhcell">㇛</td><td><strong>撇點</strong></td><td>phẩy rồi chấm</td><td class="zhcell" style="font-size:19px">女 巡</td></tr>
+              <tr><td class="zhcell">㇗</td><td><strong>豎折</strong></td><td>dọc rồi gập ngang</td><td class="zhcell" style="font-size:19px">山 断</td></tr>
+              <tr><td class="zhcell">㇇</td><td><strong>橫撇</strong></td><td>ngang ngắn rồi phẩy</td><td class="zhcell" style="font-size:19px">又 夕</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <span class="zh">筆順規則 · bút thuận</span>
+      <h3>Bảy quy tắc thứ tự nét</h3>
+      <div class="bafa" style="margin-top:6px">
+          <div class="fa"><b>Ngang trước, dọc sau</b><span>先横后竖</span><span class="g" style="font-size:22px">十 干</span></div>
+          <div class="fa"><b>Phẩy trước, mác sau</b><span>先撇后捺</span><span class="g" style="font-size:22px">人 八</span></div>
+          <div class="fa"><b>Trên xuống dưới</b><span>从上到下</span><span class="g" style="font-size:22px">三 言</span></div>
+          <div class="fa"><b>Trái sang phải</b><span>从左到右</span><span class="g" style="font-size:22px">川 州</span></div>
+          <div class="fa"><b>Ngoài trước, trong sau</b><span>先外后内</span><span class="g" style="font-size:22px">月 用</span></div>
+          <div class="fa"><b>Trong xong mới đóng khung</b><span>先里头后封口</span><span class="g" style="font-size:22px">国 回</span></div>
+          <div class="fa"><b>Giữa trước, hai bên sau</b><span>先中间后两边</span><span class="g" style="font-size:22px">小 水</span></div>
+      </div>
+      <p style="font-size:13px;color:var(--muted)">Bảy quy tắc này giải quyết phần lớn chữ, nhưng luôn có ngoại lệ (火, 方, 必…). Đừng suy ra thứ tự nét bằng luật — lấy từ bộ dữ liệu thứ tự nét sẵn có, luật chỉ dùng để viết chú giải cho người học.</p>
+    </div>
+
+    <div class="cols-2" style="margin-top:18px">
       <div class="panel">
-        <span class="zh">執筆五字法 · chấp bút ngũ tự pháp</span>
-        <h3>Năm chữ cầm bút</h3>
+        <h4>Nguồn dữ liệu nét cho dev</h4>
+        <ul>
+          <li><strong>Unicode CJK Strokes</strong> U+31C0–U+31E3 — 36 glyph nét rời (㇀ đến ㇣). Vẽ bảng nét bằng ký tự thật, không cần vẽ path tay như bản proposal này đang làm</li>
+          <li><strong>Dữ liệu thứ tự nét</strong> — bộ dữ liệu path theo từng nét cho hàng chục nghìn chữ, dùng để đánh số nét và vẽ mũi tên hướng; kiểm tra giấy phép trước khi nhúng</li>
+          <li>Sản phẩm hiện tại đã có phần thứ tự nét cho phiếu hán tự — ưu tiên dùng lại đúng nguồn đó cho module thư pháp</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Ba nhịp của một nét — in ở chân trang</h4>
         <dl class="kv">
-          <dt>擫 Áp</dt><dd>Ngón trỏ ép mặt trong thân bút</dd>
-          <dt>押 Ấn</dt><dd>Ngón cái đè phía đối diện</dd>
-          <dt>鉤 Câu</dt><dd>Ngón giữa móc vào thân bút</dd>
-          <dt>格 Cách</dt><dd>Ngón áp út đẩy ngược ra</dd>
-          <dt>抵 Chỉ</dt><dd>Ngón út tựa sau ngón áp út</dd>
+          <dt>起筆 Khởi bút</dt><dd>Đặt bút. Nghịch nhập (藏鋒) che ngọn cho đầu nét tròn; lộ phong để ngọn hở, đầu nét nhọn</dd>
+          <dt>行筆 Hành bút</dt><dd>Kéo nét. Trung phong — ngọn đi giữa lòng nét — cho nét đầy; thiên phong cho nét mỏng, sắc</dd>
+          <dt>收筆 Thu bút</dt><dd>Kết nét. Hồi phong thì gập nhẹ ngược rồi nhấc; bật ra thì tạo đuôi vót</dd>
         </dl>
-        <p style="font-size:13px;color:var(--muted)">Kèm ba tư thế tay: gối tay (chữ nhỏ), treo cổ tay, treo cả cánh tay (chữ lớn).</p>
-      </div>
-      <div class="panel">
-        <span class="zh">永字八法 · vĩnh tự bát pháp</span>
-        <h3>Tám nét trong chữ 永</h3>
-        <p style="font-size:14px">Chữ <strong>永</strong> chứa tám dạng nét cơ bản — vì vậy nó là bài tập vỡ lòng kinh điển và là chữ mặc định nên đặt ở template đầu tiên.</p>
-        <div class="bafa">
-          <div class="fa"><span class="g">丶</span><b>側 Trắc</b><span>Điểm, mũi nhọn nghiêng</span></div>
-          <div class="fa"><span class="g">一</span><b>勒 Lặc</b><span>Ngang, kéo như nắm dây</span></div>
-          <div class="fa"><span class="g">丨</span><b>努 Nỗ</b><span>Dọc, gồng sức</span></div>
-          <div class="fa"><span class="g">亅</span><b>趯 Dịch</b><span>Móc bật lên</span></div>
-          <div class="fa"><span class="g">㇀</span><b>策 Sách</b><span>Ngang ngắn hếch lên</span></div>
-          <div class="fa"><span class="g">丿</span><b>掠 Lược</b><span>Phẩy dài sang trái</span></div>
-          <div class="fa"><span class="g">丿</span><b>啄 Trác</b><span>Phẩy ngắn, mổ nhanh</span></div>
-          <div class="fa"><span class="g">乀</span><b>磔 Trách</b><span>Mác toả sang phải</span></div>
-        </div>
       </div>
     </div>
 
-    <div class="cols-3" style="margin-top:18px">
+    <div class="cols-2" style="margin-top:18px">
       <div class="panel">
-        <h4>Ba lớp cần đúng</h4>
-        <ul>
-          <li><strong>用筆</strong> dụng bút — chất lượng từng nét</li>
-          <li><strong>結構</strong> kết cấu — tỉ lệ trong một chữ</li>
-          <li><strong>章法</strong> chương pháp — bố cục toàn trang</li>
-        </ul>
+        <h4>Ba cách luyện ↔ ba chế độ nét mẫu</h4>
+        <dl class="kv">
+          <dt>描紅 miêu hồng</dt><dd>Tô lên chữ in mờ → <strong>sampleMode: fade</strong></dd>
+          <dt>摹帖 mô thiếp</dt><dd>Tô theo viền chữ → <strong>sampleMode: outline</strong></dd>
+          <dt>臨帖 lâm thiếp</dt><dd>Nhìn mẫu viết lại → <strong>sampleMode: fill</strong>, mẫu ở cột đầu, các ô sau để trống</dd>
+        </dl>
+        <p style="font-size:13px;color:var(--muted)">Đây là lý do có đúng ba chế độ ở mục tám, không phải hai hay bốn.</p>
       </div>
       <div class="panel">
-        <h4>Bố cục một tác phẩm</h4>
-        <ul>
-          <li><strong>正文</strong> chính văn — thân bài</li>
-          <li><strong>落款</strong> lạc khoản — dòng ký nhỏ, ghi nội dung, thời gian, người viết</li>
-          <li><strong>印章</strong> ấn chương — dấu son, đóng dưới hoặc bên lạc khoản</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h4>Cách luyện</h4>
-        <ul>
-          <li><strong>描紅</strong> miêu hồng — tô lên chữ đỏ in mờ</li>
-          <li><strong>摹帖</strong> mô thiếp — can giấy mỏng lên bản mẫu</li>
-          <li><strong>臨帖</strong> lâm thiếp — đặt bản mẫu bên cạnh và viết lại</li>
-          <li><strong>背帖</strong> bối thiếp — viết lại từ ký ức</li>
-        </ul>
+        <h4>Bố cục một tờ — quyết định lề khi in</h4>
+        <dl class="kv">
+          <dt>正文 chính văn</dt><dd>Thân bài, chiếm vùng lưới</dd>
+          <dt>落款 lạc khoản</dt><dd>Dòng ký nhỏ ở cuối theo chiều viết → cần chừa 20 mm</dd>
+          <dt>印章 ấn chương</dt><dd>Dấu son cạnh lạc khoản → ô vuông tuỳ chọn 20–30 mm</dd>
+        </dl>
       </div>
     </div>
   </div>
@@ -695,6 +701,32 @@
         </div>
       </article>
     </div>
+
+    <h4 style="margin:34px 0 12px">Kho nội dung dựng sẵn — tác phẩm kinh điển</h4>
+    <p class="lede" style="font-size:16px;margin-bottom:16px">Người tập thư pháp hiếm khi tự gõ nội dung; họ chép lại một bài có sẵn. Mười hai bài dưới đây là bộ nội dung nên đóng gói cùng module — tất cả đều là văn bản cổ đã hết bảo hộ bản quyền, dùng thoải mái.</p>
+    <div class="tbl-shell">
+      <table>
+        <thead>
+          <tr><th>Nguyên văn</th><th>Tác phẩm</th><th>Số chữ</th><th>Trang A4 ô 25 mm</th><th>Vì sao nên có</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="zhcell">琵琶行</td><td><strong>Tỳ Bà Hành</strong><span class="rom">Bạch Cư Dị · Đường</span></td><td class="num">616</td><td class="num">9</td><td>Đang được chép và ngâm lại rất nhiều; dài, hợp bộ nhiều trang</td></tr>
+            <tr><td class="zhcell">將進酒</td><td><strong>Tương Tiến Tửu</strong><span class="rom">Lý Bạch · Đường</span></td><td class="num">176</td><td class="num">3</td><td>Khí thế mạnh, hợp hành thư và thảo thư</td></tr>
+            <tr><td class="zhcell">蘭亭集序</td><td><strong>Lan Đình Tập Tự</strong><span class="rom">Vương Hi Chi · Tấn</span></td><td class="num">324</td><td class="num">5</td><td>Bản mẫu hành thư số một, gắn liền với chữ 永</td></tr>
+            <tr><td class="zhcell">心經</td><td><strong>Bát Nhã Tâm Kinh</strong><span class="rom">Kinh Phật</span></td><td class="num">260</td><td class="num">4</td><td>Bộ chép kinh phổ biến nhất, bút tiểu</td></tr>
+            <tr><td class="zhcell">千字文</td><td><strong>Thiên Tự Văn</strong><span class="rom">Chu Hưng Tự · Lương</span></td><td class="num">1000</td><td class="num">15</td><td>Một nghìn chữ không lặp — giáo trình luyện chữ kinh điển</td></tr>
+            <tr><td class="zhcell">出師表</td><td><strong>Xuất Sư Biểu</strong><span class="rom">Gia Cát Lượng · Hán</span></td><td class="num">741</td><td class="num">11</td><td>Văn xuôi dài, hợp khải thư nhiều trang</td></tr>
+            <tr><td class="zhcell">水調歌頭</td><td><strong>Thuỷ Điệu Ca Đầu</strong><span class="rom">Tô Thức · Tống</span></td><td class="num">95</td><td class="num">2</td><td>Ngắn, quen thuộc, hợp bộ một tờ</td></tr>
+            <tr><td class="zhcell">愛蓮說</td><td><strong>Ái Liên Thuyết</strong><span class="rom">Chu Đôn Di · Tống</span></td><td class="num">119</td><td class="num">2</td><td>Ngắn gọn, thường dùng làm bài chép mở đầu</td></tr>
+            <tr><td class="zhcell">陋室銘</td><td><strong>Lậu Thất Minh</strong><span class="rom">Lưu Vũ Tích · Đường</span></td><td class="num">81</td><td class="num">2</td><td>Rất ngắn, vừa đúng một tờ A4 ô 25 mm</td></tr>
+            <tr><td class="zhcell">靜夜思</td><td><strong>Tĩnh Dạ Tứ</strong><span class="rom">Lý Bạch · Đường</span></td><td class="num">20</td><td class="num">1</td><td>Hai mươi chữ — bài đầu tiên cho người mới</td></tr>
+            <tr><td class="zhcell">長恨歌</td><td><strong>Trường Hận Ca</strong><span class="rom">Bạch Cư Dị · Đường</span></td><td class="num">840</td><td class="num">12</td><td>Dài nhất trong bộ thơ, hợp thử luồng nhiều trang</td></tr>
+            <tr><td class="zhcell">滕王閣序</td><td><strong>Đằng Vương Các Tự</strong><span class="rom">Vương Bột · Đường</span></td><td class="num">773</td><td class="num">12</td><td>Biền văn, nhiều chữ hiếm — ca kiểm tra phủ glyph</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:var(--muted)">Số chữ tính theo bản thông dụng, có thể lệch vài chữ giữa các dị bản; số trang tính với 70 ô mỗi tờ (A4 dọc, ô 25 mm). Dev nên lưu mỗi bài kèm số chữ đã chốt để hiện trước số trang cho người dùng.</p>
+
     <div class="rail sun" style="margin-top:24px">
       <div class="body-col">
         <p><strong>Vì sao đúng mười hai:</strong> bộ này phủ cả năm thể, cả bốn loại lưới, cả ba cỡ bút lông và bút cứng, cả ba chế độ nét mẫu, và cả ba khổ giấy — kể cả dải đối liên. Chạy được mười hai bản này là engine đã đi qua gần hết không gian tham số ở mục bảy.</p>
@@ -995,14 +1027,12 @@
       <span class="sec-no">十二</span>
       <div>
         <h2>Cần quyết trước khi làm</h2>
-        <p class="sub">Bốn điểm chặn, mỗi điểm có phương án nghiêng sẵn.</p>
+        <p class="sub">Hai điểm chặn còn lại trước khi vào đợt 1.</p>
       </div>
     </div>
     <div class="qa">
       <div class="q"><b>Font theo thể chữ — mua hay dùng font mở?</b><span>Font triện và thảo chất lượng phần lớn là thương mại. Nghiêng: đợt 1 chỉ dùng font mở cho khải và lệ, dựng danh sách font trước khi mở rộng.</span></div>
-      <div class="q"><b>Giản thể hay phồn thể trong bản mẫu?</b><span>Thư pháp truyền thống dùng phồn thể, nhưng người học của app phần lớn học giản thể. Nghiêng: cho chọn, mặc định phồn thể ở module thư pháp.</span></div>
-      <div class="q"><b>Module riêng hay thêm lựa chọn vào luồng cũ?</b><span>Nghiêng: module riêng, vào từ một cửa riêng. Người tập thư pháp không cần pinyin và thứ tự nét; nhồi chung sẽ làm rối cả hai nhóm.</span></div>
-      <div class="q"><b>Có nhắm cả thư pháp Việt (chữ Quốc ngữ viết kiểu thư pháp)?</b><span>Cùng tệp người dùng ở Việt Nam và cạnh tranh thấp, nhưng khác hẳn về nét và bố cục. Nghiêng: để ngoài phạm vi, ghi nhận là hướng riêng sau này.</span></div>
+      <div class="q"><b>Giản thể hay phồn thể trong bản mẫu?</b><span>Thư pháp truyền thống dùng phồn thể, người học của app phần lớn học giản thể. Dev quyết khi dựng dữ liệu — cần nhớ ràng buộc ở mục mười: không map phồn – giản tự động một–một.</span></div>
     </div>
   </div>
 </section>
@@ -1014,7 +1044,7 @@
       <span class="sec-no">十三</span>
       <div>
         <h2>Nguồn tham chiếu</h2>
-        <p class="sub">Phần lịch sử và ngũ thể lấy từ hai nguồn dưới; các con số cỡ bút, cỡ ô và khổ giấy là quy ước thực hành phổ biến, nên xác nhận lại với người dạy thư pháp trước khi in vào sản phẩm.</p>
+        <p class="sub">Phần lịch sử và ngũ thể lấy từ hai nguồn dưới; các con số cỡ bút, cỡ ô và khổ giấy là quy ước thực hành phổ biến.</p>
       </div>
     </div>
     <div class="srcs">
@@ -1029,7 +1059,7 @@
 
 <footer>
   <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center">
-    <span>Thư Pháp Practice — đề xuất feature, bản 10.09.2026</span>
+    <span>Thư Pháp Practice — đề xuất feature</span>
     <span class="seal" style="width:52px;height:52px;font-size:18px;border-width:2px">書藝</span>
   </div>
 </footer>
